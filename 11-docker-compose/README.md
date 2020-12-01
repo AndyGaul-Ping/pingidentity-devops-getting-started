@@ -1,1 +1,0 @@
-See [Get started](../docs/getStarted.md) for more information.

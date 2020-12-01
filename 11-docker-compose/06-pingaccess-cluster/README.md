@@ -1,1 +1,0 @@
-See [Deploy a PingAccess cluster](../../docs/deployPaCluster.md) for more information.

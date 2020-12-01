@@ -1,0 +1,2982 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://devops.pingidentity.com/deployK8sPD-clusters/">
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
+    
+    
+      
+        <title>PingDirectory deployments across Kubernetes clusters - Ping Identity DevOps</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6910b76c.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../mkdocs/overrides/stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="blue">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pingdirectory-deployments-across-kubernetes-clusters" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://devops.pingidentity.com/" title="Ping Identity DevOps" class="md-header-nav__button md-logo" aria-label="Ping Identity DevOps">
+      <!-- Logo -->
+
+  
+
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Ping Identity DevOps
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              PingDirectory deployments across Kubernetes clusters
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/pingidentity/pingidentity-devops-getting-started" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pingidentity/pingidentity-devops-getting-started
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+    
+    <a href=".." class="md-tabs__link">
+      DEVOPS @ PING
+    </a>
+  </li>
+
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../getStarted/" class="md-tabs__link">
+        GET STARTED
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+        
+      
+      <a href="../deploy/" class="md-tabs__link md-tabs__link--active">
+        WORKING WITH IMAGES
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../config/" class="md-tabs__link">
+        CUSTOMIZING
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../relnotes-2010/" class="md-tabs__link">
+        RELEASE NOTES
+      </a>
+    </li>
+  
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://devops.pingidentity.com/" title="Ping Identity DevOps" class="md-nav__button md-logo" aria-label="Ping Identity DevOps">
+      <!-- Logo -->
+
+  
+
+
+    </a>
+    Ping Identity DevOps
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/pingidentity/pingidentity-devops-getting-started" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pingidentity/pingidentity-devops-getting-started
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      DEVOPS @ PING
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" class="md-nav__link">
+      OVERVIEW
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    <label class="md-nav__link" for="nav-3">
+      GET STARTED
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="GET STARTED" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        GET STARTED
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../getStarted/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../devopsRegistration/" class="md-nav__link">
+      DevOps registration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../getStartedWithGitRepo/" class="md-nav__link">
+      Deploy an example stack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PROD-LICENSE/" class="md-nav__link">
+      DevOps product licenses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../devopsUserKey/" class="md-nav__link">
+      Using your DevOps user and key
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../existingLicense/" class="md-nav__link">
+      Using an existing product license
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../saveConfigs/" class="md-nav__link">
+      Saving your configuration changes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    <label class="md-nav__link" for="nav-4">
+      WORKING WITH IMAGES
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="WORKING WITH IMAGES" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        WORKING WITH IMAGES
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deploy/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buildLocal/" class="md-nav__link">
+      Build a Docker product image locally
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployStandalone/" class="md-nav__link">
+      Deploy standalone containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+    <label class="md-nav__link" for="nav-4-4">
+      Orchestrate with Docker-Compose
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Orchestrate with Docker-Compose" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon"></span>
+        Orchestrate with Docker-Compose
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployCompose/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deploySimpleStack/" class="md-nav__link">
+      Deploy a PingFederate and PingDirectory stack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployReplication/" class="md-nav__link">
+      Deploy a replicated PingDirectory pair
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deploySync/" class="md-nav__link">
+      Deploy PingDirectory with data synchronization using PingDataSync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPingCentral/" class="md-nav__link">
+      Deploy PingCentral
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPfCluster/" class="md-nav__link">
+      Deploy a PingFederate cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPaCluster/" class="md-nav__link">
+      Deploy a PingAccess cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPdgPap/" class="md-nav__link">
+      Deploy PingDataGovernance with PAP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployMonitoringStack/" class="md-nav__link">
+      Deploy a monitoring stack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deploySiemStack/" class="md-nav__link">
+      Deploy an Elasticsearch SIEM stack
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" checked>
+    <label class="md-nav__link" for="nav-4-5">
+      Orchestrate with Kubernetes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Orchestrate with Kubernetes" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Orchestrate with Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8s/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployHelm/" class="md-nav__link">
+      Deploy with PingIdentiy Helm Charts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        PingDirectory deployments across Kubernetes clusters
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      PingDirectory deployments across Kubernetes clusters
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-youll-do" class="md-nav__link">
+    What You'll Do
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pingdirectory-host-naming" class="md-nav__link">
+    PingDirectory Host-naming
+  </a>
+  
+    <nav class="md-nav" aria-label="PingDirectory Host-naming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-cluster-multiple-namespace" class="md-nav__link">
+    Single-cluster Multiple-namespace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-dns-names" class="md-nav__link">
+    External DNS names
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-to-create-hostnames" class="md-nav__link">
+    Variables to Create Hostnames
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables to Create Hostnames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-previous-hostname-examples" class="md-nav__link">
+    Using previous hostname examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-startup-walkthrough" class="md-nav__link">
+    Cluster Startup Walkthrough
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster Startup Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#note-on-replication-traffic" class="md-nav__link">
+    Note on Replication Traffic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-modes-of-deployment" class="md-nav__link">
+    Reference Modes of Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference Modes of Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-cluster-simulations" class="md-nav__link">
+    Multi-cluster Simulations
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-cluster Simulations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-namespace" class="md-nav__link">
+    Single Namespace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-cluster-multiple-namespaces" class="md-nav__link">
+    Single Cluster Multiple Namespaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc-peered-k8s-clusters" class="md-nav__link">
+    VPC Peered K8s Clusters
+  </a>
+  
+    <nav class="md-nav" aria-label="VPC Peered K8s Clusters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-external-dns-names" class="md-nav__link">
+    Using External DNS Names
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#without-vpc-peering" class="md-nav__link">
+    Without VPC peering
+  </a>
+  
+    <nav class="md-nav" aria-label="Without VPC peering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-nodeports" class="md-nav__link">
+    Using NodePorts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-load-balancer" class="md-nav__link">
+    Single load-balancer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-load-balancers" class="md-nav__link">
+    Multiple load-balancers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statefulset-pod-services" class="md-nav__link">
+    StatefulSet pod services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-kubernetes-resources-required" class="md-nav__link">
+    Additional Kubernetes resources required
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Kubernetes resources required">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    DNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx-ingress-service-and-controller" class="md-nav__link">
+    NGINX Ingress Service and Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx-tcp-services" class="md-nav__link">
+    NGINX TCP services
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-example" class="md-nav__link">
+    Deployment Example
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-create-yaml-for-us-east-2" class="md-nav__link">
+    Steps to create .yaml for us-east-2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-4" type="checkbox" id="nav-4-5-4" >
+    <label class="md-nav__link" for="nav-4-5-4">
+      Kubernetes deployments for general use
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes deployments for general use" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes deployments for general use
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sGeneral/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sStandalone/" class="md-nav__link">
+      Orchestrate standalone deployments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sFullstack/" class="md-nav__link">
+      Orchestrate a full stack deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sReplicated/" class="md-nav__link">
+      Orchestrate a replicated PingDirectory deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sPA-cluster/" class="md-nav__link">
+      Orchestrate a PingAccess cluster deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sPF-cluster/" class="md-nav__link">
+      Orchestrate a PingFederate cluster deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-4-7" type="checkbox" id="nav-4-5-4-7" >
+    <label class="md-nav__link" for="nav-4-5-4-7">
+      Deploy PingFederate Across Multiple Kubernetes Clusters
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Deploy PingFederate Across Multiple Kubernetes Clusters" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-5-4-7">
+        <span class="md-nav__icon md-icon"></span>
+        Deploy PingFederate Across Multiple Kubernetes Clusters
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sPFclusters/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPFMultiRegionDNS/" class="md-nav__link">
+      PingFederate Across Kubernetes with DNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPFMultiRegionAWS/" class="md-nav__link">
+      PingFederate Across Kubernetes with S3
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-5" type="checkbox" id="nav-4-5-5" >
+    <label class="md-nav__link" for="nav-4-5-5">
+      Kubernetes deployments for cloud platforms
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes deployments for cloud platforms" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes deployments for cloud platforms
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sCloud/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8s-AWS/" class="md-nav__link">
+      Deploy Peered EKS clusters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8s-AKS/" class="md-nav__link">
+      Deploy to Azure Kubernetes Service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../k8sClusterSizing/" class="md-nav__link">
+      Sizing Kubernetes clusters
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployVault/" class="md-nav__link">
+      Deploy Hashicorp Vault
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    <label class="md-nav__link" for="nav-5">
+      CUSTOMIZING
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="CUSTOMIZING" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        CUSTOMIZING
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../config/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" >
+    <label class="md-nav__link" for="nav-5-2">
+      Server profile anatomy
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Server profile anatomy" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        <span class="md-nav__icon md-icon"></span>
+        Server profile anatomy
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../containerAnatomy/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../profileStructures/" class="md-nav__link">
+      Server profile structures
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../profiles/" class="md-nav__link">
+      Customizing server profiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buildPingFederateProfile/" class="md-nav__link">
+      Build Your Own PingFederate Profile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../profilesLayered/" class="md-nav__link">
+      Layering server profiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../profilesSubstitution/" class="md-nav__link">
+      Environment substitution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../privateRepos/" class="md-nav__link">
+      Using private Github repositories
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../yamlFiles/" class="md-nav__link">
+      Customizing YAML files
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../variableScoping/" class="md-nav__link">
+      Variables and scope
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../usingCertificates/" class="md-nav__link">
+      Using Certificates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hooks/" class="md-nav__link">
+      Using DevOps hooks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../releaseTags/" class="md-nav__link">
+      Using release tags
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imageSupport/" class="md-nav__link">
+      Using supported images
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../usingVault/" class="md-nav__link">
+      Using Hashicorp Vault
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../secureContainers/" class="md-nav__link">
+      Securing the containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dockerImageSecurity/" class="md-nav__link">
+      Evaluation of Docker base image security
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../addMOTD/" class="md-nav__link">
+      Adding a message of the day (MOTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-13" type="checkbox" id="nav-5-13" >
+    <label class="md-nav__link" for="nav-5-13">
+      Managing deployments
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Managing deployments" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-13">
+        <span class="md-nav__icon md-icon"></span>
+        Managing deployments
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../manage/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../upgradePingfederate/" class="md-nav__link">
+      Upgrading PingFederate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../upgradePingDirectory/" class="md-nav__link">
+      Upgrading PingDirectory
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-14" type="checkbox" id="nav-5-14" >
+    <label class="md-nav__link" for="nav-5-14">
+      Utilities
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Utilities" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-14">
+        <span class="md-nav__icon md-icon"></span>
+        Utilities
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../devopsUtils/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pingDevopsUtil/" class="md-nav__link">
+      The `ping-devops` utility
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ldapsdkUtil/" class="md-nav__link">
+      The `ldap-sdk-tools` utility
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshooting/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-16" type="checkbox" id="nav-5-16" >
+    <label class="md-nav__link" for="nav-5-16">
+      Docker images reference
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Docker images reference" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-16">
+        <span class="md-nav__icon md-icon"></span>
+        Docker images reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dockerImagesRef/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingfederate/" class="md-nav__link">
+      PingFederate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingaccess/" class="md-nav__link">
+      PingAccess
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdirectory/" class="md-nav__link">
+      PingDirectory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdirectoryproxy/" class="md-nav__link">
+      PingDirectoryProxy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdatagovernance/" class="md-nav__link">
+      PingDataGovernance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdatagovernancepap/" class="md-nav__link">
+      PingDataGovernance PAP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdatasync/" class="md-nav__link">
+      PingDataSync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdelegator/" class="md-nav__link">
+      PingDelegator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingcentral/" class="md-nav__link">
+      PingCentral
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingintelligence/" class="md-nav__link">
+      PingIntelligence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/ldap-sdk-tools/" class="md-nav__link">
+      ldap-sdk-tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdataconsole/" class="md-nav__link">
+      Ping Data Console
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdownloader/" class="md-nav__link">
+      PingDownloader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingbase/" class="md-nav__link">
+      PingBase
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingcommon/" class="md-nav__link">
+      PingCommon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdatacommon/" class="md-nav__link">
+      PingDataCommon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/apache-jmeter/" class="md-nav__link">
+      Apache JMeter
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    <label class="md-nav__link" for="nav-6">
+      RELEASE NOTES
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="RELEASE NOTES" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        RELEASE NOTES
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2010/" class="md-nav__link">
+      Current
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2009/" class="md-nav__link">
+      Version 2009
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2008/" class="md-nav__link">
+      Version 2008
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2007/" class="md-nav__link">
+      Version 2007
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2006/" class="md-nav__link">
+      Version 2006
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2005/" class="md-nav__link">
+      Version 2005
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2004/" class="md-nav__link">
+      Version 2004
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2003/" class="md-nav__link">
+      Version 2003
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../LICENSE/" class="md-nav__link">
+      LICENSE
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../DISCLAIMER.md" class="md-nav__link">
+      DISCLAIMER
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../3RD_PARTY_SOFTWARE/" class="md-nav__link">
+      THIRD-PARTY SOFTWARE
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../CONTRIBUTING/" class="md-nav__link">
+      CONTRIBUTING
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-youll-do" class="md-nav__link">
+    What You'll Do
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pingdirectory-host-naming" class="md-nav__link">
+    PingDirectory Host-naming
+  </a>
+  
+    <nav class="md-nav" aria-label="PingDirectory Host-naming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-cluster-multiple-namespace" class="md-nav__link">
+    Single-cluster Multiple-namespace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-dns-names" class="md-nav__link">
+    External DNS names
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-to-create-hostnames" class="md-nav__link">
+    Variables to Create Hostnames
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables to Create Hostnames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-previous-hostname-examples" class="md-nav__link">
+    Using previous hostname examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-startup-walkthrough" class="md-nav__link">
+    Cluster Startup Walkthrough
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster Startup Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#note-on-replication-traffic" class="md-nav__link">
+    Note on Replication Traffic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-modes-of-deployment" class="md-nav__link">
+    Reference Modes of Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference Modes of Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-cluster-simulations" class="md-nav__link">
+    Multi-cluster Simulations
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-cluster Simulations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-namespace" class="md-nav__link">
+    Single Namespace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-cluster-multiple-namespaces" class="md-nav__link">
+    Single Cluster Multiple Namespaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc-peered-k8s-clusters" class="md-nav__link">
+    VPC Peered K8s Clusters
+  </a>
+  
+    <nav class="md-nav" aria-label="VPC Peered K8s Clusters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-external-dns-names" class="md-nav__link">
+    Using External DNS Names
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#without-vpc-peering" class="md-nav__link">
+    Without VPC peering
+  </a>
+  
+    <nav class="md-nav" aria-label="Without VPC peering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-nodeports" class="md-nav__link">
+    Using NodePorts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-load-balancer" class="md-nav__link">
+    Single load-balancer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-load-balancers" class="md-nav__link">
+    Multiple load-balancers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statefulset-pod-services" class="md-nav__link">
+    StatefulSet pod services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-kubernetes-resources-required" class="md-nav__link">
+    Additional Kubernetes resources required
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Kubernetes resources required">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    DNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx-ingress-service-and-controller" class="md-nav__link">
+    NGINX Ingress Service and Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx-tcp-services" class="md-nav__link">
+    NGINX TCP services
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-example" class="md-nav__link">
+    Deployment Example
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-create-yaml-for-us-east-2" class="md-nav__link">
+    Steps to create .yaml for us-east-2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="pingdirectory-deployments-across-kubernetes-clusters">PingDirectory deployments across Kubernetes clusters<a class="headerlink" href="#pingdirectory-deployments-across-kubernetes-clusters" title="Permanent link"> ¶</a></h1>
+<p>This example is an extension of the topic <em>Orchestrate a replicated PingDirectory deployment</em> in <a href="../deployK8sGeneral/">Kubernetes orchestration for general use</a>. Here you'll deploy PingDirectory containers across multiple Kubernetes clusters.</p>
+<p><img alt="K8S Multi-Cluster Overview" src="../images/multi-k8s-cluster-pingdirectory-overview.png" /></p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link"> ¶</a></h2>
+<p>Having a replicated PingDirectory topology across multiple kubernetes clusters is desired for highly-availabile active/active deployments as well as active/partial-active scenarios where a hot backup is expected.</p>
+<p>PingIdentity PingDirectory Docker Images abstract away much of the complexity of replication initialization scripts, even across clusters. Instead, the focus is on
+providing accessible DNS hostnames across clusters and environment variables to build ordinal hostnames for each Directory instance.</p>
+<h3 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link"> ¶</a></h3>
+<ol>
+<li><a href="#pingdirectory-host-naming">PingDirectory container keys to success</a></li>
+<li><a href="#variables-to-create-hostnames">Draft Hostnames</a> - determine the variables needed to create your hostnames</li>
+<li><a href="#environment-variables">Additional variables</a> - for use-case flexibility</li>
+<li><a href="#cluster-startup-walkthrough">Cluster startup background</a> -Walk through what happens when a cluster starts</li>
+<li><a href="#reference-modes-of-deployment">Design infrastructure to match hostnames</a> - based on your infrastructure constraints, you may need to alter your hostname plans. Use these reference examples to help.</li>
+<li>Test the Deployment - use the <code>11-replication-timing</code> folder to test replication speeds</li>
+</ol>
+<p>Because details within each Kubernetes cluster are well-hidden from outside the cluster, external access to each pod within the cluster is required. The PingDirectory images will set up access to each of the pods using load-balancers from an external host, to allow each pod to communicate over the LDAP and replication protocols.</p>
+<h2 id="pingdirectory-host-naming">PingDirectory Host-naming<a class="headerlink" href="#pingdirectory-host-naming" title="Permanent link"> ¶</a></h2>
+<p>The most important aspect of a successful PingDirectory cross-cluster deployment assigning accessible and logical dns hostnames.
+Rules:
+1. Each pingdirectory needs it's own hostname avaialable in DNS
+2. hostname will have a space for the ordinal representing the instance in the statefulset
+3. all hostnames are accessible to all directory instances</p>
+<p>These rules still leave plenty of room for flexibility. Especially when accounting for cluster-native DNS names Kubernetes creates.</p>
+<h3 id="single-cluster-multiple-namespace">Single-cluster Multiple-namespace<a class="headerlink" href="#single-cluster-multiple-namespace" title="Permanent link"> ¶</a></h3>
+<p>For example, if you were to simulate a "multi-cluster" environment in a single cluster, you could just set up two namespaces and create a separate ClusterIP service for each directory. It would env up like so:</p>
+<p><strong>Primary Cluster</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pod</th>
+<th>Service Name</th>
+<th>Namespace</th>
+<th>Hostname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pindirectory-0</td>
+<td>pingdirectory-0</td>
+<td>primary</td>
+<td>pingdirectory-0.primary</td>
+</tr>
+<tr>
+<td>pindirectory-1</td>
+<td>pingdirectory-1</td>
+<td>primary</td>
+<td>pingdirectory-1.primary</td>
+</tr>
+<tr>
+<td>pindirectory-2</td>
+<td>pingdirectory-2</td>
+<td>primary</td>
+<td>pingdirectory-2.primary</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Secondary Cluster</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pod</th>
+<th>Service Name</th>
+<th>Namespace</th>
+<th>Hostname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pindirectory-0</td>
+<td>pingdirectory-0</td>
+<td>secondary</td>
+<td>pingdirectory-0.secondary</td>
+</tr>
+<tr>
+<td>pindirectory-1</td>
+<td>pingdirectory-1</td>
+<td>secondary</td>
+<td>pingdirectory-1.secondary</td>
+</tr>
+<tr>
+<td>pindirectory-2</td>
+<td>pingdirectory-2</td>
+<td>secondary</td>
+<td>pingdirectory-2.secondary</td>
+</tr>
+</tbody>
+</table>
+<h3 id="external-dns-names">External DNS names<a class="headerlink" href="#external-dns-names" title="Permanent link"> ¶</a></h3>
+<p>In a Prod Environment with external hostnames it may look more like:</p>
+<p><strong>us-west cluster</strong>
+| Pod | Service Name | DNS / Hostname
+|-----|-----|-----|
+|pindirectory-0 | pingdirectory-0 | pingdirectory-0-us-west.ping-devops.com|
+|pindirectory-1 | pingdirectory-1 | pingdirectory-1-us-west.ping-devops.com|
+|pindirectory-2 | pingdirectory-2 | pingdirectory-2-us-west.ping-devops.com|</p>
+<p><strong>us-east cluster</strong>
+| Pod | Service Name | DNS / Hostname
+|-----|-----|-----|
+|pindirectory-0 | pingdirectory-0 | pingdirectory-0-us-east.ping-devops.com|
+|pindirectory-1 | pingdirectory-1 | pingdirectory-1-us-east.ping-devops.com|
+|pindirectory-2 | pingdirectory-2 | pingdirectory-2-us-east.ping-devops.com|</p>
+<h2 id="variables-to-create-hostnames">Variables to Create Hostnames<a class="headerlink" href="#variables-to-create-hostnames" title="Permanent link"> ¶</a></h2>
+<p>To provide flexibility on how PingDirectory will find other instances, a full dns hostname is broken into multiple variables.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th align="center">Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>K8S_POD_HOSTNAME_PREFIX</code></td>
+<td align="center"></td>
+<td>The string used as the prefix for all host names.  Defaults to name of <code>StatefulSet</code>.</td>
+</tr>
+<tr>
+<td><code>K8S_POD_HOSTNAME_SUFFIX</code></td>
+<td align="center"></td>
+<td>The string used as the suffix for all pod host names.  Defaults to <code>K8S_CLUSTER</code>.</td>
+</tr>
+<tr>
+<td><code>K8S_SEED_HOSTNAME_SUFFIX</code></td>
+<td align="center"></td>
+<td>The string used as the suffix for all seed host names.  Defaults to <code>K8S_SEED_CLUSTER</code> (discussed later).</td>
+</tr>
+</tbody>
+</table>
+<p>A full hostname is created like:
+<div class="highlight"><pre><span></span><code>${K8S_POD_HOSTNAME_PREFIX}&lt;instance-ordinal&gt;${K8S_SEED_HOSTNAME_SUFFIX}
+</code></pre></div></p>
+<h3 id="using-previous-hostname-examples">Using previous hostname examples<a class="headerlink" href="#using-previous-hostname-examples" title="Permanent link"> ¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>hostname</th>
+<th align="center">K8S_POD_HOSTNAME_PREFIX</th>
+<th>K8S_POD_HOSTNAME_SUFFIX</th>
+<th>K8S_SEED_HOSTNAME_SUFFIX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pingdirectory-0.primary</td>
+<td align="center"><code>pingdirectory-</code></td>
+<td><code>.primary</code></td>
+<td><code>.primary</code></td>
+</tr>
+<tr>
+<td>pingdirectory-2-us-west.ping-devops.com</td>
+<td align="center"><code>pingdirectory-</code></td>
+<td><code>-us-west.ping-devops.com</code></td>
+<td><code>-us-west.ping-devops.com</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link"> ¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th align="center">Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>K8S_CLUSTERS</code></td>
+<td align="center">***</td>
+<td>The total list of Kubernetes clusters that the StatefulSet will replicate to.</td>
+</tr>
+<tr>
+<td><code>K8S_CLUSTER</code></td>
+<td align="center">***</td>
+<td>The Kubernetes cluster the StatefulSet will be deployed to.</td>
+</tr>
+<tr>
+<td><code>K8S_SEED_CLUSTER</code></td>
+<td align="center">***</td>
+<td>The Kubernetes cluster that the seed server is deployed to.</td>
+</tr>
+<tr>
+<td><code>K8S_NUM_REPLICAS</code></td>
+<td align="center"></td>
+<td>The number of replicas that make up the StatefulSet.</td>
+</tr>
+<tr>
+<td><code>K8S_POD_HOSTNAME_PREFIX</code></td>
+<td align="center"></td>
+<td>The string used as the prefix for all host names.  Defaults to <code>StatefulSet</code>.</td>
+</tr>
+<tr>
+<td><code>K8S_POD_HOSTNAME_SUFFIX</code></td>
+<td align="center"></td>
+<td>The string used as the suffix for all pod host names.  Defaults to <code>K8S_CLUSTER</code>.</td>
+</tr>
+<tr>
+<td><code>K8S_SEED_HOSTNAME_SUFFIX</code></td>
+<td align="center"></td>
+<td>The string used as the suffix for all seed host names.  Defaults to <code>K8S_SEED_CLUSTER</code>.</td>
+</tr>
+<tr>
+<td><code>K8S_INCREMENT_PORTS</code></td>
+<td align="center"></td>
+<td><code>true</code> or <code>false</code>.  If <code>true</code>, each pod's port will be incremented by 1.</td>
+</tr>
+</tbody>
+</table>
+<p>An example of the YAML configuration for these environment variables:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">K8S_STATEFUL_SET_NAME=pingdirectory</span>
+<span class="l l-Scalar l-Scalar-Plain">K8S_STATEFUL_SET_SERVICE_NAME=pingdirectory</span>
+
+<span class="l l-Scalar l-Scalar-Plain">K8S_CLUSTERS=us-east-2 eu-west-1</span>
+<span class="l l-Scalar l-Scalar-Plain">K8S_CLUSTER=us-east-2</span>
+<span class="l l-Scalar l-Scalar-Plain">K8S_SEED_CLUSTER=us-east-2</span>
+<span class="l l-Scalar l-Scalar-Plain">K8S_NUM_REPLICAS=3</span>
+
+<span class="l l-Scalar l-Scalar-Plain">K8S_POD_HOSTNAME_PREFIX=pd-</span>
+<span class="l l-Scalar l-Scalar-Plain">K8S_POD_HOSTNAME_SUFFIX=.us-cluster.ping-devops.com</span>
+<span class="l l-Scalar l-Scalar-Plain">K8S_SEED_HOSTNAME_SUFFIX=.us-cluster.ping-devops.com</span>
+
+<span class="l l-Scalar l-Scalar-Plain">K8S_INCREMENT_PORTS=true</span>
+<span class="l l-Scalar l-Scalar-Plain">LDAPS_PORT=8600</span>
+<span class="l l-Scalar l-Scalar-Plain">REPLICATION_PORT=8700</span>
+</code></pre></div>
+<p>These environment variable settings would map out like this:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Seed</th>
+<th align="center">Pod</th>
+<th>Instance</th>
+<th>Host name</th>
+<th align="center">LDAP</th>
+<th align="center">REPL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>CLUSTER: us-east-2</td>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">***</td>
+<td align="center">***</td>
+<td>pingdirectory-0.us-east-2</td>
+<td>pd-0.us-cluster.ping-devops.com</td>
+<td align="center">8600</td>
+<td align="center">8700</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>pingdirectory-1.us-east-2</td>
+<td>pd-1.us-cluster.ping-devops.com</td>
+<td align="center">8601</td>
+<td align="center">8701</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>pingdirectory-2.us-east-2</td>
+<td>pd-2.us-cluster.ping-devops.com</td>
+<td align="center">8602</td>
+<td align="center">8702</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>CLUSTER: eu-west-1</td>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>pingdirectory-0.eu-west-1</td>
+<td>pd-0.eu-cluster.ping-devops.com</td>
+<td align="center">8600</td>
+<td align="center">8700</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>pingdirectory-1.eu-west-1</td>
+<td>pd-1.eu-cluster.ping-devops.com</td>
+<td align="center">8601</td>
+<td align="center">8701</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>pingdirectory-2.eu-west-1</td>
+<td>pd-2.eu-cluster.ping-devops.com</td>
+<td align="center">8602</td>
+<td align="center">8702</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cluster-startup-walkthrough">Cluster Startup Walkthrough<a class="headerlink" href="#cluster-startup-walkthrough" title="Permanent link"> ¶</a></h2>
+<p>Yes, that was a <em>ton</em> of variable conversation.
+This is done to for flexibility to accomodate various infrastructure constraints. For example, in some environments you cannot use the same port for each instance, so we must accommodate incrementing ports.</p>
+<p>Next, it's helpful to know what happens when a cluster starts, to understand why the initial creation of a cluster must be very prescriptive.</p>
+<ol>
+<li>The first pod must start on it's own and become healthy. This is critical to prevent replication islands. The very first time the very first pod starts, we call it "GENESIS". All other pods are dependent on this <code>SEED_POD</code> in the <code>SEED_CLUSTER</code> starting correctly on it's own. The entire purpose of defining <code>SEED_POD</code> and <code>SEED_CLUSTER</code> variables is avoid multiple genesis scenarios.</li>
+</ol>
+<blockquote>
+<p>Since we are deploying a statefulset, you can deploy the entire first cluster at once. Statefulsets create one pod in the number of replicas at a time.</p>
+</blockquote>
+<ol>
+<li>once the first pod is healthy, it begins dns querying combinations of hostnames at their LDAPS port to find another Directory instance.</li>
+</ol>
+<p>In our first cluster, this would be the hostname of pingdirectory-1. but it could also be pingdirectory-0 of another cluster. Once the query returns successful, creation of the replication topology automatically begins.</p>
+<ol>
+<li>From this point onward, the order in which instances start is less important.</li>
+</ol>
+<h3 id="note-on-replication-traffic">Note on Replication Traffic<a class="headerlink" href="#note-on-replication-traffic" title="Permanent link"> ¶</a></h3>
+<p>It may not always be clear what truly happens during "replication". Though it is partially proprietary, you can think of it like so:</p>
+<ol>
+<li>
+<p>A modify request arrives at one pod.</p>
+</li>
+<li>
+<p>The corresponding Directory instance, say pingdirectory-0, makes the change locally, and tracks the change in the changelog.</p>
+</li>
+<li>
+<p>Then it broadcasts the change out to all other instances with the time of change. This request is added to a message queue of sorts on the other instances and processed in order.</p>
+</li>
+</ol>
+<p>If you think about this, it starts to make sense why horizontal scaling of directories isn't something to be taken lightly.</p>
+<h2 id="reference-modes-of-deployment">Reference Modes of Deployment<a class="headerlink" href="#reference-modes-of-deployment" title="Permanent link"> ¶</a></h2>
+<p>There are multiple types of deployments that have been tested because of various infrastructure constraints. There will be discussed here.
+The example files in <code>09-multi-k8s-pingdirectory</code> show that the biggest key is having a way to provide an accessible hostname to all the other pods. In most examples this is done by creating a service name and using <code>statefulset.kubernetes.io/pod-name</code> as the selector to isolate one pod.</p>
+<h3 id="multi-cluster-simulations">Multi-cluster Simulations<a class="headerlink" href="#multi-cluster-simulations" title="Permanent link"> ¶</a></h3>
+<p>These are examples for demo environments to get a feel for what a multi-region deployment looks like.</p>
+<h4 id="single-namespace">Single Namespace<a class="headerlink" href="#single-namespace" title="Permanent link"> ¶</a></h4>
+<p><code>20-kubernetes/09-multi-k8s-pingdirectory/01-single-namespace</code>
+This is the least constrained example. It's good to just see what logs on a cross-cluster topology look likea
+- relies only on dns names that kubernetes provides.
+- All traffic is in one namespace so it should have no network constraints.</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f 01-west.yaml
+</code></pre></div>
+<p>...wait for pingdirectory-0 to be healthy...</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f 02-east.yaml
+</code></pre></div>
+<blockquote>
+<p>note, logs with <a href="https://github.com/wercker/stern">stern</a> look better. <code>brew install stern</code></p>
+</blockquote>
+<p>watch the logs
+<div class="highlight"><pre><span></span><code>stern pingdirectory
+</code></pre></div>
+or
+<div class="highlight"><pre><span></span><code>kubectl logs -f -l role=pingdirectory
+</code></pre></div></p>
+<p>Once the all the instances are up and running, you should see something similar to:</p>
+<p><img alt="single-ns-cluster-logs" src="../images/pd-multi-single-ns.png" /></p>
+<h4 id="single-cluster-multiple-namespaces">Single Cluster Multiple Namespaces<a class="headerlink" href="#single-cluster-multiple-namespaces" title="Permanent link"> ¶</a></h4>
+<p><code>20-kubernetes/09-multi-k8s-pingdirectory/02-single-cluster-two-namespaces</code></p>
+<p>This example can be used when you only have one cluster available for testing</p>
+<p>The files in this example are templates and expect namespaces to be added.</p>
+<div class="highlight"><pre><span></span><code>export NAMESPACE_1=&lt;west-namespace&gt;
+export NAMESPACE_2=&lt;east-namespace&gt;
+envsubst &lt; 03-multi-cluster-dns/01-west.yaml | kubectl apply -f -
+envsubst &lt; 03-multi-cluster-dns/02-east.yaml | kubectl apply -f -
+</code></pre></div>
+<p>Then watch logs.</p>
+<h3 id="vpc-peered-k8s-clusters">VPC Peered K8s Clusters<a class="headerlink" href="#vpc-peered-k8s-clusters" title="Permanent link"> ¶</a></h3>
+<p>These example should be possible in most kubernetes providers as long as you can:
+- give external dns names to clusterIP services
+- have replication and ldaps ports peered (open) between clusters</p>
+<p>Consider the <a href="../deployK8s-AWS/">eks peering config</a> example if you want to test this.</p>
+<h4 id="using-external-dns-names">Using External DNS Names<a class="headerlink" href="#using-external-dns-names" title="Permanent link"> ¶</a></h4>
+<p><img alt="pd-multi-dns-diagrams" src="../images/pd-multi-dns-diagram.png" /></p>
+<p><code>20-kubernetes/09-multi-k8s-pingdirectory/03-multi-cluster-dns</code>
+This example uses <a href="https://kubernetes.io/docs/concepts/services-networking/service/#headless-services">headless services</a> instead of regular clusterIp services. This is necessary in a VPC peered environment because typically the route-tables and ip ranges you've peered correspond to container ip addresses, not service addresses. If you were to use clusterIp addresses, the instances may, unexpectedly, not have network connectivity to each other.
+The headless services use externalDNS to dynamically add records to the DNS provider (example, Route53)</p>
+<p>This example likely requires some more care, you'll want to sift through the yamls to understand what is going on.</p>
+<p>Once the example is stood up, you will see logs similar to:</p>
+<p><img alt="pd-multi-dns-logs" src="../images/pd-multi-dns-logs.png" /></p>
+<h3 id="without-vpc-peering">Without VPC peering<a class="headerlink" href="#without-vpc-peering" title="Permanent link"> ¶</a></h3>
+<p>Some organizations do not allow VPC peering, or similar networking functions. Or, there may be no way to create external hostnames on clusterIp services. Here are some examples that may help.</p>
+<h4 id="using-nodeports">Using NodePorts<a class="headerlink" href="#using-nodeports" title="Permanent link"> ¶</a></h4>
+<p>In a scenario where you do not have VPC peering, or must create external DNS names manually, it may be beneficial to use NodePorts.</p>
+<p>To do this:
+- use the <code>20-kubernetes/09-multi-k8s-pingdirectory/03-multi-cluster-dns</code> example as reference
+- make the pod-selector services NodePort services instead of clusterIp.
+- optionally remove the external name, and create a routable dns name. If these names are being manually, then create the services and assign names before starting the statefulset.</p>
+<h3 id="single-load-balancer">Single load-balancer<a class="headerlink" href="#single-load-balancer" title="Permanent link"> ¶</a></h3>
+<blockquote>
+<p>The following examples are for extremely constrained environments, where traffic must go out through an external loadbalancer. For many purposes, these can be considered deprecated. Doing replication through loadbalancers should be avoided when possible.</p>
+</blockquote>
+<p>Here's a diagram of how a single load-balancer can be used:</p>
+<p><img alt="Single load-balancer" src="../images/multi-k8s-cluster-pingdirectory-single-lb.png" /></p>
+<ul>
+<li>Advantages</li>
+<li>Decreased cost of a single load-balancer.</li>
+<li>Single IP required.</li>
+<li>Easier DNS management.<ul>
+<li>Wildcard DNS domain.</li>
+<li>Or separate hosts pointing to load-balancer.</li>
+</ul>
+</li>
+<li>Disadvantages</li>
+<li>More port mapping requirements.</li>
+<li>Many external ports to manage and track.</li>
+</ul>
+<h3 id="multiple-load-balancers">Multiple load-balancers<a class="headerlink" href="#multiple-load-balancers" title="Permanent link"> ¶</a></h3>
+<p>Here's a diagram of how a single load-balancer can be used:</p>
+<p><img alt="Multiple load-balancers" src="../images/multi-k8s-cluster-pingdirectory-multi-lb.png" /></p>
+<ul>
+<li>Advantages</li>
+<li>Use the same well-known port (such as, 636/8989).</li>
+<li>Separate IP addresses per instance.</li>
+<li>Disadvantages</li>
+<li>DNS management<ul>
+<li>Separate hostname required per instance.</li>
+</ul>
+</li>
+</ul>
+<h2 id="statefulset-pod-services"><code>StatefulSet</code> pod services<a class="headerlink" href="#statefulset-pod-services" title="Permanent link"> ¶</a></h2>
+<p>The <code>StatefulSet</code> service manages stateful objects for each pod.</p>
+<p>An example of the StatefulSet service configuration (one pod):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pingdirectory-0-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">statefulset.kubernetes.io/pod-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pingdirectory-0</span>
+  <span class="nt">ports</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TCP</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8600</span>
+      <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8600</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldaps</span>
+    <span class="p p-Indicator">-</span> <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TCP</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8700</span>
+      <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8700</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">repl</span>
+</code></pre></div>
+<h2 id="additional-kubernetes-resources-required">Additional Kubernetes resources required<a class="headerlink" href="#additional-kubernetes-resources-required" title="Permanent link"> ¶</a></h2>
+<p>In addition to the StatefulSet, other resources are required to properly map the load-balancers to the
+pods. This diagram shows each of those resources:</p>
+<p><img alt="K8S Required Resources" src="../images/multi-k8s-cluster-pingdirectory-resources.png" /></p>
+<h3 id="dns">DNS<a class="headerlink" href="#dns" title="Permanent link"> ¶</a></h3>
+<p>A DNS entry will be required at the load-balancer to direct a wildcard domain or individual host names
+to the load-balancer created by the NGINX Ingress Service or Controller.  For AWS, this can simply be an <code>A record</code> alias for each host, or a wildcard <code>A record</code> for any host in that domain.</p>
+<h3 id="nginx-ingress-service-and-controller">NGINX Ingress Service and Controller<a class="headerlink" href="#nginx-ingress-service-and-controller" title="Permanent link"> ¶</a></h3>
+<p>Several components map the ports from the external load-balancer through the NGINX Service and Controller:</p>
+<ul>
+<li>External load-balancer</li>
+</ul>
+<p>Provides an external IP and obtains definitions from the Ingress NGINX Service.</p>
+<ul>
+<li>Ingress NGINX Service</li>
+</ul>
+<p>Maps all port ranges (SEED_LDAPS_PORT, SEED_REPLICATION_PORT) to the same target port range.</p>
+<ul>
+<li>NGINX Ingress Controller</li>
+</ul>
+<p>Maps all port ranges to stateful set pods.</p>
+<blockquote>
+<p><strong>Caution</strong>: Typically, the NGINX Service and TCP services (see the following <em>NGINX TCP services</em> topic) require additional namespace access (such as, <code>ingress-nginx-public</code>). Any additional applications using this service or controller will generally require additional privileges to manage this resource.</p>
+</blockquote>
+<p>An example of the NGINX Service configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">app.kubernetes.io/name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx</span>
+    <span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx</span>
+    <span class="nt">app.kubernetes.io/role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx-public</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx-public</span>
+  <span class="nt">annotations</span><span class="p">:</span>
+    <span class="nt">service.beta.kubernetes.io/aws-load-balancer-type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nlb</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">app.kubernetes.io/name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx</span>
+    <span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx</span>
+    <span class="nt">app.kubernetes.io/role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx-public</span>
+  <span class="nt">externalTrafficPolicy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Local</span>
+  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">load-balancer</span>
+  <span class="nt">ports</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+      <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">443</span>
+      <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldaps-pingdiretory-0</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8600</span>
+      <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8600</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldaps-pingdiretory-1</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8601</span>
+      <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8601</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldaps-pingdiretory-2</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8602</span>
+      <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8602</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">repl-pingdiretory-0</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8700</span>
+      <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8700</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">repl-pingdiretory-1</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8701</span>
+      <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8701</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">repl-pingdiretory-2</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8702</span>
+      <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8702</span>
+</code></pre></div>
+<h3 id="nginx-tcp-services">NGINX TCP services<a class="headerlink" href="#nginx-tcp-services" title="Permanent link"> ¶</a></h3>
+<p>The ConfigMap for TCP services (<code>tcp-services</code>) provides the mappings from the target ports on the NGINX Controller to the associated pod service.</p>
+<blockquote>
+<p>You'll need to replace the variable <code>${PING_IDENTITY_K8S_NAMESPACE}</code> with the namespace that your
+ StatefulSet and Services are deployed into.</p>
+</blockquote>
+<p>An example of the ConfigMap for the NGINX TCP services configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tcp-services</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx-public</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">app.kubernetes.io/name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx</span>
+    <span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx</span>
+    <span class="nt">app.kubernetes.io/role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-nginx-public</span>
+<span class="nt">data</span><span class="p">:</span>
+  <span class="nt">8600</span><span class="p">:</span> <span class="s">&quot;${PING_IDENTITY_K8S_NAMESPACE}/pingdirectory-0-service:8600&quot;</span>
+  <span class="nt">8601</span><span class="p">:</span> <span class="s">&quot;${PING_IDENTITY_K8S_NAMESPACE}/pingdirectory-1-service:8601&quot;</span>
+  <span class="nt">8602</span><span class="p">:</span> <span class="s">&quot;${PING_IDENTITY_K8S_NAMESPACE}/pingdirectory-2-service:8602&quot;</span>
+  <span class="nt">8700</span><span class="p">:</span> <span class="s">&quot;${PING_IDENTITY_K8S_NAMESPACE}/pingdirectory-0-service:8700&quot;</span>
+  <span class="nt">8701</span><span class="p">:</span> <span class="s">&quot;${PING_IDENTITY_K8S_NAMESPACE}/pingdirectory-1-service:8701&quot;</span>
+  <span class="nt">8702</span><span class="p">:</span> <span class="s">&quot;${PING_IDENTITY_K8S_NAMESPACE}/pingdirectory-2-service:8702&quot;</span>
+</code></pre></div>
+<h2 id="deployment-example">Deployment Example<a class="headerlink" href="#deployment-example" title="Permanent link"> ¶</a></h2>
+<p>The examples in <code>20-kubernetes/05-multi-k8s-cluster-pingdirectory</code> will create an
+example deployment across 3 clusters in AWS EKS:</p>
+<ul>
+<li>us-east-2 (SEED Cluster)</li>
+<li>eu-west-1</li>
+</ul>
+<p>First, deploy the nginx services and configmap for the example.  This will allow
+the services to be reached by the nginx controller via an AWS Network Load
+Balancer (nlb).  You must run these with a aws/kubernetes profile allowing for
+apply into the <code>ingress-nginx-public</code> namespace.  Also, be aware that there may
+already be other definitions found.  You may need to merge.</p>
+<div class="highlight"><pre><span></span><code>  kubectl apply -f nginx-service.yaml
+  kubectl apply -f nginx-tcp-services.yaml
+</code></pre></div>
+<p>The <code>cluster.sh</code> script will create the .yaml necessary to deploy a set of Ping
+Directory instances in each cluster and replication between.</p>
+<div class="highlight"><pre><span></span><code>  Usage: cluster.sh OPERATION {options}
+   where OPERATION in:
+        create
+        apply
+        delete
+
+   where options in:
+        --cluster {cluster}  - Cluster name used to identify different env_vars.pingdirecory
+                               files
+
+        --context {context}  - Name of Kubernetes context.
+                                  Defaults to current context: tsigle.ping-dev-aws-us-east-2
+
+        -d,--dry-run            - Provides the commands
+
+  Example:
+      cluster.sh create --cluser us-east-2
+</code></pre></div>
+<h3 id="steps-to-create-yaml-for-us-east-2">Steps to create .yaml for us-east-2<a class="headerlink" href="#steps-to-create-yaml-for-us-east-2" title="Permanent link"> ¶</a></h3>
+<p>Replace <code>your-cluster-name</code> with the name use are using.  Using the cluster name
+<code>us-east-2</code>, the script will generate a .yaml using kustomize, using the files:</p>
+<ul>
+<li><code>multi-cluster</code></li>
+<li><code>kustomization.yaml</code></li>
+<li><code>pingdirectory-service-clusterip.yaml</code></li>
+<li><code>env_vars.pingdirectory</code> (built from env_vars.pingdirectory.multi-cluster and us-east-2)</li>
+<li><code>base</code></li>
+<li><code>kustomization.yaml</code></li>
+<li><code>https://github.com/pingidentity/pingidentity-devops-getting-started/20-kubernetes/03-replicated-pingdirectory</code></li>
+<li><code>env_vars.pingdirectory</code></li>
+<li><code>limits.yaml</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>   ./cluster.sh delete --cluster us-east-2 --context your-cluster-name --dry-run
+</code></pre></div>
+<p>This will create a .yaml called <code>ouptut-us-east-2.yaml</code>.</p>
+<p>Next, ensure that your <code>devops-secret</code> and <code>tls-secret</code> are created.</p>
+<div class="highlight"><pre><span></span><code>  ping-devops generate devops-secret | kubectl apply -f -
+  ping-devops generate tls-secret ping-devops.com | kubectl create -f -
+</code></pre></div>
+<p>and create the instances using the generated <code>output-us-east-2.yaml</code>.</p>
+<div class="highlight"><pre><span></span><code>  kubectl create -f output-us-east-2.yaml
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../deployHelm/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Deploy with PingIdentiy Helm Charts
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../deployK8sGeneral/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Introduction
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['navigation.tabs', 'instant'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

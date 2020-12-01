@@ -1,0 +1,2257 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://devops.pingidentity.com/usingVault/">
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
+    
+    
+      
+        <title>Using Hashicorp Vault - Ping Identity DevOps</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6910b76c.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../mkdocs/overrides/stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="blue">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#using-hashicorp-vault-with-images" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://devops.pingidentity.com/" title="Ping Identity DevOps" class="md-header-nav__button md-logo" aria-label="Ping Identity DevOps">
+      <!-- Logo -->
+
+  
+
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Ping Identity DevOps
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Using Hashicorp Vault
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/pingidentity/pingidentity-devops-getting-started" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pingidentity/pingidentity-devops-getting-started
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+    
+    <a href=".." class="md-tabs__link">
+      DEVOPS @ PING
+    </a>
+  </li>
+
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../getStarted/" class="md-tabs__link">
+        GET STARTED
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../deploy/" class="md-tabs__link">
+        WORKING WITH IMAGES
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+        
+      
+      <a href="../config/" class="md-tabs__link md-tabs__link--active">
+        CUSTOMIZING
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../relnotes-2010/" class="md-tabs__link">
+        RELEASE NOTES
+      </a>
+    </li>
+  
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://devops.pingidentity.com/" title="Ping Identity DevOps" class="md-nav__button md-logo" aria-label="Ping Identity DevOps">
+      <!-- Logo -->
+
+  
+
+
+    </a>
+    Ping Identity DevOps
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/pingidentity/pingidentity-devops-getting-started" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pingidentity/pingidentity-devops-getting-started
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      DEVOPS @ PING
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" class="md-nav__link">
+      OVERVIEW
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    <label class="md-nav__link" for="nav-3">
+      GET STARTED
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="GET STARTED" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        GET STARTED
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../getStarted/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../devopsRegistration/" class="md-nav__link">
+      DevOps registration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../getStartedWithGitRepo/" class="md-nav__link">
+      Deploy an example stack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PROD-LICENSE/" class="md-nav__link">
+      DevOps product licenses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../devopsUserKey/" class="md-nav__link">
+      Using your DevOps user and key
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../existingLicense/" class="md-nav__link">
+      Using an existing product license
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../saveConfigs/" class="md-nav__link">
+      Saving your configuration changes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    <label class="md-nav__link" for="nav-4">
+      WORKING WITH IMAGES
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="WORKING WITH IMAGES" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        WORKING WITH IMAGES
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deploy/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buildLocal/" class="md-nav__link">
+      Build a Docker product image locally
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployStandalone/" class="md-nav__link">
+      Deploy standalone containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+    <label class="md-nav__link" for="nav-4-4">
+      Orchestrate with Docker-Compose
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Orchestrate with Docker-Compose" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon"></span>
+        Orchestrate with Docker-Compose
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployCompose/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deploySimpleStack/" class="md-nav__link">
+      Deploy a PingFederate and PingDirectory stack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployReplication/" class="md-nav__link">
+      Deploy a replicated PingDirectory pair
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deploySync/" class="md-nav__link">
+      Deploy PingDirectory with data synchronization using PingDataSync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPingCentral/" class="md-nav__link">
+      Deploy PingCentral
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPfCluster/" class="md-nav__link">
+      Deploy a PingFederate cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPaCluster/" class="md-nav__link">
+      Deploy a PingAccess cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPdgPap/" class="md-nav__link">
+      Deploy PingDataGovernance with PAP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployMonitoringStack/" class="md-nav__link">
+      Deploy a monitoring stack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deploySiemStack/" class="md-nav__link">
+      Deploy an Elasticsearch SIEM stack
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    <label class="md-nav__link" for="nav-4-5">
+      Orchestrate with Kubernetes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Orchestrate with Kubernetes" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Orchestrate with Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8s/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployHelm/" class="md-nav__link">
+      Deploy with PingIdentiy Helm Charts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sPD-clusters/" class="md-nav__link">
+      PingDirectory deployments across Kubernetes clusters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-4" type="checkbox" id="nav-4-5-4" >
+    <label class="md-nav__link" for="nav-4-5-4">
+      Kubernetes deployments for general use
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes deployments for general use" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes deployments for general use
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sGeneral/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sStandalone/" class="md-nav__link">
+      Orchestrate standalone deployments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sFullstack/" class="md-nav__link">
+      Orchestrate a full stack deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sReplicated/" class="md-nav__link">
+      Orchestrate a replicated PingDirectory deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sPA-cluster/" class="md-nav__link">
+      Orchestrate a PingAccess cluster deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sPF-cluster/" class="md-nav__link">
+      Orchestrate a PingFederate cluster deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-4-7" type="checkbox" id="nav-4-5-4-7" >
+    <label class="md-nav__link" for="nav-4-5-4-7">
+      Deploy PingFederate Across Multiple Kubernetes Clusters
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Deploy PingFederate Across Multiple Kubernetes Clusters" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-5-4-7">
+        <span class="md-nav__icon md-icon"></span>
+        Deploy PingFederate Across Multiple Kubernetes Clusters
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sPFclusters/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPFMultiRegionDNS/" class="md-nav__link">
+      PingFederate Across Kubernetes with DNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPFMultiRegionAWS/" class="md-nav__link">
+      PingFederate Across Kubernetes with S3
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-5" type="checkbox" id="nav-4-5-5" >
+    <label class="md-nav__link" for="nav-4-5-5">
+      Kubernetes deployments for cloud platforms
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes deployments for cloud platforms" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes deployments for cloud platforms
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sCloud/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8s-AWS/" class="md-nav__link">
+      Deploy Peered EKS clusters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8s-AKS/" class="md-nav__link">
+      Deploy to Azure Kubernetes Service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../k8sClusterSizing/" class="md-nav__link">
+      Sizing Kubernetes clusters
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployVault/" class="md-nav__link">
+      Deploy Hashicorp Vault
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    <label class="md-nav__link" for="nav-5">
+      CUSTOMIZING
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="CUSTOMIZING" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        CUSTOMIZING
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../config/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" >
+    <label class="md-nav__link" for="nav-5-2">
+      Server profile anatomy
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Server profile anatomy" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        <span class="md-nav__icon md-icon"></span>
+        Server profile anatomy
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../containerAnatomy/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../profileStructures/" class="md-nav__link">
+      Server profile structures
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../profiles/" class="md-nav__link">
+      Customizing server profiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buildPingFederateProfile/" class="md-nav__link">
+      Build Your Own PingFederate Profile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../profilesLayered/" class="md-nav__link">
+      Layering server profiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../profilesSubstitution/" class="md-nav__link">
+      Environment substitution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../privateRepos/" class="md-nav__link">
+      Using private Github repositories
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../yamlFiles/" class="md-nav__link">
+      Customizing YAML files
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../variableScoping/" class="md-nav__link">
+      Variables and scope
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../usingCertificates/" class="md-nav__link">
+      Using Certificates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hooks/" class="md-nav__link">
+      Using DevOps hooks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../releaseTags/" class="md-nav__link">
+      Using release tags
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imageSupport/" class="md-nav__link">
+      Using supported images
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Using Hashicorp Vault
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Using Hashicorp Vault
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-do" class="md-nav__link">
+    What you'll do
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-hashicorp-vault-secrets-in-native-pingidentity-devops-images" class="md-nav__link">
+    Using HashiCorp Vault Secrets in native PingIdentity DevOps Images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-secret-metadata" class="md-nav__link">
+    Special secret metadata
+  </a>
+  
+    <nav class="md-nav" aria-label="Special secret metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-symbolic-link-to-the-secret-from-a-different-location" class="md-nav__link">
+    Creating symbolic link to the secret from a different location
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-secret-data-formats" class="md-nav__link">
+    Special secret data formats
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#providing-a-tmpfs-shared-memory-volume-for-secrets-in-docker-compose" class="md-nav__link">
+    Providing a tmpfs shared memory volume for secrets in docker-compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-hashicorp-vault-injector-in-kubernetes-deployments" class="md-nav__link">
+    Using HashiCorp Vault Injector in kubernetes deployments
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../secureContainers/" class="md-nav__link">
+      Securing the containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dockerImageSecurity/" class="md-nav__link">
+      Evaluation of Docker base image security
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../addMOTD/" class="md-nav__link">
+      Adding a message of the day (MOTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-13" type="checkbox" id="nav-5-13" >
+    <label class="md-nav__link" for="nav-5-13">
+      Managing deployments
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Managing deployments" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-13">
+        <span class="md-nav__icon md-icon"></span>
+        Managing deployments
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../manage/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../upgradePingfederate/" class="md-nav__link">
+      Upgrading PingFederate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../upgradePingDirectory/" class="md-nav__link">
+      Upgrading PingDirectory
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-14" type="checkbox" id="nav-5-14" >
+    <label class="md-nav__link" for="nav-5-14">
+      Utilities
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Utilities" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-14">
+        <span class="md-nav__icon md-icon"></span>
+        Utilities
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../devopsUtils/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pingDevopsUtil/" class="md-nav__link">
+      The `ping-devops` utility
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ldapsdkUtil/" class="md-nav__link">
+      The `ldap-sdk-tools` utility
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshooting/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-16" type="checkbox" id="nav-5-16" >
+    <label class="md-nav__link" for="nav-5-16">
+      Docker images reference
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Docker images reference" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-16">
+        <span class="md-nav__icon md-icon"></span>
+        Docker images reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dockerImagesRef/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingfederate/" class="md-nav__link">
+      PingFederate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingaccess/" class="md-nav__link">
+      PingAccess
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdirectory/" class="md-nav__link">
+      PingDirectory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdirectoryproxy/" class="md-nav__link">
+      PingDirectoryProxy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdatagovernance/" class="md-nav__link">
+      PingDataGovernance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdatagovernancepap/" class="md-nav__link">
+      PingDataGovernance PAP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdatasync/" class="md-nav__link">
+      PingDataSync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdelegator/" class="md-nav__link">
+      PingDelegator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingcentral/" class="md-nav__link">
+      PingCentral
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingintelligence/" class="md-nav__link">
+      PingIntelligence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/ldap-sdk-tools/" class="md-nav__link">
+      ldap-sdk-tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdataconsole/" class="md-nav__link">
+      Ping Data Console
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdownloader/" class="md-nav__link">
+      PingDownloader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingbase/" class="md-nav__link">
+      PingBase
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingcommon/" class="md-nav__link">
+      PingCommon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/pingdatacommon/" class="md-nav__link">
+      PingDataCommon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-images/apache-jmeter/" class="md-nav__link">
+      Apache JMeter
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    <label class="md-nav__link" for="nav-6">
+      RELEASE NOTES
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="RELEASE NOTES" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        RELEASE NOTES
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2010/" class="md-nav__link">
+      Current
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2009/" class="md-nav__link">
+      Version 2009
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2008/" class="md-nav__link">
+      Version 2008
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2007/" class="md-nav__link">
+      Version 2007
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2006/" class="md-nav__link">
+      Version 2006
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2005/" class="md-nav__link">
+      Version 2005
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2004/" class="md-nav__link">
+      Version 2004
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relnotes-2003/" class="md-nav__link">
+      Version 2003
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../LICENSE/" class="md-nav__link">
+      LICENSE
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../DISCLAIMER.md" class="md-nav__link">
+      DISCLAIMER
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../3RD_PARTY_SOFTWARE/" class="md-nav__link">
+      THIRD-PARTY SOFTWARE
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../CONTRIBUTING/" class="md-nav__link">
+      CONTRIBUTING
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-do" class="md-nav__link">
+    What you'll do
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-hashicorp-vault-secrets-in-native-pingidentity-devops-images" class="md-nav__link">
+    Using HashiCorp Vault Secrets in native PingIdentity DevOps Images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-secret-metadata" class="md-nav__link">
+    Special secret metadata
+  </a>
+  
+    <nav class="md-nav" aria-label="Special secret metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-symbolic-link-to-the-secret-from-a-different-location" class="md-nav__link">
+    Creating symbolic link to the secret from a different location
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-secret-data-formats" class="md-nav__link">
+    Special secret data formats
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#providing-a-tmpfs-shared-memory-volume-for-secrets-in-docker-compose" class="md-nav__link">
+    Providing a tmpfs shared memory volume for secrets in docker-compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-hashicorp-vault-injector-in-kubernetes-deployments" class="md-nav__link">
+    Using HashiCorp Vault Injector in kubernetes deployments
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="using-hashicorp-vault-with-images">Using Hashicorp Vault with Images<a class="headerlink" href="#using-hashicorp-vault-with-images" title="Permanent link"> ¶</a></h1>
+<p>This provides details for using Hashicorp Vault and secrets with Ping Identity DevOps Images.</p>
+<h2 id="what-youll-do">What you'll do<a class="headerlink" href="#what-youll-do" title="Permanent link"> ¶</a></h2>
+<p>The examples below will explain and show examples of:
+- Using HashiCorp Vault Secrets in native PingIdentity DevOps Images
+- Using HashiCorp Vault Injector in kubernetes deployments</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link"> ¶</a></h2>
+<ul>
+<li>You've already been through <a href="../getStarted/">Get started</a> to set up your DevOps environment and run a test deployment of the products.</li>
+<li>Have a running Hashicorp Vault instance.  Refer to <a href="../deployVault/">Deploy Hashicorp Vault</a> for information on deploying a vault if you need one.</li>
+</ul>
+<h2 id="using-hashicorp-vault-secrets-in-native-pingidentity-devops-images">Using HashiCorp Vault Secrets in native PingIdentity DevOps Images<a class="headerlink" href="#using-hashicorp-vault-secrets-in-native-pingidentity-devops-images" title="Permanent link"> ¶</a></h2>
+<p>Vault secrets can also be used in native PingIdentity DevOps Images regardless of the environment they are deployed in (i.e. kubernetes, docker, docker-compose).  In these cases, there is no injector agent required.</p>
+<p>The image below depicts the components and steps for pulling secrets into a container at start-up.</p>
+<p><img alt="Using Vault" src="../images/usingVault-1.png" /></p>
+<p>The following variables can be used to deploy images that will pull secrets from the Vault.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SECRETS_DIR</td>
+<td>/run/secrets</td>
+<td>Location where secrets will be stored by default.  Please see section below on using a <code>tmpfs</code> mounted filesystem to store secrets in a memory location.  The default location is <code>/run/secrets</code></td>
+</tr>
+<tr>
+<td>VAULT_TYPE</td>
+<td>hashicorp</td>
+<td>Type of vault used. Currently supporting hashicorp.</td>
+</tr>
+<tr>
+<td>VAULT_ADDR</td>
+<td>https://vault.example.com:8200</td>
+<td>URL for the vault with secrets</td>
+</tr>
+<tr>
+<td>VAULT_TOKEN</td>
+<td>s.gvC3vd5aFz......JovV0b0A</td>
+<td>Active token used to authticate/authorize container to vault.  Optional if VAULT_AUTH_USERNAME/VAULT_AUTH_PASSWORD are provided.</td>
+</tr>
+<tr>
+<td>VAULT_AUTH_USERNAME</td>
+<td>demo</td>
+<td>Username of internal vault identity. Optional if VAULT_TOKEN is provided.</td>
+</tr>
+<tr>
+<td>VAULT_AUTH_PASSWORD</td>
+<td>2FederateM0re</td>
+<td>Password of internal vault identity. Optional if VAULT_TOKEN is provided.</td>
+</tr>
+<tr>
+<td>VAULT_SECRETS</td>
+<td>/pingfederate/encryption-keys</td>
+<td>A list of secrets to pull into the container.  Must be the full secret path used in vault.</td>
+</tr>
+</tbody>
+</table>
+<p>Below is an example of how these would be used in an docker-compose.yaml file.  Note that this example provides 2 secrets as denoted by the VAULT_SECRETS setting.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+  <span class="nt">pingfederate</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pingidentity/pingfederate:edge</span>
+    <span class="nt">environment</span><span class="p">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="l l-Scalar l-Scalar-Plain">################################################</span>
+      <span class="l l-Scalar l-Scalar-Plain"># Vault Info</span>
+      <span class="l l-Scalar l-Scalar-Plain">################################################</span>
+      <span class="l l-Scalar l-Scalar-Plain">- VAULT_TYPE=hashicorp</span>
+      <span class="l l-Scalar l-Scalar-Plain">- VAULT_ADDR=https://vault.ping-devops.com:8200</span>
+      <span class="l l-Scalar l-Scalar-Plain">- VAULT_AUTH_USERNAME=demo</span>
+      <span class="l l-Scalar l-Scalar-Plain">- VAULT_AUTH_PASSWORD=2FederateM0re</span>
+      <span class="l l-Scalar l-Scalar-Plain">- VAULT_SECRETS=/demo/passwords</span>
+                      <span class="l l-Scalar l-Scalar-Plain">/demo/getting-started/pingfederated/pf-keys</span>
+</code></pre></div>
+<p>Assuming the following secret definition for each secret:</p>
+<div class="highlight"><pre><span></span><code>$ vault kv get secret/demo/getting-started/pingfederated/pf-keys
+
+====== Data ======
+Key          Value
+---          -----
+pf.jwk       {&quot;keys&quot;:[{&quot;kty&quot;:&quot;oct&quot;,&quot;kid&quot;:&quot;....yy5yZ&quot;,&quot;k&quot;:&quot;...YBi1z...&quot;}]}
+
+$ vault kv get secret/demo/passwords
+
+========== Data ==========
+Key                 Value
+---                 -----
+admin-user-password 2FederateM0re
+encryption-password 2FederateM0re
+root-user-password  2FederateM0re
+</code></pre></div>
+<p>This would result in the following files:</p>
+<div class="highlight"><pre><span></span><code>  /run/secrets/pf.jwk
+  /run/secrets/admin-user-password
+  /run/secrets/encryption-password
+  /run/secrets/root-user-password
+</code></pre></div>
+<h2 id="special-secret-metadata">Special secret metadata<a class="headerlink" href="#special-secret-metadata" title="Permanent link"> ¶</a></h2>
+<p>By default, all the keys in a secret translate to a file in SECRETS_DIR that is created with the value representing the file contents.  This example shows how the fils would be created for each of the secrets, if the SECRETS_DIR is the default <code>/run/secrets</code></p>
+<div class="highlight"><pre><span></span><code>Secret: /demo/passwords
+
+  KEY                 VALUE            File Created
+  ---                 -----            ------------
+  admin-user-password 2FederateMore    /run/secrets/admin-user-password
+  encryption-password 2FederateMore    /run/secrets/encryption-password
+  root-user-password  2FederateMore    /run/secrets/admin-user-password
+</code></pre></div>
+<p>However, there are special use cases that the Ping Identity DevOps images will support depending on the secret name and special keys (i.e. meta information) found in the secret.
+- Specifying a path that should copy/link from
+- Specifying special permission to assign the secret (default: <code>0400</code>)
+- Specifying that the key contents are base64 encoded, to be decoded when created into container</p>
+<p>Secret keys that start with an underscore (_) indicate metadata to be used in the creation of those secrets in the container.  The following table provides the <em>optional</em> metadata details that can be used in a secret.</p>
+<table>
+<thead>
+<tr>
+<th>Metadata</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>_link</td>
+<td>{path}</td>
+<td>Creates link(s) from this path location to file(s). If there is a file in this location, it will be replaced by the symbolic link(s).  This is optional, and default is no link created.</td>
+</tr>
+<tr>
+<td>_permission</td>
+<td>{unix chmod mode}</td>
+<td>Sets permission on created file(s). This is optional, and default is <code>0400</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="creating-symbolic-link-to-the-secret-from-a-different-location">Creating symbolic link to the secret from a different location<a class="headerlink" href="#creating-symbolic-link-to-the-secret-from-a-different-location" title="Permanent link"> ¶</a></h3>
+<p>There are situations, when an application <strong>REQUIRES</strong> a file to be in a specific loation that you may deem a secret.  Instead of placing the secret file and compromising security of having it persisted on storage, a symbolic link can be created linking to the actual <code>/run/secrets</code> location.</p>
+<p>If the secret has a key/value of the name <code>_link=/path</code>, then a link from that path/{key} to the secret location would be created.</p>
+<p>The following example makes the PingFedereate pf.jwk file available to PingFederate by creating a link from the required location <code>/opt/out/instance/server/default/data</code> -&gt; <code>/run/secrets/pf.jwk</code>
+<div class="highlight"><pre><span></span><code>Secret: /demo/getting-started/pingfederated/pf-keys
+ _link: /opt/out/instance/server/default/data
+
+  KEY         VALUE            File Created
+  ---         -----            ------------
+  pf.jwk      {&quot;keys&quot;...}      /var/secrets/pf.jwk
+
+with link:
+    /opt/out/instance/server/default/data/pf.jwk --&gt; /run/secrets/pf.jwk
+</code></pre></div></p>
+<h2 id="special-secret-data-formats">Special secret data formats<a class="headerlink" href="#special-secret-data-formats" title="Permanent link"> ¶</a></h2>
+<p>Often, there are secrets that may be of a binary format (i.e. certificates).
+Special key name suffixes can be used to perform certain processing on the keys when the file is craeted.  The following table provides examples of how keys with special suffixes.</p>
+<table>
+<thead>
+<tr>
+<th>Key Suffix</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.b64 or .base64</td>
+<td>Specifies that the value is base64 encoded and the resulting file should be decoded when written, without the suffix.</td>
+</tr>
+</tbody>
+</table>
+<p>Example: In the following example, there is a message that is base64 encoded and stored in the vault as secret <code>/demo/b64-demo</code> and key <code>hello.b64</code></p>
+<div class="highlight"><pre><span></span><code>Secret: /demo/b64-demo
+
+  KEY         VALUE
+  ---         -----
+  hello.b64   SGVsbG8gV29ybGQhCg==
+</code></pre></div>
+<p>would result in the following file:</p>
+<div class="highlight"><pre><span></span><code>/run/secrets/hello
+  CONTENTS
+  --------
+  Hello World!
+</code></pre></div>
+<h2 id="providing-a-tmpfs-shared-memory-volume-for-secrets-in-docker-compose">Providing a tmpfs shared memory volume for secrets in docker-compose<a class="headerlink" href="#providing-a-tmpfs-shared-memory-volume-for-secrets-in-docker-compose" title="Permanent link"> ¶</a></h2>
+<p>It is best practice to place secrets in a volume that won't be persisted to storage with the possibility that it might be improperly accessed at any point in the future (i.e. backups, environment variables).  Options include locations like <code>/tmp</code> or as provided in the docker-compose.yal example below a <code>tmpfs</code> volume mount.</p>
+<p>This docker-compose.yaml example will create a <code>tmpfs</code> type volume and size it to <code>32m</code> and mount it to a path of <code>/run/secrets</code>.</p>
+<blockquote>
+<p>Note: Requires docker-compose version 2.4 or later, dut tohe options provided to the tmpfs volumes definition.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;2.4&quot;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+  <span class="nt">pingfederate</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pingidentity/pingfederate:edge</span>
+    <span class="nt">environment</span><span class="p">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="nt">tmpfs</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/run/secrets</span>
+
+      <span class="l l-Scalar l-Scalar-Plain">---- or -----</span>
+
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tmpfs</span>
+        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/run/secrets</span>
+        <span class="nt">tmpfs</span><span class="p">:</span>
+          <span class="nt">size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32m</span>
+</code></pre></div>
+<p>This will create a <code>/run/secrets</code> volume under tmpfs:</p>
+<div class="highlight"><pre><span></span><code>&gt; df -k /run/secrets
+Filesystem           1K-blocks      Used Available Use% Mounted on
+tmpfs                    16384         0     16384   0% /run/secrets
+</code></pre></div>
+<h2 id="using-hashicorp-vault-injector-in-kubernetes-deployments">Using HashiCorp Vault Injector in kubernetes deployments<a class="headerlink" href="#using-hashicorp-vault-injector-in-kubernetes-deployments" title="Permanent link"> ¶</a></h2>
+<p>If the HashiCorp Vault Injector Agent is installed, annotations can be added to the <code>.yaml</code> file of a Pod, Deployment, StatefulSet resource to pull in the secrets.  The snippet below provides an example set of annotations (placed in to the metadata of the container) to pull in a <code>pf.jwk</code> secret into a container.</p>
+<blockquote>
+<p>Note: This was crated using <code>ping-devops vault create-annotations pingfederate/encryption-keys</code> tool.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>  <span class="nt">annotations</span><span class="p">:</span>
+    <span class="c1">#----------------------------------------------------</span>
+    <span class="c1"># Annotation secretes prepared for hashicorp vault secrets</span>
+    <span class="c1"># for use in Deployment, StatefulSet, Pod resources.</span>
+    <span class="c1">#</span>
+    <span class="c1"># https://www.vaultproject.io/docs/platform/k8s/injector/annotations</span>
+    <span class="c1">#</span>
+    <span class="nt">vault.hashicorp.com/agent-pre-populate-only</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">vault.hashicorp.com/agent-inject</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">vault.hashicorp.com/role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">k8s-default</span>
+    <span class="nt">vault.hashicorp.com/log-level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">info</span>
+    <span class="nt">vault.hashicorp.com/preserve-secret-case</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">vault.hashicorp.com/secret-volume-path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/run/secrets</span>
+    <span class="c1">#------------------------------------------------</span>
+    <span class="c1">#</span>
+    <span class="c1">#------------ key: pf.jwk</span>
+    <span class="nt">vault.hashicorp.com/agent-inject-secret-pf.jwk</span><span class="p">:</span> <span class="s">&quot;secret/pingfederate/encryption-keys/&quot;</span>
+    <span class="nt">vault.hashicorp.com/agent-inject-template-pf.jwk</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">{{ with secret &quot;secret/pingfederate/encryption-keys/&quot; -}}</span>
+      <span class="no">{{ .Data.data.pf.jwk }}</span>
+      <span class="no">{{- end }}</span>
+    <span class="c1">#------------------------------------------------</span>
+</code></pre></div>
+<p>Upon starting containers related to this resource, the value for secret <code>secret/pingfederate/encryption-keys</code> key of <code>pf.jwk</code> will be pulled into the container.  By default, the secret would be placed in to a tmpfs volume <code>/run/secrets</code>.</p>
+<div class="highlight"><pre><span></span><code>  /run/secrets/pf.jwk
+</code></pre></div>
+<blockquote>
+<p>Note: The annotaion <code>vault.hashicorp.com/secret-volume-path: /run/secrets</code> sets the path for all secrets created.  If a secret should be put into a different location by default, the following annotation can be added providng that location.</p>
+<p>IMPORTANT: Placing the secret in a non-tmpfs space can compromize the security of that secret due to unintended use (i.e. backups).</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>        <span class="nt">vault.hashicorp.com/agent-inject-secret-pf.jwk</span><span class="p">:</span> <span class="s">&quot;secret/pingfederate/encryption-keys/&quot;</span>
+        <span class="nt">vault.hashicorp.com/secret-volume-path-pf.jwk</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/opt/out/instance/server/default/data</span>
+</code></pre></div>
+<p>resulting in the location</p>
+<div class="highlight"><pre><span></span><code>  /opt/out/instance/server/default/data/pf.jwk
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../imageSupport/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Using supported images
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../secureContainers/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Securing the containers
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['navigation.tabs', 'instant'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

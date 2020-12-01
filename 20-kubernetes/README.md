@@ -1,1 +1,0 @@
-See [Kubernetes deployments for general use](../docs/deployK8sGeneral.md) for more information.
