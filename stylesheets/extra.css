@@ -105,3 +105,9 @@
     /* Code highlight color */
     color: #1c1b1b
 }
+
+.md-header-nav__button.md-icon {
+    /* Menu hamburger icon */
+    color: #000000;
+    padding-top: 25px;
+}

@@ -2188,23 +2188,23 @@ pingaccess:1909-5.3.0
 <li>Ubuntu: <a href="https://hub.docker.com/_/ubuntu">ubuntu:disco</a></li>
 <li>Centos: <a href="https://hub.docker.com/_/centos">centos</a></li>
 </ul>
-<p>Some examples:
+<p>Some examples:</p>
 <div class="highlight"><pre><span></span><code>pingaccess:alpine-edge
 pingaccess:ubuntu-latest
 pingfederate:1909-centos
-</code></pre></div></p>
+</code></pre></div>
 <p>Each of these tags references a specific operating system, and specific base release tag. When <code>{{productVersion}}</code> isn't specified, the latest available version is used.</p>
 <h3 id="productversion-operatingsystem"><code>{{productVersion}}</code>-<code>{{operatingSystem}}</code><a class="headerlink" href="#productversion-operatingsystem" title="Permanent link"> ¶</a></h3>
-<p>The format is: <code>{{product}}:{{productVersion}-{{operatingSystem}}-{{baseTag}}</code>.</p>
+<p>The format is: <code>{{product}}:{{productVersion}}-{{operatingSystem}}-{{baseTag}}</code>.</p>
 <blockquote>
 <p>The order of <code>{{operatingSystem}}-{{baseTag}}</code> is important and slightly different depending on the base release tag.</p>
 </blockquote>
-<p>Some examples:
+<p>Some examples:</p>
 <div class="highlight"><pre><span></span><code>pingaccess:5.3.0-alpine-edge
 pingaccess:5.3.0-ubuntu-latest
 pingfederate:1909-centos-5.3.0
 </code></pre></div>
-Each of these tags reference a specific operating system, product version and base tag.</p>
+<p>Each of these tags reference a specific operating system, product version and base tag.</p>
 <p>Another example:</p>
 <p><code>pingaccess:1908-alpine-5.3.0</code></p>
 <ul>
