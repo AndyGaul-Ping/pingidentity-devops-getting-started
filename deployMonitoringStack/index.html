@@ -679,8 +679,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#clean-up-the-stack" class="md-nav__link">
-    Clean Up The Stack
+  <a href="#finishing-up" class="md-nav__link">
+    Finishing Up
   </a>
   
 </li>
@@ -1908,8 +1908,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#clean-up-the-stack" class="md-nav__link">
-    Clean Up The Stack
+  <a href="#finishing-up" class="md-nav__link">
+    Finishing Up
   </a>
   
 </li>
@@ -1934,7 +1934,7 @@
 <ul>
 <li>Ping Identity software</li>
 </ul>
-<p><strong>Collect metrics</strong>:</p>
+<p><strong>Collect Metrics</strong>:</p>
 <ul>
 <li><a href="https://prometheus.io/">Prometheus</a></li>
 <li><a href="https://github.com/prometheus/alertmanager">Alertsmanager</a></li>
@@ -1942,11 +1942,11 @@
 <li><a href="https://github.com/prometheus/statsd_exporter">prometheus/statsd_exporter</a></li>
 <li><a href="https://www.influxdata.com/">InfluxDB</a></li>
 </ul>
-<p><strong>Display metrics</strong>:</p>
+<p><strong>Display Metrics</strong>:</p>
 <ul>
 <li><a href="https://grafana.com/">Grafana</a></li>
 </ul>
-<p><strong>Generate load</strong>:</p>
+<p><strong>Generate Load</strong>:</p>
 <ul>
 <li><code>pingidentity/ldap-sdk-tools</code></li>
 <li><code>pingidentity/apache-jmeter</code></li>
@@ -2162,7 +2162,7 @@ When PingDirectory is healthy, these tools will run as individual services based
 <p>The Grafana dashboards correspond to the dashboard definitions in <code>configs/grafana/provisioning/dashboards</code>.</p>
 </blockquote>
 <p>In Grafana, go to Dashboards -&gt; Manage. The pre-populated dashboards with your live load results are displayed.</p>
-<h2 id="clean-up-the-stack">Clean Up The Stack<a class="headerlink" href="#clean-up-the-stack" title="Permanent link"> ¶</a></h2>
+<h2 id="finishing-up">Finishing Up<a class="headerlink" href="#finishing-up" title="Permanent link"> ¶</a></h2>
 <p>To bring down the stack and remove the data stored in the Docker volumes, enter:</p>
 <div class="highlight"><pre><span></span><code>docker-compose down
 docker volume rm <span class="m">10</span>-monitoring-stack_grafana_data
