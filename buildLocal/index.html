@@ -16,7 +16,7 @@
     
     
       
-        <title>Build a Docker product image locally - Ping Identity DevOps</title>
+        <title>Build Image Locally - Ping Identity DevOps</title>
       
     
     
@@ -96,7 +96,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Build a Docker product image locally
+              Build Image Locally
             
           </span>
         </div>
@@ -167,7 +167,7 @@
     
     
     <a href=".." class="md-tabs__link">
-      DEVOPS @ PING
+      DevOps @ Ping
     </a>
   </li>
 
@@ -181,7 +181,7 @@
       
       
       <a href="../getStarted/" class="md-tabs__link">
-        GET STARTED
+        Get Started
       </a>
     </li>
   
@@ -196,7 +196,7 @@
         
       
       <a href="../deploy/" class="md-tabs__link md-tabs__link--active">
-        WORKING WITH IMAGES
+        Working With Images
       </a>
     </li>
   
@@ -209,7 +209,7 @@
       
       
       <a href="../config/" class="md-tabs__link">
-        CUSTOMIZING
+        Customizing
       </a>
     </li>
   
@@ -222,7 +222,7 @@
       
       
       <a href="../relnotes-2010/" class="md-tabs__link">
-        RELEASE NOTES
+        Release Notes
       </a>
     </li>
   
@@ -284,7 +284,7 @@
 
   <li class="md-nav__item">
     <a href=".." class="md-nav__link">
-      DEVOPS @ PING
+      DevOps @ Ping
     </a>
   </li>
 
@@ -296,7 +296,7 @@
 
   <li class="md-nav__item">
     <a href="../overview/" class="md-nav__link">
-      OVERVIEW
+      Overview
     </a>
   </li>
 
@@ -310,13 +310,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
     <label class="md-nav__link" for="nav-3">
-      GET STARTED
+      Get Started
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="GET STARTED" data-md-level="1">
+    <nav class="md-nav" aria-label="Get Started" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
         <span class="md-nav__icon md-icon"></span>
-        GET STARTED
+        Get Started
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -340,7 +340,7 @@
 
   <li class="md-nav__item">
     <a href="../devopsRegistration/" class="md-nav__link">
-      DevOps registration
+      DevOps Registration
     </a>
   </li>
 
@@ -352,7 +352,7 @@
 
   <li class="md-nav__item">
     <a href="../getStartedWithGitRepo/" class="md-nav__link">
-      Deploy an example stack
+      Deploy Example Stack
     </a>
   </li>
 
@@ -363,8 +363,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../PROD-LICENSE/" class="md-nav__link">
-      DevOps product licenses
+    <a href="../prodLicense/" class="md-nav__link">
+      DevOps Product Licenses
     </a>
   </li>
 
@@ -376,7 +376,7 @@
 
   <li class="md-nav__item">
     <a href="../devopsUserKey/" class="md-nav__link">
-      Using your DevOps user and key
+      Using Your DevOps User and Key
     </a>
   </li>
 
@@ -388,7 +388,7 @@
 
   <li class="md-nav__item">
     <a href="../existingLicense/" class="md-nav__link">
-      Using an existing product license
+      Using Existing Product License
     </a>
   </li>
 
@@ -400,7 +400,7 @@
 
   <li class="md-nav__item">
     <a href="../saveConfigs/" class="md-nav__link">
-      Saving your configuration changes
+      Saving Your Configuration Changes
     </a>
   </li>
 
@@ -421,13 +421,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     <label class="md-nav__link" for="nav-4">
-      WORKING WITH IMAGES
+      Working With Images
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="WORKING WITH IMAGES" data-md-level="1">
+    <nav class="md-nav" aria-label="Working With Images" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
         <span class="md-nav__icon md-icon"></span>
-        WORKING WITH IMAGES
+        Working With Images
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -459,12 +459,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Build a Docker product image locally
+        Build Image Locally
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      Build a Docker product image locally
+      Build Image Locally
     </a>
     
       
@@ -481,22 +481,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#clone-the-pingidentity-docker-builds-repository" class="md-nav__link">
-    Clone the pingidentity-docker-builds repository
+  <a href="#clone-build-repository" class="md-nav__link">
+    Clone Build Repository
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#download-a-product-zip-file" class="md-nav__link">
-    Download a product zip file
+    Download a Product Zip File
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#move-productzip-to-the-build-directory" class="md-nav__link">
-    Move product.zip to the build directory
+  <a href="#building-the-docker-image" class="md-nav__link">
+    Building the Docker Image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#re-tagging-the-local-image" class="md-nav__link">
+    Re-Tagging the Local Image
   </a>
   
 </li>
@@ -513,29 +520,17 @@
           
 
 
-  <li class="md-nav__item">
-    <a href="../deployStandalone/" class="md-nav__link">
-      Deploy standalone containers
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
-    <label class="md-nav__link" for="nav-4-4">
-      Orchestrate with Docker-Compose
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    <label class="md-nav__link" for="nav-4-3">
+      Deploy with Docker-Compose
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Orchestrate with Docker-Compose" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+    <nav class="md-nav" aria-label="Deploy with Docker-Compose" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
         <span class="md-nav__icon md-icon"></span>
-        Orchestrate with Docker-Compose
+        Deploy with Docker-Compose
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -559,7 +554,7 @@
 
   <li class="md-nav__item">
     <a href="../deploySimpleStack/" class="md-nav__link">
-      Deploy a PingFederate and PingDirectory stack
+      Deploy PingFederate and PingDirectory Stack
     </a>
   </li>
 
@@ -571,7 +566,7 @@
 
   <li class="md-nav__item">
     <a href="../deployReplication/" class="md-nav__link">
-      Deploy a replicated PingDirectory pair
+      Deploy Replicated PingDirectory Pair
     </a>
   </li>
 
@@ -583,7 +578,7 @@
 
   <li class="md-nav__item">
     <a href="../deploySync/" class="md-nav__link">
-      Deploy PingDirectory with data synchronization using PingDataSync
+      Deploy PingDirectory and PingDataSync
     </a>
   </li>
 
@@ -607,7 +602,7 @@
 
   <li class="md-nav__item">
     <a href="../deployPfCluster/" class="md-nav__link">
-      Deploy a PingFederate cluster
+      Deploy PingFederate Cluster
     </a>
   </li>
 
@@ -619,7 +614,7 @@
 
   <li class="md-nav__item">
     <a href="../deployPaCluster/" class="md-nav__link">
-      Deploy a PingAccess cluster
+      Deploy PingAccess Cluster
     </a>
   </li>
 
@@ -643,7 +638,7 @@
 
   <li class="md-nav__item">
     <a href="../deployMonitoringStack/" class="md-nav__link">
-      Deploy a monitoring stack
+      Deploy Monitoring Stack
     </a>
   </li>
 
@@ -655,7 +650,7 @@
 
   <li class="md-nav__item">
     <a href="../deploySiemStack/" class="md-nav__link">
-      Deploy an Elasticsearch SIEM stack
+      Deploy an Elasticsearch SIEM Stack
     </a>
   </li>
 
@@ -672,15 +667,15 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
-    <label class="md-nav__link" for="nav-4-5">
-      Orchestrate with Kubernetes
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+    <label class="md-nav__link" for="nav-4-4">
+      Deploy with Kubernetes
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Orchestrate with Kubernetes" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-5">
+    <nav class="md-nav" aria-label="Deploy with Kubernetes" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
         <span class="md-nav__icon md-icon"></span>
-        Orchestrate with Kubernetes
+        Deploy with Kubernetes
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -716,7 +711,7 @@
 
   <li class="md-nav__item">
     <a href="../deployK8sPD-clusters/" class="md-nav__link">
-      PingDirectory deployments across Kubernetes clusters
+      PingDirectory Deployments Across Kubernetes Clusters
     </a>
   </li>
 
@@ -728,15 +723,15 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-4" type="checkbox" id="nav-4-5-4" >
-    <label class="md-nav__link" for="nav-4-5-4">
-      Kubernetes deployments for general use
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-4" type="checkbox" id="nav-4-4-4" >
+    <label class="md-nav__link" for="nav-4-4-4">
+      Kubernetes Deployments For General Use
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Kubernetes deployments for general use" data-md-level="3">
-      <label class="md-nav__title" for="nav-4-5-4">
+    <nav class="md-nav" aria-label="Kubernetes Deployments For General Use" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-4-4">
         <span class="md-nav__icon md-icon"></span>
-        Kubernetes deployments for general use
+        Kubernetes Deployments For General Use
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -760,7 +755,7 @@
 
   <li class="md-nav__item">
     <a href="../deployK8sStandalone/" class="md-nav__link">
-      Orchestrate standalone deployments
+      Orchestrate Standalone Deployments
     </a>
   </li>
 
@@ -772,7 +767,7 @@
 
   <li class="md-nav__item">
     <a href="../deployK8sFullstack/" class="md-nav__link">
-      Orchestrate a full stack deployment
+      Orchestrate a Full Stack Deployment
     </a>
   </li>
 
@@ -784,7 +779,7 @@
 
   <li class="md-nav__item">
     <a href="../deployK8sReplicated/" class="md-nav__link">
-      Orchestrate a replicated PingDirectory deployment
+      Orchestrate a Replicated PingDirectory Deployment
     </a>
   </li>
 
@@ -796,7 +791,7 @@
 
   <li class="md-nav__item">
     <a href="../deployK8sPA-cluster/" class="md-nav__link">
-      Orchestrate a PingAccess cluster deployment
+      Orchestrate a PingAccess Cluster Deployment
     </a>
   </li>
 
@@ -808,7 +803,7 @@
 
   <li class="md-nav__item">
     <a href="../deployK8sPF-cluster/" class="md-nav__link">
-      Orchestrate a PingFederate cluster deployment
+      Orchestrate a PingFederate Cluster Deployment
     </a>
   </li>
 
@@ -820,13 +815,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-4-7" type="checkbox" id="nav-4-5-4-7" >
-    <label class="md-nav__link" for="nav-4-5-4-7">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-4-7" type="checkbox" id="nav-4-4-4-7" >
+    <label class="md-nav__link" for="nav-4-4-4-7">
       Deploy PingFederate Across Multiple Kubernetes Clusters
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Deploy PingFederate Across Multiple Kubernetes Clusters" data-md-level="4">
-      <label class="md-nav__title" for="nav-4-5-4-7">
+      <label class="md-nav__title" for="nav-4-4-4-7">
         <span class="md-nav__icon md-icon"></span>
         Deploy PingFederate Across Multiple Kubernetes Clusters
       </label>
@@ -886,15 +881,15 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-5" type="checkbox" id="nav-4-5-5" >
-    <label class="md-nav__link" for="nav-4-5-5">
-      Kubernetes deployments for cloud platforms
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-5" type="checkbox" id="nav-4-4-5" >
+    <label class="md-nav__link" for="nav-4-4-5">
+      Kubernetes Deployments For Cloud Platforms
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Kubernetes deployments for cloud platforms" data-md-level="3">
-      <label class="md-nav__title" for="nav-4-5-5">
+    <nav class="md-nav" aria-label="Kubernetes Deployments For Cloud Platforms" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-4-5">
         <span class="md-nav__icon md-icon"></span>
-        Kubernetes deployments for cloud platforms
+        Kubernetes Deployments For Cloud Platforms
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -918,7 +913,7 @@
 
   <li class="md-nav__item">
     <a href="../deployK8s-AWS/" class="md-nav__link">
-      Deploy Peered EKS clusters
+      Deploy Peered EKS Clusters
     </a>
   </li>
 
@@ -942,7 +937,7 @@
 
   <li class="md-nav__item">
     <a href="../k8sClusterSizing/" class="md-nav__link">
-      Sizing Kubernetes clusters
+      Sizing Kubernetes Clusters
     </a>
   </li>
 
@@ -983,13 +978,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
     <label class="md-nav__link" for="nav-5">
-      CUSTOMIZING
+      Customizing
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="CUSTOMIZING" data-md-level="1">
+    <nav class="md-nav" aria-label="Customizing" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
         <span class="md-nav__icon md-icon"></span>
-        CUSTOMIZING
+        Customizing
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1015,13 +1010,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" >
     <label class="md-nav__link" for="nav-5-2">
-      Server profile anatomy
+      Server Profiles
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Server profile anatomy" data-md-level="2">
+    <nav class="md-nav" aria-label="Server Profiles" data-md-level="2">
       <label class="md-nav__title" for="nav-5-2">
         <span class="md-nav__icon md-icon"></span>
-        Server profile anatomy
+        Server Profiles
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1033,7 +1028,7 @@
 
   <li class="md-nav__item">
     <a href="../containerAnatomy/" class="md-nav__link">
-      Introduction
+      Deployment
     </a>
   </li>
 
@@ -1045,7 +1040,7 @@
 
   <li class="md-nav__item">
     <a href="../profileStructures/" class="md-nav__link">
-      Server profile structures
+      Structure
     </a>
   </li>
 
@@ -1057,7 +1052,7 @@
 
   <li class="md-nav__item">
     <a href="../profiles/" class="md-nav__link">
-      Customizing server profiles
+      Customization
     </a>
   </li>
 
@@ -1069,7 +1064,7 @@
 
   <li class="md-nav__item">
     <a href="../buildPingFederateProfile/" class="md-nav__link">
-      Build Your Own PingFederate Profile
+      Build Your Own ...
     </a>
   </li>
 
@@ -1081,7 +1076,7 @@
 
   <li class="md-nav__item">
     <a href="../profilesLayered/" class="md-nav__link">
-      Layering server profiles
+      Layering
     </a>
   </li>
 
@@ -1093,7 +1088,7 @@
 
   <li class="md-nav__item">
     <a href="../profilesSubstitution/" class="md-nav__link">
-      Environment substitution
+      Env Substitution
     </a>
   </li>
 
@@ -1105,7 +1100,7 @@
 
   <li class="md-nav__item">
     <a href="../privateRepos/" class="md-nav__link">
-      Using private Github repositories
+      Private Github Repos
     </a>
   </li>
 
@@ -1134,7 +1129,7 @@
 
   <li class="md-nav__item">
     <a href="../variableScoping/" class="md-nav__link">
-      Variables and scope
+      Variables and Scope
     </a>
   </li>
 
@@ -1158,7 +1153,7 @@
 
   <li class="md-nav__item">
     <a href="../hooks/" class="md-nav__link">
-      Using DevOps hooks
+      Using DevOps Hooks
     </a>
   </li>
 
@@ -1170,7 +1165,7 @@
 
   <li class="md-nav__item">
     <a href="../releaseTags/" class="md-nav__link">
-      Using release tags
+      Using Release Tags
     </a>
   </li>
 
@@ -1182,7 +1177,7 @@
 
   <li class="md-nav__item">
     <a href="../imageSupport/" class="md-nav__link">
-      Using supported images
+      Using Supported Images
     </a>
   </li>
 
@@ -1206,7 +1201,7 @@
 
   <li class="md-nav__item">
     <a href="../secureContainers/" class="md-nav__link">
-      Securing the containers
+      Securing the Containers
     </a>
   </li>
 
@@ -1218,7 +1213,7 @@
 
   <li class="md-nav__item">
     <a href="../dockerImageSecurity/" class="md-nav__link">
-      Evaluation of Docker base image security
+      Eval of DevOps Image Security
     </a>
   </li>
 
@@ -1230,7 +1225,7 @@
 
   <li class="md-nav__item">
     <a href="../addMOTD/" class="md-nav__link">
-      Adding a message of the day (MOTD)
+      Adding a MOTD
     </a>
   </li>
 
@@ -1244,13 +1239,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-13" type="checkbox" id="nav-5-13" >
     <label class="md-nav__link" for="nav-5-13">
-      Managing deployments
+      Managing Deployments
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Managing deployments" data-md-level="2">
+    <nav class="md-nav" aria-label="Managing Deployments" data-md-level="2">
       <label class="md-nav__title" for="nav-5-13">
         <span class="md-nav__icon md-icon"></span>
-        Managing deployments
+        Managing Deployments
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1322,20 +1317,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../devopsUtils/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../pingDevopsUtil/" class="md-nav__link">
-      The `ping-devops` utility
+      ping-devops
     </a>
   </li>
 
@@ -1347,7 +1330,7 @@
 
   <li class="md-nav__item">
     <a href="../ldapsdkUtil/" class="md-nav__link">
-      The `ldap-sdk-tools` utility
+      ldap-sdk-tools
     </a>
   </li>
 
@@ -1378,13 +1361,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-16" type="checkbox" id="nav-5-16" >
     <label class="md-nav__link" for="nav-5-16">
-      Docker images reference
+      DevOps Images Reference
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Docker images reference" data-md-level="2">
+    <nav class="md-nav" aria-label="DevOps Images Reference" data-md-level="2">
       <label class="md-nav__title" for="nav-5-16">
         <span class="md-nav__icon md-icon"></span>
-        Docker images reference
+        DevOps Images Reference
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1624,13 +1607,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
     <label class="md-nav__link" for="nav-6">
-      RELEASE NOTES
+      Release Notes
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="RELEASE NOTES" data-md-level="1">
+    <nav class="md-nav" aria-label="Release Notes" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
         <span class="md-nav__icon md-icon"></span>
-        RELEASE NOTES
+        Release Notes
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1742,8 +1725,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../LICENSE/" class="md-nav__link">
-      LICENSE
+    <a href="../license/" class="md-nav__link">
+      License
     </a>
   </li>
 
@@ -1754,8 +1737,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../DISCLAIMER.md" class="md-nav__link">
-      DISCLAIMER
+    <a href="../disclaimer/" class="md-nav__link">
+      Disclaimer
     </a>
   </li>
 
@@ -1766,8 +1749,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../3RD_PARTY_SOFTWARE/" class="md-nav__link">
-      THIRD-PARTY SOFTWARE
+    <a href="../3rd_party_software/" class="md-nav__link">
+      Third-Party Software
     </a>
   </li>
 
@@ -1778,8 +1761,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../CONTRIBUTING/" class="md-nav__link">
-      CONTRIBUTING
+    <a href="../contributing/" class="md-nav__link">
+      Contributing
     </a>
   </li>
 
@@ -1808,22 +1791,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#clone-the-pingidentity-docker-builds-repository" class="md-nav__link">
-    Clone the pingidentity-docker-builds repository
+  <a href="#clone-build-repository" class="md-nav__link">
+    Clone Build Repository
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#download-a-product-zip-file" class="md-nav__link">
-    Download a product zip file
+    Download a Product Zip File
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#move-productzip-to-the-build-directory" class="md-nav__link">
-    Move product.zip to the build directory
+  <a href="#building-the-docker-image" class="md-nav__link">
+    Building the Docker Image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#re-tagging-the-local-image" class="md-nav__link">
+    Re-Tagging the Local Image
   </a>
   
 </li>
@@ -1841,79 +1831,76 @@
               
                 
                 
-                <h1 id="build-a-docker-product-image-locally">Build a Docker product image locally<a class="headerlink" href="#build-a-docker-product-image-locally" title="Permanent link"> ¶</a></h1>
+                <h1 id="build-a-docker-product-image-locally">Build a Docker Product Image Locally<a class="headerlink" href="#build-a-docker-product-image-locally" title="Permanent link"> ¶</a></h1>
 <p>This example describes how to build a Docker image or our products using the build tools found in our <a href="https://github.com/pingidentity/pingidentity-docker-builds">Docker Builds</a> repo, and a local copy of a product zip file.</p>
-<h2 id="clone-the-pingidentity-docker-builds-repository">Clone the <code>pingidentity-docker-builds</code> repository<a class="headerlink" href="#clone-the-pingidentity-docker-builds-repository" title="Permanent link"> ¶</a></h2>
+<h2 id="clone-build-repository">Clone Build Repository<a class="headerlink" href="#clone-build-repository" title="Permanent link"> ¶</a></h2>
 <p>Open a terminal and clone the <code>pingidentity-docker-builds</code> repo. Enter:</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/pingidentity/pingidentity-docker-builds.git
 </code></pre></div>
-<h2 id="download-a-product-zip-file">Download a product zip file<a class="headerlink" href="#download-a-product-zip-file" title="Permanent link"> ¶</a></h2>
+<h2 id="download-a-product-zip-file">Download a Product Zip File<a class="headerlink" href="#download-a-product-zip-file" title="Permanent link"> ¶</a></h2>
 <ol>
-<li>Go to <a href="https://www.pingidentity.com/en/resources/downloads.html">Product Downloads</a> and download the product you'd like to use to build a Docker image.</li>
-</ol>
+<li>
+<p>Go to <a href="https://www.pingidentity.com/en/resources/downloads.html">Product Downloads</a> and download the product you'd like to use to build a Docker image.</p>
 <blockquote>
 <p>Ensure you download the product distribution zip file and not the Windows installer.</p>
 </blockquote>
-<ol>
-<li>When the download has finished, rename it to product.zip. For example:</li>
-</ol>
+</li>
+<li>
+<p>When the download has finished, rename it to product.zip. For example:</p>
 <div class="highlight"><pre><span></span><code>mv pingfederate-10.1.0.zip product.zip
 </code></pre></div>
-<h2 id="move-productzip-to-the-build-directory">Move product.zip to the build directory<a class="headerlink" href="#move-productzip-to-the-build-directory" title="Permanent link"> ¶</a></h2>
-<p>In the <code>pingidentity-docker-builds</code> repo directory for each product. Move the <code>product.zip</code> file to the <code>&lt;product&gt;/tmp</code> directory, where /<product> is the name of one of our available products. For example:</p>
-<div class="highlight"><pre><span></span><code> mv ~/Downloads/product.zip <span class="se">\</span>
-    ~/pingidentity/devops/pingidentity-docker-builds/pingfederate/tmp
- <span class="sb">```</span>
-
-<span class="c1">## Building the Docker image</span>
-
-Prior to building the image, display the <span class="sb">`</span>versions.json<span class="sb">`</span> file in the product directory. You<span class="s1">&#39;ll need to specify a valid version for the build script. Since you&#39;</span>re providing the product zip file, it doesn<span class="s1">&#39;t really matter which version you select as long as it&#39;</span>s valid. For example, you can see that <span class="sb">`</span><span class="m">10</span>.1.0<span class="sb">`</span> is a valid product version <span class="k">for</span> PingFederate.
-
-!<span class="o">[</span>product build versions<span class="o">](</span>images/build-versions.png<span class="o">)</span>
-
-<span class="m">1</span>. Go to the base of the <span class="sb">`</span>pingidentity-docker-builds<span class="sb">`</span> repo. For example:
-
-   <span class="sb">```</span>sh
-   <span class="nb">cd</span> ~/pingidentity/devops/pingidentity-docker-builds
-   <span class="sb">```</span>
-
-<span class="m">2</span>. Our Docker images are built using common foundational layers that the product layer will need <span class="o">(</span>such as, JVM, pingcommon, pingdatacommon<span class="o">)</span>. Because it<span class="s1">&#39;s unlikely that you&#39;</span>ll have the foundational layers locally, we<span class="s1">&#39;ll build the product using the `serial_build.sh` script. Going forward, if you want to use the same foundational layers, you need only run the `build_product.sh` script to build the product layer.</span>
-
-<span class="s1">   You&#39;</span>ll need to specify the appropriate options when you run <span class="sb">`</span>serial_build.sh<span class="sb">`</span>. For PingFederate, the options might look like this:
-
-   * -p <span class="o">(</span>Product<span class="o">)</span>: pingfederate
-   * -v <span class="o">(</span>Version<span class="o">)</span>: <span class="m">10</span>.1.0
-     * Note: this is the version retrieved from the **versions.json** file
-   * -s <span class="o">(</span>Shim<span class="o">)</span>: alpine
-   * -j <span class="o">(</span>Java<span class="o">)</span>: az11
-
-   To build the image, run the <span class="sb">`</span>serial_build.sh<span class="sb">`</span> script with the appropriate options. For example:
-
-   <span class="sb">```</span>sh
-   ./ci_scripts/serial_build.sh <span class="se">\</span>
-       -p pingfederate <span class="se">\</span>
-       -v <span class="m">10</span>.1 <span class="se">\</span>
-       -s alpine <span class="se">\</span>
-       -j az11
-   <span class="sb">```</span>
-
-   &gt; It<span class="err">&#39;</span>s important that you build from the base of the repo as shown in the example.
-
-   When the build is completed, the product and base images are displayed. For example:
-
-   !<span class="o">[</span>Local Build Image List<span class="o">](</span>images/localbuild_imagelist.png<span class="o">)</span>
-
-<span class="c1">## Retagging the local image</span>
-
-You can change the tag of the created image and push it to your own Docker registry using the <span class="sb">`</span>docker tag<span class="sb">`</span> command:
-
-<span class="sb">```</span>sh
-docker tag <span class="o">[</span>image id<span class="o">]</span> <span class="se">\</span>
+</li>
+<li>
+<p>Move product.zip to the Build Directory</p>
+<p>In the <code>pingidentity-docker-builds</code> repo directory for each product. Move the <code>product.zip</code> file to the <code>&lt;product&gt;/tmp</code> directory, where /&lt;product&gt; is the name of one of our available products. For example:</p>
+<div class="highlight"><pre><span></span><code>mv ~/Downloads/product.zip <span class="se">\</span>
+   ~/pingidentity/devops/pingidentity-docker-builds/pingfederate/tmp
+</code></pre></div>
+</li>
+</ol>
+<h2 id="building-the-docker-image">Building the Docker Image<a class="headerlink" href="#building-the-docker-image" title="Permanent link"> ¶</a></h2>
+<p>Prior to building the image, display the <code>versions.json</code> file in the product directory. You'll need to specify a valid version for the build script. Since you're providing the product zip file, it doesn't really matter which version you select as long as it's valid. For example, you can see that <code>10.1.0</code> is a valid product version for PingFederate.</p>
+<p><img alt="product build versions" src="../images/build-versions.png" /></p>
+<ol>
+<li>
+<p>Go to the base of the <code>pingidentity-docker-builds</code> repo. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/pingidentity/devops/pingidentity-docker-builds
+</code></pre></div>
+</li>
+<li>
+<p>Our Docker images are built using common foundational layers that the product layer will need (such as, JVM, pingcommon, pingdatacommon). Because it's unlikely that you'll have the foundational layers locally, we'll build the product using the <code>serial_build.sh</code> script. Going forward, if you want to use the same foundational layers, you need only run the <code>build_product.sh</code> script to build the product layer.</p>
+</li>
+</ol>
+<p>You'll need to specify the appropriate options when you run <code>serial_build.sh</code>. For PingFederate, the options might look like this:</p>
+<ul>
+<li>-p (Product): pingfederate</li>
+<li>-v (Version): 10.1.0<ul>
+<li>Note: this is the version retrieved from the <strong>versions.json</strong> file</li>
+</ul>
+</li>
+<li>-s (Shim): alpine</li>
+<li>-j (Java): az11</li>
+</ul>
+<p>To build the image, run the <code>serial_build.sh</code> script with the appropriate options. For example:</p>
+<div class="highlight"><pre><span></span><code>./ci_scripts/serial_build.sh <span class="se">\</span>
+    -p pingfederate <span class="se">\</span>
+    -v <span class="m">10</span>.1 <span class="se">\</span>
+    -s alpine <span class="se">\</span>
+    -j az11
+</code></pre></div>
+<blockquote>
+<p>It's important that you build from the base of the repo as shown in the example.</p>
+</blockquote>
+<p>When the build is completed, the product and base images are displayed. For example:</p>
+<p><img alt="Local Build Image List" src="../images/localbuild_imagelist.png" /></p>
+<h2 id="re-tagging-the-local-image">Re-Tagging the Local Image<a class="headerlink" href="#re-tagging-the-local-image" title="Permanent link"> ¶</a></h2>
+<p>You can change the tag of the created image and push it to your own Docker registry using the <code>docker tag</code> command:</p>
+<div class="highlight"><pre><span></span><code>docker tag <span class="o">[</span>image id<span class="o">]</span> <span class="se">\</span>
     <span class="o">[</span>Docker Registry<span class="o">]</span>/<span class="o">[</span>Organization<span class="o">]</span>/<span class="o">[</span>Image Name<span class="o">]</span>:<span class="o">[</span>tag<span class="o">]</span>
 </code></pre></div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code> docker tag a379dffedf13 <span class="se">\</span>
- gcp.io/pingidentity/pingfederate:localbuild
+<div class="highlight"><pre><span></span><code>docker tag a379dffedf13 <span class="se">\</span>
+gcp.io/pingidentity/pingfederate:localbuild
 </code></pre></div>
 <p><img alt="Local Build Image List" src="../images/localbuild_tag.png" /></p>
                 
@@ -1949,13 +1936,13 @@ docker tag <span class="o">[</span>image id<span class="o">]</span> <span class=
           </a>
         
         
-          <a href="../deployStandalone/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../deployCompose/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Deploy standalone containers
+                Introduction
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
