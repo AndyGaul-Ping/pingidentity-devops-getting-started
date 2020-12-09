@@ -1,0 +1,2338 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://devops.pingidentity.com/deployment/deploySiemStack/">
+      
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
+    
+    
+      
+        <title>Deploy an Elasticsearch SIEM Stack - Ping Identity DevOps</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6910b76c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../mkdocs/overrides/stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="blue">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploy-an-elasticsearch-siem-stack" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://devops.pingidentity.com/" title="Ping Identity DevOps" class="md-header-nav__button md-logo" aria-label="Ping Identity DevOps">
+      <!-- Logo -->
+
+  
+
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Ping Identity DevOps
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Deploy an Elasticsearch SIEM Stack
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/pingidentity/pingidentity-devops-getting-started" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pingidentity/pingidentity-devops-getting-started
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+    
+    <a href="../.." class="md-tabs__link">
+      DevOps @ Ping
+    </a>
+  </li>
+
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../get-started/getStarted/" class="md-tabs__link">
+        Get Started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+        
+      
+      <a href="../deploy/" class="md-tabs__link md-tabs__link--active">
+        Deployment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../how-to/existingLicense/" class="md-tabs__link">
+        How To
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../reference/config/" class="md-tabs__link">
+        Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../release-notes/relnotes-2010/" class="md-tabs__link">
+        Release Notes
+      </a>
+    </li>
+  
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://devops.pingidentity.com/" title="Ping Identity DevOps" class="md-nav__button md-logo" aria-label="Ping Identity DevOps">
+      <!-- Logo -->
+
+  
+
+
+    </a>
+    Ping Identity DevOps
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/pingidentity/pingidentity-devops-getting-started" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pingidentity/pingidentity-devops-getting-started
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      DevOps @ Ping
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    <label class="md-nav__link" for="nav-3">
+      Get Started
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Get Started" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Get Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../get-started/getStarted/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../get-started/pingDevopsUtil/" class="md-nav__link">
+      ping-devops Tool
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../get-started/devopsRegistration/" class="md-nav__link">
+      DevOps Registration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../get-started/devopsUserKey/" class="md-nav__link">
+      Using Your DevOps User and Key
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../get-started/prodLicense/" class="md-nav__link">
+      DevOps Product Licenses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../get-started/getStartedWithGitRepo/" class="md-nav__link">
+      Deploy Example Stack
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    <label class="md-nav__link" for="nav-4">
+      Deployment
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Deployment" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Deployment
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deploy/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" checked>
+    <label class="md-nav__link" for="nav-4-2">
+      Deploy with Docker-Compose
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Deploy with Docker-Compose" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        <span class="md-nav__icon md-icon"></span>
+        Deploy with Docker-Compose
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployCompose/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deploySimpleStack/" class="md-nav__link">
+      Deploy PingFederate and PingDirectory Stack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployReplication/" class="md-nav__link">
+      Deploy Replicated PingDirectory Pair
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deploySync/" class="md-nav__link">
+      Deploy PingDirectory and PingDataSync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPingCentral/" class="md-nav__link">
+      Deploy PingCentral
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPfCluster/" class="md-nav__link">
+      Deploy PingFederate Cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPaCluster/" class="md-nav__link">
+      Deploy PingAccess Cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPdgPap/" class="md-nav__link">
+      Deploy PingDataGovernance with PAP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployMonitoringStack/" class="md-nav__link">
+      Deploy Monitoring Stack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Deploy an Elasticsearch SIEM Stack
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Deploy an Elasticsearch SIEM Stack
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional" class="md-nav__link">
+    Optional
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instal-setup" class="md-nav__link">
+    Instal Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-stack" class="md-nav__link">
+    Deploy Stack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-deployment" class="md-nav__link">
+    Post-Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleaning-up" class="md-nav__link">
+    Cleaning Up
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard-examples" class="md-nav__link">
+    Dashboard Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboard Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pingfederate-threat-intel-dashboard" class="md-nav__link">
+    PingFederate Threat Intel Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping-identity-siem-dashboard" class="md-nav__link">
+    Ping Identity SIEM Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping-federate-dashboard" class="md-nav__link">
+    Ping Federate Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pingaccess-dashboard" class="md-nav__link">
+    PingAccess Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pingdirectory-dashboard" class="md-nav__link">
+    PingDirectory Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#included-slack-alerts" class="md-nav__link">
+    Included Slack Alerts
+  </a>
+  
+    <nav class="md-nav" aria-label="Included Slack Alerts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slack-alert-examples-not-all-are-shown" class="md-nav__link">
+    Slack Alert Examples (not all are shown)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    <label class="md-nav__link" for="nav-4-3">
+      Deploy with Kubernetes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Deploy with Kubernetes" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        Deploy with Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8s/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployHelm/" class="md-nav__link">
+      Deploy with PingIdentiy Helm Charts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sPD-clusters/" class="md-nav__link">
+      PingDirectory Deployments Across Kubernetes Clusters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-4" type="checkbox" id="nav-4-3-4" >
+    <label class="md-nav__link" for="nav-4-3-4">
+      Kubernetes Deployments For General Use
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes Deployments For General Use" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-4">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes Deployments For General Use
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sGeneral/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sStandalone/" class="md-nav__link">
+      Orchestrate Standalone Deployments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sFullstack/" class="md-nav__link">
+      Orchestrate a Full Stack Deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sReplicated/" class="md-nav__link">
+      Orchestrate a Replicated PingDirectory Deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sPA-cluster/" class="md-nav__link">
+      Orchestrate a PingAccess Cluster Deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sPF-cluster/" class="md-nav__link">
+      Orchestrate a PingFederate Cluster Deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-4-7" type="checkbox" id="nav-4-3-4-7" >
+    <label class="md-nav__link" for="nav-4-3-4-7">
+      Deploy PingFederate Across Multiple Kubernetes Clusters
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Deploy PingFederate Across Multiple Kubernetes Clusters" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-3-4-7">
+        <span class="md-nav__icon md-icon"></span>
+        Deploy PingFederate Across Multiple Kubernetes Clusters
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sPFclusters/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPFMultiRegionDNS/" class="md-nav__link">
+      PingFederate Across Kubernetes with DNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployPFMultiRegionAWS/" class="md-nav__link">
+      PingFederate Across Kubernetes with S3
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-5" type="checkbox" id="nav-4-3-5" >
+    <label class="md-nav__link" for="nav-4-3-5">
+      Kubernetes Deployments For Cloud Platforms
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes Deployments For Cloud Platforms" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-5">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes Deployments For Cloud Platforms
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8sCloud/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8s-AWS/" class="md-nav__link">
+      Deploy Peered EKS Clusters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployK8s-AKS/" class="md-nav__link">
+      Deploy to Azure Kubernetes Service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../k8sClusterSizing/" class="md-nav__link">
+      Sizing Kubernetes Clusters
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deployVault/" class="md-nav__link">
+      Deploy Hashicorp Vault
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    <label class="md-nav__link" for="nav-5">
+      How To
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="How To" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        How To
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/existingLicense/" class="md-nav__link">
+      Use Existing Licenses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" >
+    <label class="md-nav__link" for="nav-5-2">
+      Server Profile
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Server Profile" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        <span class="md-nav__icon md-icon"></span>
+        Server Profile
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/containerAnatomy/" class="md-nav__link">
+      Deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/profiles/" class="md-nav__link">
+      Customization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/buildPingFederateProfile/" class="md-nav__link">
+      Build Your Own ...
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/profilesLayered/" class="md-nav__link">
+      Layering
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/profilesSubstitution/" class="md-nav__link">
+      Env Substitution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/privateRepos/" class="md-nav__link">
+      Private Github Repos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/usingVault/" class="md-nav__link">
+      Vault/Secrets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/secureContainers/" class="md-nav__link">
+      Securing the Containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    <label class="md-nav__link" for="nav-5-5">
+      Upgrading Deployments
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Upgrading Deployments" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Upgrading Deployments
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/manage/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/upgradePingfederate/" class="md-nav__link">
+      Upgrading PingFederate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/upgradePingDirectory/" class="md-nav__link">
+      Upgrading PingDirectory
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    <label class="md-nav__link" for="nav-6">
+      Reference
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/config/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/profileStructures/" class="md-nav__link">
+      Server Profile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/yamlFiles/" class="md-nav__link">
+      Docker Compose YAML
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/variableScoping/" class="md-nav__link">
+      Variables and Scope
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/usingCertificates/" class="md-nav__link">
+      Certificates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6" >
+    <label class="md-nav__link" for="nav-6-6">
+      Image Info
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Image Info" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        <span class="md-nav__icon md-icon"></span>
+        Image Info
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/releaseTags/" class="md-nav__link">
+      Release Tags
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/imageSupport/" class="md-nav__link">
+      Using Supported Images
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/dockerImageSecurity/" class="md-nav__link">
+      DevOps Image Security
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-7" type="checkbox" id="nav-6-7" >
+    <label class="md-nav__link" for="nav-6-7">
+      Utilities
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Utilities" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-7">
+        <span class="md-nav__icon md-icon"></span>
+        Utilities
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/pingDevopsUtil.md" class="md-nav__link">
+      ping-devops
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/ldapsdkUtil/" class="md-nav__link">
+      ldap-sdk-tools
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/troubleshooting/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-9" type="checkbox" id="nav-6-9" >
+    <label class="md-nav__link" for="nav-6-9">
+      DevOps Images Reference
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="DevOps Images Reference" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-9">
+        <span class="md-nav__icon md-icon"></span>
+        DevOps Images Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/dockerImagesRef/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingfederate/" class="md-nav__link">
+      PingFederate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingaccess/" class="md-nav__link">
+      PingAccess
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingdirectory/" class="md-nav__link">
+      PingDirectory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingdirectoryproxy/" class="md-nav__link">
+      PingDirectoryProxy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingdatagovernance/" class="md-nav__link">
+      PingDataGovernance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingdatagovernancepap/" class="md-nav__link">
+      PingDataGovernance PAP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingdatasync/" class="md-nav__link">
+      PingDataSync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingdelegator/" class="md-nav__link">
+      PingDelegator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingcentral/" class="md-nav__link">
+      PingCentral
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingintelligence/" class="md-nav__link">
+      PingIntelligence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/ldap-sdk-tools/" class="md-nav__link">
+      ldap-sdk-tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingdataconsole/" class="md-nav__link">
+      Ping Data Console
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingdownloader/" class="md-nav__link">
+      PingDownloader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingbase/" class="md-nav__link">
+      PingBase
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingcommon/" class="md-nav__link">
+      PingCommon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/pingdatacommon/" class="md-nav__link">
+      PingDataCommon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker-images/apache-jmeter/" class="md-nav__link">
+      Apache JMeter
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-10" type="checkbox" id="nav-6-10" >
+    <label class="md-nav__link" for="nav-6-10">
+      Advanced Topics
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Advanced Topics" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-10">
+        <span class="md-nav__icon md-icon"></span>
+        Advanced Topics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/hooks/" class="md-nav__link">
+      DevOps Hooks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/addMOTD/" class="md-nav__link">
+      Adding a MOTD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/buildLocal/" class="md-nav__link">
+      Build Local Images
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+    <label class="md-nav__link" for="nav-7">
+      Release Notes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Release Notes" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Release Notes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+      Current
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2009/" class="md-nav__link">
+      Version 2009
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2008/" class="md-nav__link">
+      Version 2008
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2007/" class="md-nav__link">
+      Version 2007
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2006/" class="md-nav__link">
+      Version 2006
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2005/" class="md-nav__link">
+      Version 2005
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2004/" class="md-nav__link">
+      Version 2004
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2003/" class="md-nav__link">
+      Version 2003
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../LICENSE.md" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../disclaimer/" class="md-nav__link">
+      Disclaimer
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../3RD_PARTY_SOFTWARE.md" class="md-nav__link">
+      Third-Party Software
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CONTRIBUTING.md" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional" class="md-nav__link">
+    Optional
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instal-setup" class="md-nav__link">
+    Instal Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-stack" class="md-nav__link">
+    Deploy Stack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-deployment" class="md-nav__link">
+    Post-Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleaning-up" class="md-nav__link">
+    Cleaning Up
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard-examples" class="md-nav__link">
+    Dashboard Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboard Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pingfederate-threat-intel-dashboard" class="md-nav__link">
+    PingFederate Threat Intel Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping-identity-siem-dashboard" class="md-nav__link">
+    Ping Identity SIEM Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping-federate-dashboard" class="md-nav__link">
+    Ping Federate Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pingaccess-dashboard" class="md-nav__link">
+    PingAccess Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pingdirectory-dashboard" class="md-nav__link">
+    PingDirectory Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#included-slack-alerts" class="md-nav__link">
+    Included Slack Alerts
+  </a>
+  
+    <nav class="md-nav" aria-label="Included Slack Alerts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slack-alert-examples-not-all-are-shown" class="md-nav__link">
+    Slack Alert Examples (not all are shown)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="deploy-an-elasticsearch-siem-stack">Deploy an Elasticsearch SIEM Stack<a class="headerlink" href="#deploy-an-elasticsearch-siem-stack" title="Permanent link"> ¶</a></h1>
+<p>This example deploys a PingFederate, PingAccess, and PingDirectory stack with Elasticsearch infrastructure built in for visualizing traffic and other security or log data. The architecture looks like this:</p>
+<p><img alt="alt text" src="../../images/Architecture.png" title="Architecture Overview" /></p>
+<ul>
+<li>
+<p>Threat intel and TOR Endpoints are  provided by AlienVault and the TOR Network Endpoint List.</p>
+</li>
+<li>
+<p>Threat feeds are updated on an interval via setting an environment variable in <code>docker-compose.yaml</code>.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Warning</strong>: This stack is not intended for production environments.</p>
+</blockquote>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link"> ¶</a></h2>
+<ul>
+<li>
+<p>You've already been through <a href="../../get-started/getStarted/">Get Started</a> to set up your DevOps environment and run a test deployment of the products.</p>
+</li>
+<li>
+<p>For most Linux distributions (local or on a platform), you'll need to increase the <code>vm.max_map_count</code> setting to support the necessary heap size. Enter:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo sysctl -w vm.max_map_count<span class="o">=</span><span class="m">262144</span>
+</code></pre></div>
+<p>Your Linux machine needs at least 12 Gb of RAM for Docker to run this stack.</p>
+<ul>
+<li>
+<p>For Apple macos or Microsoft Windows machines, ensure the Docker Resources is set to a <em>minimum</em> 10 Gb of RAM, or the containers will crash.</p>
+</li>
+<li>
+<p>For Amazon Web Services (AWS) use a M5.XL or M5a.XL VPC. 16 Gb RAM is required, and at least 50 Gb of storage is recommended.</p>
+</li>
+</ul>
+<h3 id="optional">Optional<a class="headerlink" href="#optional" title="Permanent link"> ¶</a></h3>
+<ul>
+<li>If you're using Slack, you can generate a Slack Webhook URL from the Slack Admin for alerting: <code>https://api.slack.com/messaging/webhooks</code>.</li>
+</ul>
+<h2 id="instal-setup">Instal Setup<a class="headerlink" href="#instal-setup" title="Permanent link"> ¶</a></h2>
+<ol>
+<li>
+<p>From the <code>pingidentity-devops-getting-started</code> directory, pull the repo to ensure that you have current files:</p>
+<div class="highlight"><pre><span></span><code>git pull
+</code></pre></div>
+</li>
+<li>
+<p>Go to the <code>pingidentity-devops-getting-started/11-docker-compose/11-siem-stack/</code> directory.</p>
+</li>
+<li>
+<p>Create a <code>siem.env</code> file in the <code>11-siem-stack</code> directory, and copy these entries into the <code>siem.env</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">COMPOSE_PROJECT_NAME</span><span class="o">=</span>es
+<span class="nv">ELASTIC_VERSION</span><span class="o">=</span><span class="m">7</span>.6.1
+
+<span class="nv">ELASTIC_PASSWORD</span><span class="o">=</span>2FederateM0re
+<span class="nv">ES_ADMIN_PD_USER_PASS</span><span class="o">=</span>FederateTheB3st!
+
+<span class="nv">PING_IDENTITY_DEVOPS_USER</span><span class="o">=</span>&lt;your-username&gt;
+<span class="nv">PING_IDENTITY_DEVOPS_KEY</span><span class="o">=</span>&lt;your-key&gt;
+</code></pre></div>
+</li>
+</ol>
+<h2 id="deploy-stack">Deploy Stack<a class="headerlink" href="#deploy-stack" title="Permanent link"> ¶</a></h2>
+<ol>
+<li>
+<p>From the <code>pingidentity-devops-getting-started/11-docker-compose/11-siem-stack/</code> directory, start the stack:</p>
+<div class="highlight"><pre><span></span><code>docker-compose up -d
+</code></pre></div>
+<p>Monitor the container startup using one of these commands:</p>
+<div class="highlight"><pre><span></span><code>docker-compose ps
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>docker-compose logs -f
+</code></pre></div>
+</li>
+<li>
+<p>(Optional) If you're using Slack, and you've already created your Webhook URL (see the optional prerequisite above), you can run the Slack configuration script to configure slack alerts:</p>
+<div class="highlight"><pre><span></span><code>./config_slack_alerts
+</code></pre></div>
+<p>The script prompts for your Webhook URL and Elasticsearch password.</p>
+<ul>
+<li>The Webhook URL updates the destination for your alerts within Slack.</li>
+<li>The password is used to push watchers into Elasticsearch.</li>
+</ul>
+<p>You don't need to provide your Webhook URL in the future. If you don't provide it, it simply will not update it.</p>
+<p>You can re-run this script any time. This will update and push new watchers you create from the <code>./elasticsearch-siem/watchers</code> folder.</p>
+</li>
+</ol>
+<h2 id="post-deployment">Post-Deployment<a class="headerlink" href="#post-deployment" title="Permanent link"> ¶</a></h2>
+<p>When PingDirectory is up and healthy:</p>
+<ul>
+<li>
+<p>Kibana console:</p>
+</li>
+<li>
+<p>URL: <code>https://localhost:5601/</code>.</p>
+</li>
+<li>User name: <code>es_admin</code> or <code>elastic</code> (local user).</li>
+<li>
+<p>Password: FederateTheB3st! (the <code>ES_ADMIN_PD_USER_PASS</code> value in the <code>siem.env</code> file you created).</p>
+</li>
+<li>
+<p>Kibana saved objects</p>
+</li>
+</ul>
+<p>You can load the saved objects by going to "Saved Objects" under the Kibana settings and exporting all. The exported file is saved in <code>./elasticsearch-siem/kibana_config/kib_base.ndjson</code>.</p>
+<ul>
+<li>Elasticsearch templates for indexes</li>
+</ul>
+<p>Index mappings and config are stored in the <code>./elasticsearch-siem/index_templates</code> directory. The scripts will load the template or templates when the cluster state is green.</p>
+<ul>
+<li>
+<p>Logstash pipeline</p>
+</li>
+<li>
+<p>TOR Enrichment</p>
+</li>
+<li>Threat Intel (Alien Vault Provided)</li>
+<li>GEO IP Lookup</li>
+<li>GEO Distance Query (template driven)</li>
+<li>Data Parsing</li>
+<li>The Logstash pipeline is stored in the directory structure. It includes parsers for all Ping Identity log sources.</li>
+</ul>
+<h2 id="cleaning-up">Cleaning Up<a class="headerlink" href="#cleaning-up" title="Permanent link"> ¶</a></h2>
+<p>There are persistent volumes used for Elasticsearch data and certificates, so you'll also need to clear the volumes when you bring the stack down. Enter:</p>
+<div class="highlight"><pre><span></span><code>docker-compose down
+docker volume prune
+</code></pre></div>
+<h2 id="dashboard-examples">Dashboard Examples<a class="headerlink" href="#dashboard-examples" title="Permanent link"> ¶</a></h2>
+<h3 id="pingfederate-threat-intel-dashboard">PingFederate Threat Intel Dashboard<a class="headerlink" href="#pingfederate-threat-intel-dashboard" title="Permanent link"> ¶</a></h3>
+<p><img alt="alt text" src="../../images/threat_intel_dash.png" title="SIEM Dashboard" /></p>
+<h3 id="ping-identity-siem-dashboard">Ping Identity SIEM Dashboard<a class="headerlink" href="#ping-identity-siem-dashboard" title="Permanent link"> ¶</a></h3>
+<p><img alt="alt text" src="../../images/dashboard.png" title="SIEM Dashboard" /></p>
+<h3 id="ping-federate-dashboard">Ping Federate Dashboard<a class="headerlink" href="#ping-federate-dashboard" title="Permanent link"> ¶</a></h3>
+<p>Audit and System logs are delivered (set to Debug by default). For Log4J, PingFederate sends logs on 2 different Syslog ports using a custom mapping.</p>
+<p><img alt="alt text" src="../../images/pingfederate_dashboard.png" title="PingFederate Basic Demo Dashboard" /></p>
+<h3 id="pingaccess-dashboard">PingAccess Dashboard<a class="headerlink" href="#pingaccess-dashboard" title="Permanent link"> ¶</a></h3>
+<p>Audit and System logs are delivered (set to Debug by default). For Log4J, PingAccess sends logs on 2 different Syslog ports using a custom mapping.</p>
+<p><img alt="alt text" src="../../images/pingaccess_dashboard.png" title="PingAccess Basic Demo Dashboard" /></p>
+<h3 id="pingdirectory-dashboard">PingDirectory Dashboard<a class="headerlink" href="#pingdirectory-dashboard" title="Permanent link"> ¶</a></h3>
+<p>Audit logs are being delivered. There are 2 containers that produce load. These are disabled by default. You can uncomment these entries in the <code>docker-compose.yaml</code> file to use them:</p>
+<ul>
+<li>authrate_ok</li>
+<li>authrate_ko</li>
+</ul>
+<p>For Log4J, PingDirectory sends logs on 1 Syslog port using a custom mapping.</p>
+<p><img alt="alt text" src="../../images/pingdirectory_dashboard.png" title="PingDirectory Demo Dashboard" /></p>
+<h2 id="included-slack-alerts">Included Slack Alerts<a class="headerlink" href="#included-slack-alerts" title="Permanent link"> ¶</a></h2>
+<p>These can be customized through Watchers:</p>
+<ul>
+<li>User authenticates over 1200km away within a 6 hour period.</li>
+<li>User authenticates successfully from TOR through Ping Federate (potential credential theft).</li>
+<li>User authenticates successfully from Known Malicious IP through Ping Federate (potential credential theft).</li>
+<li>Account Lockout detected through Ping Federate (potential brute force).</li>
+<li>Likely SAML signature modifications (forced tampering with authentication protocols).</li>
+</ul>
+<h3 id="slack-alert-examples-not-all-are-shown">Slack Alert Examples (not all are shown)<a class="headerlink" href="#slack-alert-examples-not-all-are-shown" title="Permanent link"> ¶</a></h3>
+<p>These are Low / Medium / High alert examples:</p>
+<p><img alt="alt text" src="../../images/slack_alert_examples.png" title="Successful Login From TOR Networks." /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../deployMonitoringStack/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Deploy Monitoring Stack
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../deployK8s/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Introduction
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs', 'instant'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

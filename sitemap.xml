@@ -1,371 +1,355 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://devops.pingidentity.com/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/overview/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/getStarted/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/get-started/getStarted/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/devopsRegistration/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/get-started/pingDevopsUtil/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/getStartedWithGitRepo/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/get-started/devopsRegistration/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/prodLicense/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/get-started/devopsUserKey/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/devopsUserKey/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/get-started/prodLicense/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/existingLicense/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/get-started/getStartedWithGitRepo/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/saveConfigs/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deploy/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deploy/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployCompose/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/buildLocal/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deploySimpleStack/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployCompose/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployReplication/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deploySimpleStack/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deploySync/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployReplication/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployPingCentral/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deploySync/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployPfCluster/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployPingCentral/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployPaCluster/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployPfCluster/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployPdgPap/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployPaCluster/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployMonitoringStack/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployPdgPap/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deploySiemStack/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployMonitoringStack/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8s/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deploySiemStack/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployHelm/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8s/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8sPD-clusters/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployHelm/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8sGeneral/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8sPD-clusters/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8sStandalone/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8sGeneral/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8sFullstack/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8sStandalone/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8sReplicated/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8sFullstack/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8sPA-cluster/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8sReplicated/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8sPF-cluster/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8sPA-cluster/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8sPFclusters/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8sPF-cluster/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployPFMultiRegionDNS/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8sPFclusters/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployPFMultiRegionAWS/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployPFMultiRegionDNS/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8sCloud/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployPFMultiRegionAWS/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8s-AWS/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8sCloud/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployK8s-AKS/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8s-AWS/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/k8sClusterSizing/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployK8s-AKS/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/deployment/deployVault/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/k8sClusterSizing/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/existingLicense/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/deployVault/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/containerAnatomy/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/config/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/profiles/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/containerAnatomy/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/buildPingFederateProfile/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/profileStructures/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/profilesLayered/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/profiles/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/profilesSubstitution/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/buildPingFederateProfile/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/privateRepos/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/profilesLayered/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/usingVault/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/profilesSubstitution/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/secureContainers/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/privateRepos/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/manage/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/yamlFiles/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/upgradePingfederate/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/variableScoping/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/how-to/upgradePingDirectory/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/usingCertificates/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/config/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/hooks/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/profileStructures/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/releaseTags/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/yamlFiles/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/imageSupport/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/variableScoping/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/usingVault/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/usingCertificates/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/secureContainers/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/releaseTags/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/dockerImageSecurity/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/imageSupport/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/addMOTD/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/dockerImageSecurity/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/manage/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/ldapsdkUtil/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/upgradePingfederate/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/troubleshooting/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/upgradePingDirectory/</loc>
-     <lastmod>2020-12-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://devops.pingidentity.com/pingDevopsUtil/</loc>
-     <lastmod>2020-12-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://devops.pingidentity.com/ldapsdkUtil/</loc>
-     <lastmod>2020-12-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://devops.pingidentity.com/troubleshooting/</loc>
-     <lastmod>2020-12-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://devops.pingidentity.com/dockerImagesRef/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/dockerImagesRef/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingfederate/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingaccess/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingdirectory/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingdirectoryproxy/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingdatagovernance/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingdatagovernancepap/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingdatasync/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingdelegator/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingcentral/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingintelligence/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/ldap-sdk-tools/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingdataconsole/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingdownloader/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingbase/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingcommon/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/pingdatacommon/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/docker-images/apache-jmeter/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/relnotes-2010/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/hooks/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/relnotes-2009/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/addMOTD/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/relnotes-2008/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/reference/buildLocal/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/relnotes-2007/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/release-notes/relnotes-2010/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/relnotes-2006/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/release-notes/relnotes-2009/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/relnotes-2005/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/release-notes/relnotes-2008/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/relnotes-2004/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/release-notes/relnotes-2007/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/relnotes-2003/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/release-notes/relnotes-2006/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/license/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <loc>https://devops.pingidentity.com/release-notes/relnotes-2005/</loc>
+     <lastmod>2020-12-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://devops.pingidentity.com/release-notes/relnotes-2004/</loc>
+     <lastmod>2020-12-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://devops.pingidentity.com/release-notes/relnotes-2003/</loc>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://devops.pingidentity.com/disclaimer/</loc>
-     <lastmod>2020-12-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://devops.pingidentity.com/3rd_party_software/</loc>
-     <lastmod>2020-12-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://devops.pingidentity.com/contributing/</loc>
-     <lastmod>2020-12-08</lastmod>
+     <lastmod>2020-12-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
