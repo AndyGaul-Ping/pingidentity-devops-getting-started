@@ -732,7 +732,14 @@
       
         <li class="md-nav__item">
   <a href="#deploy-the-stack" class="md-nav__link">
-    Deploy the stack
+    Deploy the Stack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-up" class="md-nav__link">
+    Clean Up
   </a>
   
 </li>
@@ -1048,7 +1055,7 @@
 
   <li class="md-nav__item">
     <a href="../../how-to/profilesSubstitution/" class="md-nav__link">
-      Env Substitution
+      ENV Substitution
     </a>
   </li>
 
@@ -1851,7 +1858,14 @@
       
         <li class="md-nav__item">
   <a href="#deploy-the-stack" class="md-nav__link">
-    Deploy the stack
+    Deploy the Stack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-up" class="md-nav__link">
+    Clean Up
   </a>
   
 </li>
@@ -1869,7 +1883,7 @@
               
                 
                 
-                <h1 id="orchestrate-a-full-stack-deployment">Orchestrate a full stack deployment<a class="headerlink" href="#orchestrate-a-full-stack-deployment" title="Permanent link"> ¶</a></h1>
+                <h1 id="orchestrate-a-full-stack-deployment">Orchestrate a Full Stack Deployment<a class="headerlink" href="#orchestrate-a-full-stack-deployment" title="Permanent link"> ¶</a></h1>
 <p>You'll use kustomize for the full stack deployment from your local <code>pingidentity-devops-getting-started/20-kubernetes/02-fullstack</code> directory (the location of the YAML files), and call into your local <code>pingidentity-devops-getting-started/20-kubernetes/01-standalone</code> directory for the base product configurations. However, this time we'll use the server profiles in our <a href="https://github.com/pingidentity/pingidentity-server-profiles/tree/master/baseline">pingidentity-server-profiles/baseline</a> repository, rather than the <a href="https://github.com/pingidentity/pingidentity-server-profiles/tree/master/getting-started">pingidentity-server-profiles/getting-started</a> repository, as we did for the standalone deployments.</p>
 <p>The <code>env_vars.*</code> files contain the environment variables for <code>pingidentity-server-profiles/baseline</code>. For example:
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_URL=https://www.github.com/pingidentity/pingidentity-server-profiles.git</span>
@@ -1878,21 +1892,18 @@
 </code></pre></div></p>
 <p><code>kustomization.yaml</code> does the following:</p>
 <ul>
-<li>References your local <code>pingidentity-devops-getting-started/20-kubernetes/01-standalone</code> directory for the base product configurations. </li>
+<li>References your local <code>pingidentity-devops-getting-started/20-kubernetes/01-standalone</code> directory for the base product configurations.</li>
 <li>Replaces the environment variables in the parent <code>configMap</code> with those in the specified <code>env_vars.*</code> files.</li>
 </ul>
-<h2 id="deploy-the-stack">Deploy the stack<a class="headerlink" href="#deploy-the-stack" title="Permanent link"> ¶</a></h2>
-<ol>
-<li>To orchestrate the full stack deployment, from your local <code>pingidentity-devops-getting-started/20-kubernetes</code> directory, enter:</li>
-</ol>
+<h2 id="deploy-the-stack">Deploy the Stack<a class="headerlink" href="#deploy-the-stack" title="Permanent link"> ¶</a></h2>
+<p>To orchestrate the full stack deployment, from your local <code>pingidentity-devops-getting-started/20-kubernetes</code> directory, enter:</p>
 <div class="highlight"><pre><span></span><code>kustomize build . <span class="p">|</span> kubectl apply -f -
 </code></pre></div>
 <blockquote>
-<p>Optionally, if you don't want to deploy everything, first comment out what you don't want on <code>kustomization.yaml</code></p>
+<p>Optionally, if you don't want to deploy everything, first comment out what you don't want in the <code>kustomization.yaml</code> file.</p>
 </blockquote>
-<ol>
-<li>To clean up when you're finished, enter:</li>
-</ol>
+<h2 id="clean-up">Clean Up<a class="headerlink" href="#clean-up" title="Permanent link"> ¶</a></h2>
+<p>To clean up when you're finished, enter:</p>
 <div class="highlight"><pre><span></span><code>kustomize build . <span class="p">|</span> kubectl delete -f -
 </code></pre></div>
                 

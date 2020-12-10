@@ -720,7 +720,14 @@
       
         <li class="md-nav__item">
   <a href="#deploy-the-containers" class="md-nav__link">
-    Deploy the containers
+    Deploy the Containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-up" class="md-nav__link">
+    Clean Up
   </a>
   
 </li>
@@ -1048,7 +1055,7 @@
 
   <li class="md-nav__item">
     <a href="../../how-to/profilesSubstitution/" class="md-nav__link">
-      Env Substitution
+      ENV Substitution
     </a>
   </li>
 
@@ -1851,7 +1858,14 @@
       
         <li class="md-nav__item">
   <a href="#deploy-the-containers" class="md-nav__link">
-    Deploy the containers
+    Deploy the Containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-up" class="md-nav__link">
+    Clean Up
   </a>
   
 </li>
@@ -1869,32 +1883,34 @@
               
                 
                 
-                <h1 id="orchestrate-standalone-deployments">Orchestrate standalone deployments<a class="headerlink" href="#orchestrate-standalone-deployments" title="Permanent link"> ¶</a></h1>
-<p>You'll use the standalone configurations in your local <code>pingidentity-devops-getting-started/20-kubernetes/01-standalone</code> directory as the base product configurations with the server profiles in our <a href="https://github.com/pingidentity/pingidentity-server-profiles/tree/master/getting-started">pingidentity-server-profiles/getting-started</a> repository.  </p>
-<p>The commands in this topic are meant to be used with or without kustomize. When used without kustomize (as the steps in this topic do), the commands will return some benign errors regarding <code>kustomization.yaml</code>. An example of a benign kustomize error is: 
-<div class="highlight"><pre><span></span><code>unable to recognize <span class="s2">&quot;01-standalone/kustomization.yaml&quot;</span>: no matches <span class="k">for</span> kind <span class="s2">&quot;Kustomization&quot;</span> in version <span class="s2">&quot;kustomize.config.k8s.io/v1beta1&quot;</span>
-</code></pre></div></p>
+                <h1 id="orchestrate-standalone-deployments">Orchestrate Standalone Deployments<a class="headerlink" href="#orchestrate-standalone-deployments" title="Permanent link"> ¶</a></h1>
+<p>You'll use the standalone configurations in your local <code>pingidentity-devops-getting-started/20-kubernetes/01-standalone</code> directory as the base product configurations with the server profiles in our <a href="https://github.com/pingidentity/pingidentity-server-profiles/tree/master/getting-started">pingidentity-server-profiles/getting-started</a> repository.</p>
+<p>The commands in this topic are meant to be used with or without kustomize. When used without kustomize (as the steps in this topic do), the commands will return some benign errors regarding <code>kustomization.yaml</code>. An example of a benign kustomize error is:</p>
+<div class="highlight"><pre><span></span><code>unable to recognize <span class="s2">&quot;01-standalone/kustomization.yaml&quot;</span>:
+   no matches <span class="k">for</span> kind <span class="s2">&quot;Kustomization&quot;</span> in version <span class="s2">&quot;kustomize.config.k8s.io/v1beta1&quot;</span>
+</code></pre></div>
 <p>You can deploy a single (standalone) product container, or a set of standalone containers using Kubernetes.</p>
-<h2 id="deploy-the-containers">Deploy the containers<a class="headerlink" href="#deploy-the-containers" title="Permanent link"> ¶</a></h2>
+<h2 id="deploy-the-containers">Deploy the Containers<a class="headerlink" href="#deploy-the-containers" title="Permanent link"> ¶</a></h2>
 <ol>
 <li>Go to any one of the product subdirectories in your local <code>pingidentity-devops-getting-started/20-kubernetes/01-standalone</code> directory.</li>
-<li>Orchestrate the deployment using the Kubernetes commands. For example:</li>
-</ol>
+<li>
+<p>Orchestrate the deployment using the Kubernetes commands. For example:</p>
 <div class="highlight"><pre><span></span><code>kubectl apply -f pingfederate/
 </code></pre></div>
-<ol>
-<li>To orchestrate a deployment of all of the products in your <code>pingidentity-devops-getting-started/20-kubernetes/01-standalone</code> directory. From your local <code>pingidentity-devops-getting-started/20-kubernetes</code> directory, enter: </li>
-</ol>
+</li>
+<li>
+<p>To orchestrate a deployment of all of the products in your <code>pingidentity-devops-getting-started/20-kubernetes/01-standalone</code> directory. From your local <code>pingidentity-devops-getting-started/20-kubernetes</code> directory, enter:</p>
 <div class="highlight"><pre><span></span><code>kubectl apply -R -f <span class="m">01</span>-standalone/
 </code></pre></div>
-<ol>
-<li>To clean up when you're finished, for a single product container, enter: </li>
+</li>
 </ol>
+<h2 id="clean-up">Clean Up<a class="headerlink" href="#clean-up" title="Permanent link"> ¶</a></h2>
+<p>To clean up when you're finished, for a single product container, enter:</p>
 <div class="highlight"><pre><span></span><code>kubectl delete -f &lt;container&gt;/
 </code></pre></div>
 <p>Where &lt;container&gt; is the name of a product container (such as, <code>pingfederate</code>).</p>
 <p>For all products in the <code>01-standalone</code> directory, enter:</p>
-<div class="highlight"><pre><span></span><code>kubectl delete -R -f <span class="m">01</span>-standalone/
+<div class="highlight"><pre><span></span><code>kubectl delete -R -f 01-standalone/
 </code></pre></div>
                 
               

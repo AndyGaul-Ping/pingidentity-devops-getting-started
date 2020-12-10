@@ -991,21 +991,21 @@
       
         <li class="md-nav__item">
   <a href="#pulled-at-startup" class="md-nav__link">
-    Pulled at startup
+    Pulled at Startup
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#built-into-the-image" class="md-nav__link">
-    Built into the image
+    Built Into The Image
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mounted-as-a-docker-volume" class="md-nav__link">
-    Mounted as a Docker volume
+    Mounted as a Docker Volume
   </a>
   
 </li>
@@ -1060,7 +1060,7 @@
 
   <li class="md-nav__item">
     <a href="../profilesSubstitution/" class="md-nav__link">
-      Env Substitution
+      ENV Substitution
     </a>
   </li>
 
@@ -1863,21 +1863,21 @@
       
         <li class="md-nav__item">
   <a href="#pulled-at-startup" class="md-nav__link">
-    Pulled at startup
+    Pulled at Startup
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#built-into-the-image" class="md-nav__link">
-    Built into the image
+    Built Into The Image
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mounted-as-a-docker-volume" class="md-nav__link">
-    Mounted as a Docker volume
+    Mounted as a Docker Volume
   </a>
   
 </li>
@@ -1903,7 +1903,7 @@
 <li>Build into the image</li>
 <li>Mounted as a container volume</li>
 </ul>
-<h2 id="pulled-at-startup">Pulled at startup<a class="headerlink" href="#pulled-at-startup" title="Permanent link"> ¶</a></h2>
+<h2 id="pulled-at-startup">Pulled at Startup<a class="headerlink" href="#pulled-at-startup" title="Permanent link"> ¶</a></h2>
 <p>Pass a Github-based URL and path as environment variables that point to a server profile. If the container sees these variables:</p>
 <ul>
 <li><code>SERVER_PROFILE_URL</code> - The git URL with the server profile.</li>
@@ -1923,7 +1923,7 @@ as well as tracking changes over time.  See <a href="../privateRepos/">Private G
 <ul>
 <li>Adds download time at container startup.</li>
 </ul>
-<h2 id="built-into-the-image">Built into the image<a class="headerlink" href="#built-into-the-image" title="Permanent link"> ¶</a></h2>
+<h2 id="built-into-the-image">Built Into The Image<a class="headerlink" href="#built-into-the-image" title="Permanent link"> ¶</a></h2>
 <p>Build your own image from one of our Docker images and copy the profile files in. This is useful when you have no access to the Github repository, or if you're often spinning containers up and down. For example, if you made a Dockerfile at this location: https://github.com/pingidentity/pingidentity-server-profiles/tree/master/baseline, the relevant entries might look similar to this:</p>
 <div class="highlight"><pre><span></span><code>FROM: pingidentity/pingfederate:edge
 COPY pingfederate/. /opt/in/.
@@ -1936,7 +1936,7 @@ COPY pingfederate/. /opt/in/.
 <ul>
 <li>Tedious to build images when making iterative changes.</li>
 </ul>
-<h2 id="mounted-as-a-docker-volume">Mounted as a Docker volume<a class="headerlink" href="#mounted-as-a-docker-volume" title="Permanent link"> ¶</a></h2>
+<h2 id="mounted-as-a-docker-volume">Mounted as a Docker Volume<a class="headerlink" href="#mounted-as-a-docker-volume" title="Permanent link"> ¶</a></h2>
 <p>Using <code>docker-compose</code> you can bind-mount a host file system location to a location in the container. This is useful when you're developing a server profile, and you want to be able to quickly make changes to the profile and spin up a container against it. For example, if you have a profile in same directory as your <code>docker-compose.yaml</code> file, you can add a bind-mount volume to /opt/in like this:</p>
 <div class="highlight"><pre><span></span><code>volumes:
    - ./pingfederate:/opt/in
