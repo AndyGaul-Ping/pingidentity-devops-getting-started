@@ -16,7 +16,7 @@
     
     
       
-        <title>ping-devops Tool - Ping Identity DevOps</title>
+        <title>ping-devops Utility - Ping Identity DevOps</title>
       
     
     
@@ -96,7 +96,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              ping-devops Tool
+              ping-devops Utility
             
           </span>
         </div>
@@ -363,12 +363,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        ping-devops Tool
+        ping-devops Utility
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      ping-devops Tool
+      ping-devops Utility
     </a>
     
       
@@ -386,14 +386,14 @@
       
         <li class="md-nav__item">
   <a href="#dependent-utilities" class="md-nav__link">
-    Dependent utilities
+    Dependent Utilities
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#installation-and-upgrades" class="md-nav__link">
-    Installation and upgrades
+    Installation and Upgrades
   </a>
   
 </li>
@@ -1337,18 +1337,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reference/pingDevopsUtil.md" class="md-nav__link">
-      ping-devops
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../reference/ldapsdkUtil/" class="md-nav__link">
       ldap-sdk-tools
     </a>
@@ -1806,7 +1794,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../LICENSE.md" class="md-nav__link">
+    <a href="../../license/" class="md-nav__link">
       License
     </a>
   </li>
@@ -1830,7 +1818,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3RD_PARTY_SOFTWARE.md" class="md-nav__link">
+    <a href="../../3rd_party_software/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1842,7 +1830,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../CONTRIBUTING.md" class="md-nav__link">
+    <a href="../../contributing/" class="md-nav__link">
       Contributing
     </a>
   </li>
@@ -1873,14 +1861,14 @@
       
         <li class="md-nav__item">
   <a href="#dependent-utilities" class="md-nav__link">
-    Dependent utilities
+    Dependent Utilities
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#installation-and-upgrades" class="md-nav__link">
-    Installation and upgrades
+    Installation and Upgrades
   </a>
   
 </li>
@@ -1905,9 +1893,9 @@
               
                 
                 
-                <h1 id="the-ping-devops-utility">The <code>ping-devops</code> utility<a class="headerlink" href="#the-ping-devops-utility" title="Permanent link"> ¶</a></h1>
+                <h1 id="the-ping-devops-utility">The <code>ping-devops</code> Utility<a class="headerlink" href="#the-ping-devops-utility" title="Permanent link"> ¶</a></h1>
 <p><code>ping-devops</code> is our general DevOps command line utility.</p>
-<h2 id="dependent-utilities">Dependent utilities<a class="headerlink" href="#dependent-utilities" title="Permanent link"> ¶</a></h2>
+<h2 id="dependent-utilities">Dependent Utilities<a class="headerlink" href="#dependent-utilities" title="Permanent link"> ¶</a></h2>
 <p>To perform all of its operations, <code>ping-devops</code> has a dependency on these utilities:</p>
 <ul>
 <li>openssl</li>
@@ -1917,11 +1905,9 @@
 <li>envsubst</li>
 <li>jq</li>
 </ul>
-<h2 id="installation-and-upgrades">Installation and upgrades<a class="headerlink" href="#installation-and-upgrades" title="Permanent link"> ¶</a></h2>
-<ul>
-<li>
+<h2 id="installation-and-upgrades">Installation and Upgrades<a class="headerlink" href="#installation-and-upgrades" title="Permanent link"> ¶</a></h2>
 <p>Use Homebrew, to install <code>ping-devops</code> on Apple or Linux:</p>
-</li>
+<ol>
 <li>
 <p>To install, enter:</p>
 <div class="highlight"><pre><span></span><code>brew tap pingidentity/devops
@@ -1935,20 +1921,23 @@ brew install ping-devops
 </li>
 <li>
 <p>Check for upgrades regularly.</p>
-</li>
-</ul>
+<p>Run the following command to see if there's an upgrade available:</p>
+<div class="highlight"><pre><span></span><code>ping-devops version
+</code></pre></div>
 <p>The dependent utilities for <code>ping-devops</code> will also be installed or upgraded during this process.</p>
-<ul>
-<li>On Linux systems, install or upgrade the <code>ping-devops</code> utility and <code>bash_profile</code> aliases to your current directory by entering:</li>
-</ul>
+</li>
+<li>
+<p>On Linux systems, install or upgrade the <code>ping-devops</code> utility and <code>bash_profile</code> aliases to your current directory by entering:</p>
 <div class="highlight"><pre><span></span><code>curl -sL https://bit.ly/ping-devops-install <span class="p">|</span> bash
 </code></pre></div>
 <p>Follow instructions to copy to the preferred location.</p>
 <p>Ensure you have the dependent utilities for <code>ping-devops</code> installed as well.</p>
+</li>
+</ol>
 <h2 id="ping-devops-usage"><code>ping-devops</code> Usage<a class="headerlink" href="#ping-devops-usage" title="Permanent link"> ¶</a></h2>
 <p>Enter <code>ping-devops</code> in a terminal to display the commands listing. The display will be similar to this:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">#####################################################################</span>
-<span class="c1">#  Ping Identity DevOps (version 0.6.6)</span>
+<span class="c1">#  Ping Identity DevOps (version 0.7.1)</span>
 <span class="c1">#</span>
 <span class="c1">#  Documentation: https://pingidentity-devops.gitbook.io/devops/</span>
 <span class="c1">#   GitHub Repos: https://github.com/topics/ping-devops</span>
@@ -1958,19 +1947,25 @@ General Usage:
   ping-devops config
   ping-devops info <span class="o">[</span>-v<span class="o">]</span>
   ping-devops version
+  ping-devops clean
   ping-devops topic <span class="o">[</span> <span class="o">{</span>topic-name<span class="o">}</span> <span class="o">]</span>
 
 Generate Kubernetes/Kustomize/License Resources:
   ping-devops generate devops-secret
   ping-devops generate tls-secret <span class="o">{</span>domain<span class="o">}</span>
   ping-devops generate ssh-id-secret <span class="o">{</span>ssh id_rsa file<span class="o">}</span>
-  ping-devops generate license <span class="o">{</span>product<span class="o">}</span>
+  ping-devops generate license <span class="o">{</span>product<span class="o">}</span> <span class="o">{</span>ver<span class="o">}</span>
   ping-devops generate license-secret <span class="o">{</span>license file<span class="o">}</span>
+  ping-devops generate license-secret <span class="o">{</span>product<span class="o">}</span> <span class="o">{</span>ver<span class="o">}</span>
   ping-devops generate kustomization.yaml
 
 Running Docker/Kubernetes Evironments:
   ping-devops docker     <span class="o">[</span>info<span class="p">|</span>start<span class="p">|</span>stop<span class="p">|</span>rm<span class="p">|</span>clean<span class="o">]</span>
   ping-devops kubernetes <span class="o">[</span>info<span class="p">|</span>start<span class="p">|</span>rm<span class="p">|</span>clean<span class="o">]</span>
+
+Hashicorp Vault:
+  ping-devops vault get-token
+  ping-devops vault create-annotations <span class="o">{</span>secret<span class="o">}</span>
 
 Further help:
   https://github.com/pingidentity/ping-devops

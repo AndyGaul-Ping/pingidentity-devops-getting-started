@@ -353,7 +353,7 @@
 
   <li class="md-nav__item">
     <a href="../../get-started/pingDevopsUtil/" class="md-nav__link">
-      ping-devops Tool
+      ping-devops Utility
     </a>
   </li>
 
@@ -1200,7 +1200,7 @@
       
         <li class="md-nav__item">
   <a href="#yaml-file-format" class="md-nav__link">
-    YAML file format
+    YAML File Format
   </a>
   
 </li>
@@ -1316,18 +1316,6 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../pingDevopsUtil.md" class="md-nav__link">
-      ping-devops
-    </a>
-  </li>
-
         
           
           
@@ -1792,7 +1780,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../LICENSE.md" class="md-nav__link">
+    <a href="../../license/" class="md-nav__link">
       License
     </a>
   </li>
@@ -1816,7 +1804,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3RD_PARTY_SOFTWARE.md" class="md-nav__link">
+    <a href="../../3rd_party_software/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1828,7 +1816,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../CONTRIBUTING.md" class="md-nav__link">
+    <a href="../../contributing/" class="md-nav__link">
       Contributing
     </a>
   </li>
@@ -1859,7 +1847,7 @@
       
         <li class="md-nav__item">
   <a href="#yaml-file-format" class="md-nav__link">
-    YAML file format
+    YAML File Format
   </a>
   
 </li>
@@ -1878,19 +1866,19 @@
                 
                 
                 <h1 id="customizing-yaml-files">Customizing YAML files<a class="headerlink" href="#customizing-yaml-files" title="Permanent link"> ¶</a></h1>
-<p>Docker Compose uses YAML files to configure a stack's containers on startup. You can customize our YAML files or use them as the basis for creating your own. See the Docker <a href="https://docs.docker.com/compose/compose-file/">Compose file reference</a> for more information.</p>
+<p>Docker Compose uses YAML files to configure a stack's containers on startup. You can customize our YAML files or use them as the basis for creating your own. See the Docker <a href="https://docs.docker.com/compose/compose-file/">Compose File Reference</a> for more information.</p>
 <p>Some examples of how you can customize our YAML files:</p>
 <ul>
 <li>Add or change environment variables to use different server profiles.</li>
 <li>Add references to a file or files containing environment variables to pass to the container on startup.</li>
 <li>Change the <code>wait-for</code> times used to control the startup sequence of containers.</li>
 <li>Change the port mappings for a container.</li>
-<li>Change the release tag used for the Docker images (all product containers in the stack must use the same release tag). See <a href="../releaseTags/">Using release tags</a> for more information.</li>
+<li>Change the release tag used for the Docker images (all product containers in the stack must use the same release tag). See <a href="../releaseTags/">Using Release Tags</a> for more information.</li>
 </ul>
 <p>You'll find the YAML files for the DevOps example stacks located in your <code>${HOME}/projects/devops/pingidentity-devops-getting-started/11-docker-compose</code> subdirectories.</p>
-<h2 id="yaml-file-format">YAML file format<a class="headerlink" href="#yaml-file-format" title="Permanent link"> ¶</a></h2>
+<h2 id="yaml-file-format">YAML File Format<a class="headerlink" href="#yaml-file-format" title="Permanent link"> ¶</a></h2>
 <p>Here's the format we use for our YAML files:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;2.4&quot;</span>
 
 <span class="nt">services</span><span class="p">:</span>
     <span class="nt">&lt;ping-product&gt;</span><span class="p">:</span>
@@ -1941,19 +1929,19 @@
 </tr>
 <tr>
 <td align="left"><code>environment</code></td>
-<td align="left">The environment variables being set. See <a href="../../how-to/profiles/">Customizing server profiles</a> for more information. The <code>PING_IDENTITY_ACCEPT_EULA</code> environment variable is set to "YES" when you complete the DevOps registration. This variable assignment appears here by default, but may also be in your <code>~/.pingidentity/devops</code> file.</td>
+<td align="left">The environment variables being set. See <a href="../../how-to/profiles/">Customizing Server Profiles</a> for more information. The <code>PING_IDENTITY_ACCEPT_EULA</code> environment variable is set to "YES" when you complete the DevOps registration. This variable assignment appears here by default, but may also be in your <code>~/.pingidentity/devops</code> file.</td>
 </tr>
 <tr>
 <td align="left"><code>env_file</code></td>
-<td align="left">A file or files containing environment variable settings. The DevOps environment settings are stored in your <code>~/.pingidentity/devops</code> file. You also can specify additional files containing environment settings. See <a href="../../how-to/profiles/">Customizing server profiles</a> for more information.</td>
+<td align="left">A file or files containing environment variable settings. The DevOps environment settings are stored in your <code>~/.pingidentity/devops</code> file. You also can specify additional files containing environment settings. See <a href="../../how-to/profiles/">Customizing Server Profiles</a> for more information.</td>
 </tr>
 <tr>
 <td align="left"><code>volumes</code></td>
-<td align="left">Commented out by default. The location bind mounted to the  <code>/opt/out</code> volume is used to persist product container state and data. The location bind mounted to the <code>/opt/in</code> volume is used to supply server profile information to the container on startup. See <em>Modify a server profile using local directories</em> in <a href="../../how-to/profiles/">Customizing server profiles</a> for more information.</td>
+<td align="left">Commented out by default. The location bind mounted to the  <code>/opt/out</code> volume is used to persist product container state and data. The location bind mounted to the <code>/opt/in</code> volume is used to supply server profile information to the container on startup. See <em>Modify a server profile using local directories</em> in <a href="../../how-to/profiles/">Customizing Server Profiles</a> for more information.</td>
 </tr>
 <tr>
 <td align="left"><code>ports</code></td>
-<td align="left">The port mappings between the host and the product container. See the <em>Ports</em> topic in the Docker <a href="https://docs.docker.com/compose/compose-file/">Compose file reference</a> for more information.</td>
+<td align="left">The port mappings between the host and the product container. See the <em>Ports</em> topic in the Docker <a href="https://docs.docker.com/compose/compose-file/">Compose File Reference</a> for more information.</td>
 </tr>
 <tr>
 <td align="left"><code>networks</code></td>

@@ -353,7 +353,7 @@
 
   <li class="md-nav__item">
     <a href="../../get-started/pingDevopsUtil/" class="md-nav__link">
-      ping-devops Tool
+      ping-devops Utility
     </a>
   </li>
 
@@ -1265,10 +1265,10 @@
       
         <li class="md-nav__item">
   <a href="#base-release-tags" class="md-nav__link">
-    Base release tags
+    Base Release Tags
   </a>
   
-    <nav class="md-nav" aria-label="Base release tags">
+    <nav class="md-nav" aria-label="Base Release Tags">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1299,7 +1299,7 @@
       
         <li class="md-nav__item">
   <a href="#which-release-tag-to-use" class="md-nav__link">
-    Which release tag to use
+    Which Release Tag To Use
   </a>
   
 </li>
@@ -1313,17 +1313,17 @@
       
         <li class="md-nav__item">
   <a href="#find-the-product-version-for-an-image" class="md-nav__link">
-    Find the product version for an image
+    Find The Product Version for an Image
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#additional-release-tags" class="md-nav__link">
-    Additional release tags
+    Additional Release Tags
   </a>
   
-    <nav class="md-nav" aria-label="Additional release tags">
+    <nav class="md-nav" aria-label="Additional Release Tags">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1407,18 +1407,6 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../pingDevopsUtil.md" class="md-nav__link">
-      ping-devops
-    </a>
-  </li>
-
         
           
           
@@ -1883,7 +1871,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../LICENSE.md" class="md-nav__link">
+    <a href="../../license/" class="md-nav__link">
       License
     </a>
   </li>
@@ -1907,7 +1895,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3RD_PARTY_SOFTWARE.md" class="md-nav__link">
+    <a href="../../3rd_party_software/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1919,7 +1907,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../CONTRIBUTING.md" class="md-nav__link">
+    <a href="../../contributing/" class="md-nav__link">
       Contributing
     </a>
   </li>
@@ -1957,10 +1945,10 @@
       
         <li class="md-nav__item">
   <a href="#base-release-tags" class="md-nav__link">
-    Base release tags
+    Base Release Tags
   </a>
   
-    <nav class="md-nav" aria-label="Base release tags">
+    <nav class="md-nav" aria-label="Base Release Tags">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1991,7 +1979,7 @@
       
         <li class="md-nav__item">
   <a href="#which-release-tag-to-use" class="md-nav__link">
-    Which release tag to use
+    Which Release Tag To Use
   </a>
   
 </li>
@@ -2005,17 +1993,17 @@
       
         <li class="md-nav__item">
   <a href="#find-the-product-version-for-an-image" class="md-nav__link">
-    Find the product version for an image
+    Find The Product Version for an Image
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#additional-release-tags" class="md-nav__link">
-    Additional release tags
+    Additional Release Tags
   </a>
   
-    <nav class="md-nav" aria-label="Additional release tags">
+    <nav class="md-nav" aria-label="Additional Release Tags">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2057,10 +2045,10 @@
               
                 
                 
-                <h1 id="using-release-tags">Using release tags<a class="headerlink" href="#using-release-tags" title="Permanent link"> ¶</a></h1>
-<p>We use multiple tags for each released build image. On our <a href="https://hub.docker.com/u/pingidentity">Docker Hub</a> site, you can view the available tags for each image.</p>
+                <h1 id="using-release-tags">Using Release Tags<a class="headerlink" href="#using-release-tags" title="Permanent link"> ¶</a></h1>
+<p>Ping Identity uses multiple tags for each released build image. On our <a href="https://hub.docker.com/u/pingidentity">Docker Hub</a> site, you can view the available tags for each image.</p>
 <blockquote>
-<p>All product containers in a stack must use the same release tag.</p>
+<p>All product containers in a stack should use the same release tag.</p>
 </blockquote>
 <h2 id="tagging-format">Tagging Format<a class="headerlink" href="#tagging-format" title="Permanent link"> ¶</a></h2>
 <p>The format used to specify a release tag for stacks is:</p>
@@ -2069,7 +2057,7 @@
 <p>Where <code>&lt;ping-product&gt;</code> is the name of the product container and <code>${PING_IDENTITY_DEVOPS_TAG}</code> is assigned the release tag value. The reference to the file containing the setting for <code>${PING_IDENTITY_DEVOPS_TAG}</code> is <code>~/.pingidentity/devops</code> by default. You can also specify the release tag explicitly in the YAML file. The release tag must be the same for each container in the stack. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pingidentity/&lt;ping-product&gt;:edge</span>
 </code></pre></div>
-<h2 id="base-release-tags">Base release tags<a class="headerlink" href="#base-release-tags" title="Permanent link"> ¶</a></h2>
+<h2 id="base-release-tags">Base Release Tags<a class="headerlink" href="#base-release-tags" title="Permanent link"> ¶</a></h2>
 <p>The base release tags for a build are:</p>
 <ul>
 <li>edge</li>
@@ -2100,7 +2088,7 @@
 <li>Runs on the Linux Alpine OS.</li>
 </ul>
 <p>For example, <code>pingfederate:1909</code>.</p>
-<h2 id="which-release-tag-to-use">Which release tag to use<a class="headerlink" href="#which-release-tag-to-use" title="Permanent link"> ¶</a></h2>
+<h2 id="which-release-tag-to-use">Which Release Tag To Use<a class="headerlink" href="#which-release-tag-to-use" title="Permanent link"> ¶</a></h2>
 <p>You should test all images in development before deploying to production. It's also best practice to use a <em>full tag</em> variation like <code>pingaccess:5.3.0-alpine-edge</code>, rather than <code>pingaccess:edge</code> to avoid dependency conflicts in server profiles.  In general, we recommend:</p>
 <ul>
 <li>
@@ -2180,7 +2168,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="find-the-product-version-for-an-image">Find the product version for an image<a class="headerlink" href="#find-the-product-version-for-an-image" title="Permanent link"> ¶</a></h2>
+<h2 id="find-the-product-version-for-an-image">Find The Product Version for an Image<a class="headerlink" href="#find-the-product-version-for-an-image" title="Permanent link"> ¶</a></h2>
 <p>If you're unsure of the product version for the container you are running, shell into the container, then echo the $IMAGE_VERSION environment variable. For example:</p>
 <div class="highlight"><pre><span></span><code>docker container <span class="nb">exec</span> -it &lt;container id&gt; sh
 <span class="nb">echo</span> <span class="nv">$IMAGE_VERSION</span>
@@ -2226,7 +2214,7 @@
 <blockquote>
 <p>* Date is in YYMMDD format</p>
 </blockquote>
-<h2 id="additional-release-tags">Additional release tags<a class="headerlink" href="#additional-release-tags" title="Permanent link"> ¶</a></h2>
+<h2 id="additional-release-tags">Additional Release Tags<a class="headerlink" href="#additional-release-tags" title="Permanent link"> ¶</a></h2>
 <p>Each of the base release tags also has additional variations that you can use in combination, if you need other options:</p>
 <ul>
 <li><code>{{productVersion}}</code></li>

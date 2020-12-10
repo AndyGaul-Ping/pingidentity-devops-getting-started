@@ -353,7 +353,7 @@
 
   <li class="md-nav__item">
     <a href="../../get-started/pingDevopsUtil/" class="md-nav__link">
-      ping-devops Tool
+      ping-devops Utility
     </a>
   </li>
 
@@ -1381,18 +1381,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../pingDevopsUtil.md" class="md-nav__link">
-      ping-devops
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../ldapsdkUtil/" class="md-nav__link">
       ldap-sdk-tools
     </a>
@@ -1850,7 +1838,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../LICENSE.md" class="md-nav__link">
+    <a href="../../license/" class="md-nav__link">
       License
     </a>
   </li>
@@ -1874,7 +1862,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3RD_PARTY_SOFTWARE.md" class="md-nav__link">
+    <a href="../../3rd_party_software/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1886,7 +1874,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../CONTRIBUTING.md" class="md-nav__link">
+    <a href="../../contributing/" class="md-nav__link">
       Contributing
     </a>
   </li>
@@ -1991,12 +1979,12 @@
               
                 
                 
-                <h1 id="evaluation-of-docker-base-image-security">Evaluation of Docker base image security<a class="headerlink" href="#evaluation-of-docker-base-image-security" title="Permanent link"> ¶</a></h1>
+                <h1 id="evaluation-of-docker-base-image-security">Evaluation of Docker Base Image Security<a class="headerlink" href="#evaluation-of-docker-base-image-security" title="Permanent link"> ¶</a></h1>
 <p>In CIS (Center for Internet Security) <a href="https://www.cisecurity.org/benchmark/docker/">Docker Benchmark v1.2.0</a>, one of the recommendations says, "4.3 Ensure that unnecessary packages are not installed in the container." It further states, "You should consider using a minimal base image rather than the standard Red Hat/CentOS/Debian images if you can. Some of the options available include BusyBox and Alpine." Is Alpine Docker image really more secure than other, more popular Linux distributions?</p>
 <p>So, let's take a look at the security aspects of different Linux distributions. This doesn't necessarily mean that one is the best for Docker base images. Other factors such as usability and compatibility should also be considered when choosing the most suitable Docker image for an organization.</p>
 <h2 id="evaluation">Evaluation<a class="headerlink" href="#evaluation" title="Permanent link"> ¶</a></h2>
 <p>To evaluate Alpine’s security, we'll compare it with the following popular Linux distros: Ubuntu, CentOS, and Red Hat Enterprise Linux 7. We'll use the latest version (as of March 12, 2020) of each distro’s Docker image and compare them in four different areas: image size, number of packages installed by default, number of historical vulnerabilities reported on <a href="https://www.cvedetails.com/">cvedetails.com</a>, and the number of vulnerabilities reported by the Clair scan.</p>
-<p>This table summarises the numbers for each distro:</p>
+<p>This table summarizes the numbers for each distribution:</p>
 <table>
 <thead>
 <tr>
@@ -2069,7 +2057,7 @@
 <li><a href="https://www.cvedetails.com/product/78/Redhat-Enterprise-Linux.html?vendor_id=25">Redhat Enterprise Linux CVEs</a></li>
 </ul>
 <h2 id="ping-identitys-docker-image-hardening-guide">Ping Identity's Docker Image Hardening Guide<a class="headerlink" href="#ping-identitys-docker-image-hardening-guide" title="Permanent link"> ¶</a></h2>
-<p>View Ping Identity's <a href="https://support.pingidentity.com/s/article/Docker-Image-Hardening-Deployment-Guide">hardening guide</a> which outlines best practices for securing your product Docker Image.</p>
+<p>View Ping Identity's <a href="https://support.pingidentity.com/s/article/Docker-Image-Hardening-Deployment-Guide">Hardening Guide</a> which outlines best practices for securing your product Docker Image.</p>
                 
               
               

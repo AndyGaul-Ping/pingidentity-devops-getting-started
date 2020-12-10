@@ -355,7 +355,7 @@
 
   <li class="md-nav__item">
     <a href="../pingDevopsUtil/" class="md-nav__link">
-      ping-devops Tool
+      ping-devops Utility
     </a>
   </li>
 
@@ -429,21 +429,7 @@
       
         <li class="md-nav__item">
   <a href="#existing-license" class="md-nav__link">
-    Existing license
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#obtaining-devops-user-and-key" class="md-nav__link">
-    Obtaining DevOps User and Key
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#saving-your-devops-user-and-key" class="md-nav__link">
-    Saving Your DevOps User and Key
+    Existing License
   </a>
   
 </li>
@@ -1473,18 +1459,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../reference/pingDevopsUtil.md" class="md-nav__link">
-      ping-devops
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../reference/ldapsdkUtil/" class="md-nav__link">
       ldap-sdk-tools
     </a>
@@ -1942,7 +1916,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../LICENSE.md" class="md-nav__link">
+    <a href="../../license/" class="md-nav__link">
       License
     </a>
   </li>
@@ -1966,7 +1940,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3RD_PARTY_SOFTWARE.md" class="md-nav__link">
+    <a href="../../3rd_party_software/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1978,7 +1952,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../CONTRIBUTING.md" class="md-nav__link">
+    <a href="../../contributing/" class="md-nav__link">
       Contributing
     </a>
   </li>
@@ -2016,21 +1990,7 @@
       
         <li class="md-nav__item">
   <a href="#existing-license" class="md-nav__link">
-    Existing license
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#obtaining-devops-user-and-key" class="md-nav__link">
-    Obtaining DevOps User and Key
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#saving-your-devops-user-and-key" class="md-nav__link">
-    Saving Your DevOps User and Key
+    Existing License
   </a>
   
 </li>
@@ -2180,58 +2140,22 @@
                 <h1 id="devops-product-licenses">DevOps Product Licenses<a class="headerlink" href="#devops-product-licenses" title="Permanent link"> ¶</a></h1>
 <p>In order to run the Ping Identity DevOps images, a valid product license is required. There are several ways to obtain a product license to run the images:</p>
 <h4 id="evaluation-license">Evaluation License<a class="headerlink" href="#evaluation-license" title="Permanent link"> ¶</a></h4>
-<p>By registering for Ping Identity's DevOps program, you will be issued credentials that will automate the process of retreiving evalution product license.</p>
+<p>By registering for Ping Identity's DevOps program, you'll be issued credentials that will automate the process of retrieving evaluation product license.</p>
 <div class="admonition warning">
 <p class="admonition-title">Evaluation License</p>
 <p>Please note that evaluation licenses are short lived (30 days) and should <strong>not</strong> be used in production deployments.</p>
 </div>
 <ul>
-<li><a href="#obtaining-a-ping-identity-devops-user-and-key">Obtaining a Ping Identity DevOps User and Key</a></li>
-<li><a href="#saving-your-devops-user-and-key">Saving your DevOps User/Key</a></li>
 <li><a href="#using-your-devops-user-and-key">Using your DevOps User/Key</a></li>
 </ul>
-<h4 id="existing-license">Existing license<a class="headerlink" href="#existing-license" title="Permanent link"> ¶</a></h4>
+<h4 id="existing-license">Existing License<a class="headerlink" href="#existing-license" title="Permanent link"> ¶</a></h4>
 <ul>
 <li><a href="#mount-existing-product-license">Mount Existing Product License</a></li>
 </ul>
-<h2 id="obtaining-devops-user-and-key">Obtaining DevOps User and Key<a class="headerlink" href="#obtaining-devops-user-and-key" title="Permanent link"> ¶</a></h2>
-<p>Ping Identity will provide a DevOps Key to any user registered with Ping Identity. You must follow the steps listed below to obtain a Ping Identity DevOps User and Key</p>
-<ul>
-<li>Ensure you have a registered account with Ping Identity.  Not sure, click the link to <a href="https://www.pingidentity.com/en/account/sign-on.html">Sign On</a> and follow instructions.</li>
-<li>If you don't have an account, please create one.</li>
-<li>Otherwise, sign-in.</li>
-<li>When signing in select 'Support and Community' from the account type dropdown</li>
-<li>Once logged in, you'll be directed to your profile <a href="https://support.pingidentity.com/s/">page</a></li>
-<li>In the right-side menu, click the 'REGISTER FOR DEVOPS PROGRAM' button
-  <img alt="Register for DevOps" src="../../images/DEVOPS_REGISTRATION.png" /></li>
-<li>You'll receive a confirmation message.</li>
-<li>Your credentials will be forwarded to the email address associated with your Ping Identity account.</li>
-</ul>
-<blockquote>
-<p>Important: Upon receiving your key, ensure that you follow the instructions below for
-saving these via the <code>ping-devops</code> utility.</p>
-</blockquote>
-<p>Example:</p>
-<ul>
-<li><code>PING_IDENTITY_DEVOPS_USER=jsmith@example.com</code></li>
-<li><code>PING_IDENTITY_DEVOPS_KEY=e9bd26ac-17e9-4133-a981-d7a7509314b2</code></li>
-</ul>
-<h2 id="saving-your-devops-user-and-key">Saving Your DevOps User and Key<a class="headerlink" href="#saving-your-devops-user-and-key" title="Permanent link"> ¶</a></h2>
-<p>The best way to save your DevOps User/Key is to use the Ping Identity DevOps utility <code>ping-devops</code>.</p>
-<blockquote>
-<p>Installation instructions for <code>ping-devops</code> can be found in the <a href="../pingDevopsUtil/">Get Started</a> document.</p>
-</blockquote>
-<p>Once <code>ping-devops</code> is installed and configured it will place your DEVOPS USER/KEY into a Ping Identity property file found at
-<code>~/.pingidentity/devops</code>.  with the following variable names set (see example below).</p>
-<div class="highlight"><pre><span></span><code>PING_IDENTITY_DEVOPS_USER=jsmith@example.com
-PING_IDENTITY_DEVOPS_KEY=e9bd26ac-17e9-4133-a981-d7a7509314b2
-</code></pre></div>
-<p>You can always view these settings with the <code>ping-devops info</code> command after you've configured them.</p>
 <h2 id="using-your-devops-user-and-key">Using Your DevOps User and Key<a class="headerlink" href="#using-your-devops-user-and-key" title="Permanent link"> ¶</a></h2>
 <p>When starting an image, you can provide your devops property file <code>~/.pingidentity/devops</code> or using the individual environment variables.</p>
 <blockquote>
-<p>The examples provided for standalone and docker-compose
-are set up to use this property file by default.</p>
+<p>The examples provided for docker-compose are set up to use this property file by default.</p>
 </blockquote>
 <p>For more detail, run the <code>ping-devops info</code> to get your DevOps environment information.</p>
 <h3 id="example-docker-run-command">Example Docker Run Command<a class="headerlink" href="#example-docker-run-command" title="Permanent link"> ¶</a></h3>

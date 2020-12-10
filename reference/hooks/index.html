@@ -353,7 +353,7 @@
 
   <li class="md-nav__item">
     <a href="../../get-started/pingDevopsUtil/" class="md-nav__link">
-      ping-devops Tool
+      ping-devops Utility
     </a>
   </li>
 
@@ -1285,18 +1285,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../pingDevopsUtil.md" class="md-nav__link">
-      ping-devops
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../ldapsdkUtil/" class="md-nav__link">
       ldap-sdk-tools
     </a>
@@ -1621,7 +1609,7 @@
       
         <li class="md-nav__item">
   <a href="#using-pre-and-post-hooks" class="md-nav__link">
-    Using .pre and .post hooks
+    Using .pre and .post Hooks
   </a>
   
 </li>
@@ -1794,7 +1782,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../LICENSE.md" class="md-nav__link">
+    <a href="../../license/" class="md-nav__link">
       License
     </a>
   </li>
@@ -1818,7 +1806,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3RD_PARTY_SOFTWARE.md" class="md-nav__link">
+    <a href="../../3rd_party_software/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1830,7 +1818,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../CONTRIBUTING.md" class="md-nav__link">
+    <a href="../../contributing/" class="md-nav__link">
       Contributing
     </a>
   </li>
@@ -1861,7 +1849,7 @@
       
         <li class="md-nav__item">
   <a href="#using-pre-and-post-hooks" class="md-nav__link">
-    Using .pre and .post hooks
+    Using .pre and .post Hooks
   </a>
   
 </li>
@@ -1879,17 +1867,18 @@
               
                 
                 
-                <h1 id="using-devops-hooks">Using DevOps hooks<a class="headerlink" href="#using-devops-hooks" title="Permanent link"> ¶</a></h1>
-<p>Our DevOps hooks are build-specific scripts that are called or can be called by the <code>entrypoint.sh</code> script that is used to start up our product containers. </p>
+                <h1 id="using-devops-hooks">Using DevOps Hooks<a class="headerlink" href="#using-devops-hooks" title="Permanent link"> ¶</a></h1>
+<p>Our DevOps hooks are build-specific scripts that are called or can be called by the <code>entrypoint.sh</code> script that is used to start up our product containers.</p>
 <blockquote>
 <p>Use of our DevOps hooks is intended only for DevOps professionals.</p>
 </blockquote>
-<p>The available hooks are built with the DevOps images, and can be found in the <code>hooks</code> subdirectory of each product directory in the <a href="https://github.com/pingidentity/pingidentity-docker-builds">Docker builds</a> repository. </p>
+<p>The available hooks are built with the DevOps images, and can be found in the <code>hooks</code> subdirectory of each product directory in the <a href="https://github.com/pingidentity/pingidentity-docker-builds">Docker Builds</a> repository.</p>
 <p>In the <code>entrypoint.sh</code> startup script, there is an example (stub) provided for the available hooks for all products.</p>
-<blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>It's <strong>critical</strong> that the supplied hook names be used if you modify <code>entrypoint.sh</code> (for example, to make subtle changes to a server profile).</p>
-</blockquote>
-<h2 id="using-pre-and-post-hooks">Using .pre and .post hooks<a class="headerlink" href="#using-pre-and-post-hooks" title="Permanent link"> ¶</a></h2>
+</div>
+<h2 id="using-pre-and-post-hooks">Using .pre and .post Hooks<a class="headerlink" href="#using-pre-and-post-hooks" title="Permanent link"> ¶</a></h2>
 <p>When DevOps hooks are called during the <code>entrypoint.sh</code> script process, any corresponding <code>.pre</code> and <code>.post</code> hooks will also be called.</p>
 <p>The <code>.pre</code> and <code>.post</code> extensions allow you to define custom scripts to be executed before or after any hook that is run in the container. You can include any custom <code>.pre</code> and <code>.post</code> hooks in the <code>hooks</code> directory of your server profile.</p>
 <p>Hooks with a <code>.pre</code> extension are run before the corresponding hook, and hooks with a <code>.post</code> extension are run after the corresponding hook. For example, a script named <code>80-post-start.sh.pre</code> will be run just before the <code>80-post-start.sh</code> hook starts, and a script named <code>80-post-start.sh.post</code> will be run just after that hook completes.</p>

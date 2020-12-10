@@ -353,7 +353,7 @@
 
   <li class="md-nav__item">
     <a href="../../get-started/pingDevopsUtil/" class="md-nav__link">
-      ping-devops Tool
+      ping-devops Utility
     </a>
   </li>
 
@@ -1285,18 +1285,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../pingDevopsUtil.md" class="md-nav__link">
-      ping-devops
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../ldapsdkUtil/" class="md-nav__link">
       ldap-sdk-tools
     </a>
@@ -1354,7 +1342,7 @@
         
           <li class="md-nav__item">
   <a href="#examples-not-working" class="md-nav__link">
-    Examples not working
+    Examples Not Working
   </a>
   
 </li>
@@ -1367,8 +1355,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#products-unable-to-get-the-evaluation-license" class="md-nav__link">
-    Products unable to get the evaluation license
+  <a href="#unable-to-retrieve-evaluation-license" class="md-nav__link">
+    Unable To Retrieve Evaluation License
   </a>
   
 </li>
@@ -1819,7 +1807,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../LICENSE.md" class="md-nav__link">
+    <a href="../../license/" class="md-nav__link">
       License
     </a>
   </li>
@@ -1843,7 +1831,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3RD_PARTY_SOFTWARE.md" class="md-nav__link">
+    <a href="../../3rd_party_software/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1855,7 +1843,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../CONTRIBUTING.md" class="md-nav__link">
+    <a href="../../contributing/" class="md-nav__link">
       Contributing
     </a>
   </li>
@@ -1894,7 +1882,7 @@
         
           <li class="md-nav__item">
   <a href="#examples-not-working" class="md-nav__link">
-    Examples not working
+    Examples Not Working
   </a>
   
 </li>
@@ -1907,8 +1895,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#products-unable-to-get-the-evaluation-license" class="md-nav__link">
-    Products unable to get the evaluation license
+  <a href="#unable-to-retrieve-evaluation-license" class="md-nav__link">
+    Unable To Retrieve Evaluation License
   </a>
   
 </li>
@@ -1933,7 +1921,7 @@
                 
                 <h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link"> ¶</a></h1>
 <h2 id="get-started">Get started<a class="headerlink" href="#get-started" title="Permanent link"> ¶</a></h2>
-<h3 id="examples-not-working">Examples not working<a class="headerlink" href="#examples-not-working" title="Permanent link"> ¶</a></h3>
+<h3 id="examples-not-working">Examples Not Working<a class="headerlink" href="#examples-not-working" title="Permanent link"> ¶</a></h3>
 <p>One of the most common errors is due to having stale images. Our development is highly dynamic and Docker images can rapidly change. To avoid issues with stale images, you can have Docker pull the latest images by removing all the local. Enter:</p>
 <div class="highlight"><pre><span></span><code>docker rmi <span class="k">$(</span>docker images <span class="s2">&quot;pingidentity/*&quot;</span> -q<span class="k">)</span>
 </code></pre></div>
@@ -1949,8 +1937,6 @@
 </li>
 <li>
 <p>If running <code>echo PING_IDENTITY_DEVOPS_USER</code> returns nothing in a fresh terminal, it's likely your <code>~/.bash_profile</code> file is misconfigured. There are two entries that need to be there:</p>
-</li>
-</ol>
 <div class="highlight"><pre><span></span><code>source &lt;path&gt;/pingidentity-devops-getting-started/bash_profile_devops
 </code></pre></div>
 <p>Where &lt;path&gt; is the full path to the <code>pingidentity-devops-getting-started</code> directory. This entry sources our DevOps aliases.</p>
@@ -1959,10 +1945,12 @@
 </code></pre></div>
 <p>This entry sources the Ping Identity file aliases.</p>
 <p>Make sure there are not old versions or duplicates of these entries.</p>
-<ol>
-<li>If you are running in Kubernetes, keep in mind that your <code>PING_IDENTITY_DEVOPS_USER</code> and key are local variables and need to be <a href="../../how-to/existingLicense/">passed as a secret</a> in your cluster.</li>
+</li>
+<li>
+<p>If you are running in Kubernetes, keep in mind that your <code>PING_IDENTITY_DEVOPS_USER</code> and key are local variables and need to be <a href="../../how-to/existingLicense/">Passed as a Secret</a> in your cluster.</p>
+</li>
 </ol>
-<h3 id="products-unable-to-get-the-evaluation-license">Products unable to get the evaluation license<a class="headerlink" href="#products-unable-to-get-the-evaluation-license" title="Permanent link"> ¶</a></h3>
+<h3 id="unable-to-retrieve-evaluation-license">Unable To Retrieve Evaluation License<a class="headerlink" href="#unable-to-retrieve-evaluation-license" title="Permanent link"> ¶</a></h3>
 <p>If a product instance or instances are unable to get the evaluation license, an error similar to this may be generated:</p>
 <div class="highlight"><pre><span></span><code>----- Starting hook: /opt/staging/hooks/17-check-license.sh
 Pulling evaluation license from Ping Identity <span class="k">for</span>:
@@ -1988,23 +1976,23 @@ CONTAINER FAILURE: Error running <span class="m">10</span>-start-sequence.sh
 </code></pre></div>
 <p>This can be caused by:</p>
 <ol>
-<li>An invalid DevOps user name or key (as noted in the error). This is usually caused by some issue with the variables being passed in. To verify the variables are available to the shell running (when running Docker commands), enter:</li>
-</ol>
+<li>
+<p>An invalid DevOps user name or key (as noted in the error). This is usually caused by some issue with the variables being passed in. To verify the variables are available to the shell running (when running Docker commands), enter:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="nv">$PING_IDENTITY_DEVOPS_USER</span> <span class="nv">$PING_IDENTITY_DEVOPS_KEY</span>
 </code></pre></div>
-<ol>
+</li>
 <li>
 <p>A bad Docker image. Pull the Docker image again to verify.</p>
 </li>
 <li>
 <p>Network connectivity to the license server is blocked. To test this, from the machine that is running the container, enter:</p>
-</li>
-</ol>
 <div class="highlight"><pre><span></span><code>curl -k https://license.pingidentity.com/devops/v2/license
 </code></pre></div>
 <p>If the license server isn't accessible, an error similar to this is returned:</p>
-<div class="highlight"><pre><span></span><code><span class="o">{</span> <span class="s2">&quot;error&quot;</span>:<span class="s2">&quot;missing devops-user header&quot;</span> <span class="o">}</span>%
+<div class="highlight"><pre><span></span><code><span class="o">{</span> <span class="s2">&quot;error&quot;</span>:<span class="s2">&quot;missing devops-user header&quot;</span> <span class="o">}</span>
 </code></pre></div>
+</li>
+</ol>
                 
               
               
