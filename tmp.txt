@@ -8,13 +8,9 @@ build-docs.sh:# Start the section on environment variables
 build-docs.sh:# main
 build-docs.sh:# Parse the provided arguments, if any
 contributing.md:# Contributing
-deployJmeter.md:# how to use the pingidentity/apache-jmeter image. 
+deployJmeter.md:# how to use the pingidentity/apache-jmeter image.
 deployStandalone.md:# Deploy standalone containers
 deploySyncFailover.md:# Deploy a PingDataSync failover server
-deployment/deployCompose.md:# Deploy with Docker-Compose
-deployment/deployK8s-AKS.md:# Deploy to Azure Kubernetes Service
-deployment/deployPFMultiRegionAWS.md:# Kubernetes Multi Region Clustering using Native S3 Ping
-deployment/deploySync.md:# Deploy PingDirectory and PingDataSync
 deployment/deployK8sPA-cluster.md:# Orchestrate a PingAccess cluster deployment
 deployment/deployK8s.md:# Orchestrate Deployments with Kubernetes
 deployment/deployVault.md:# Deploy Hashicorp Vault
