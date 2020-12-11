@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#upgrading-pingdirectory-in-a-devops-environment" class="md-skip">
+        <a href="#upgrading-pingdirectory" class="md-skip">
           Skip to content
         </a>
       
@@ -234,7 +234,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../release-notes/relnotes-2010/" class="md-tabs__link">
+      <a href="../../release-notes/relnotes-2011/" class="md-tabs__link">
         Release Notes
       </a>
     </li>
@@ -1150,7 +1150,7 @@
       
         <li class="md-nav__item">
   <a href="#what-youll-do" class="md-nav__link">
-    What you'll do
+    What You'll Do
   </a>
   
 </li>
@@ -1730,8 +1730,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+    <a href="../../release-notes/relnotes-2011/" class="md-nav__link">
       Current
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+      Version 2010
     </a>
   </li>
 
@@ -1855,7 +1867,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3rd_party_software/" class="md-nav__link">
+    <a href="../../3rdPartySoftware/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1912,7 +1924,7 @@
       
         <li class="md-nav__item">
   <a href="#what-youll-do" class="md-nav__link">
-    What you'll do
+    What You'll Do
   </a>
   
 </li>
@@ -1965,60 +1977,32 @@
               
                 
                 
-                <h1 id="upgrading-pingdirectory-in-a-devops-environment">Upgrading PingDirectory in a DevOps environment<a class="headerlink" href="#upgrading-pingdirectory-in-a-devops-environment" title="Permanent link"> ¶</a></h1>
+                <h1 id="upgrading-pingdirectory">Upgrading PingDirectory<a class="headerlink" href="#upgrading-pingdirectory" title="Permanent link"> ¶</a></h1>
 <p>Because PingDirectory is essentially a database, in it's container form each node in a cluster has its own persisted volume. Additionally, because PingDirectory is an application that <em>focuses</em> on state, rolling out an upgrade isn't really the same as any other configuration update. However, the product software, and scripts in the image provide a process through which upgrades are drastically simplified.</p>
 <p>This use case focuses on a PingDirectory upgrade in a default Kubernetes environment. You'll upgrade a PingDirectory StatefulSet 8.0.0.1 to 8.1.0.0 using an incremental canary roll-out.</p>
 <h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link"> ¶</a></h2>
 <p>To ensure a successful upgrade process:</p>
 <ul>
-<li>
-<p>Avoid combining configuration changes and version upgrades in the same rollout. This adds unnecessary complexity to debugging errors during an upgrade.</p>
-</li>
-<li>
-<p>Successfully complete an upgrade in a proper Dev/QA environment before trying anything in production.</p>
-</li>
-<li>
-<p>Upgrades will happen on one server at a time. Ensure you have enough resources on the remaining machines to prevent client impact.</p>
-</li>
-<li>
-<p>Follow a canary deployment pattern to ensure the changes will be successful before doing a full rollout. There is no <em>good</em> way to roll back a completed upgrade, so take any necessary steps to avoid this.</p>
-</li>
+<li>Avoid combining configuration changes and version upgrades in the same rollout. This adds unnecessary complexity to debugging errors during an upgrade.</li>
+<li>Successfully complete an upgrade in a proper Dev/QA environment before trying anything in production.</li>
+<li>Upgrades will happen on one server at a time. Ensure you have enough resources on the remaining machines to prevent client impact.</li>
+<li>Follow a canary deployment pattern to ensure the changes will be successful before doing a full rollout. There is no <em>good</em> way to roll back a completed upgrade, so take any necessary steps to avoid this.</li>
 </ul>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link"> ¶</a></h2>
 <ul>
-<li>
-<p>You've already been through <a href="../../get-started/getStarted/">Get started</a> to set up your DevOps environment and run a test deployment of the products.</p>
-</li>
-<li>
-<p>You've cloned or downloaded the <code>pingidentity-devops-getting-started/20-kubernetes/12-pingdirectory-upgrade</code> repository to your local <code>${HOME}/projects/devops</code> directory.</p>
-</li>
-<li>
-<p>A good understanding of how to use our DevOps server profiles.</p>
-</li>
-<li>
-<p>Access to a Kubernetes cluster and a default StorageClass.</p>
-</li>
-<li>
-<p>An understanding of StatefulSets in Kubernetes is helpful.</p>
-</li>
-<li>
-<p>If you're upgrading in your own environment and using mounted licenses, the license for the existing version needs to be in the <code>/opt/out</code> persisted volume, and a license for the new version needs to be in <code>/opt/in</code>. The license locations are not an needed if you're using our DevOps credentials in an evaluation context.</p>
-</li>
+<li>You've already been through <a href="../../get-started/getStarted/">Get started</a> to set up your DevOps environment and run a test deployment of the products.</li>
+<li>You've cloned or downloaded the <code>pingidentity-devops-getting-started/20-kubernetes/12-pingdirectory-upgrade</code> repository to your local <code>${HOME}/projects/devops</code> directory.</li>
+<li>A good understanding of how to use our DevOps server profiles.</li>
+<li>Access to a Kubernetes cluster and a default StorageClass.</li>
+<li>An understanding of StatefulSets in Kubernetes is helpful.</li>
+<li>If you're upgrading in your own environment and using mounted licenses, the license for the existing version needs to be in the <code>/opt/out</code> persisted volume, and a license for the new version needs to be in <code>/opt/in</code>. The license locations are not an needed if you're using our DevOps credentials in an evaluation context.</li>
 </ul>
-<h2 id="what-youll-do">What you'll do<a class="headerlink" href="#what-youll-do" title="Permanent link"> ¶</a></h2>
+<h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link"> ¶</a></h2>
 <ul>
-<li>
-<p><a href="#setup">Setup</a>. Start with a base stack.</p>
-</li>
-<li>
-<p><a href="#partition">Partition</a>. Set up a partition to make changes on just one node.</p>
-</li>
-<li>
-<p><a href="#stage">Stage</a>. Deploy changes to one node and fix any errors.</p>
-</li>
-<li>
-<p><a href="#rollout">Rollout</a>. Rollout changes to other nodes.</p>
-</li>
+<li><a href="#setup">Setup</a>. Start with a base stack.</li>
+<li><a href="#partition">Partition</a>. Set up a partition to make changes on just one node.</li>
+<li><a href="#stage">Stage</a>. Deploy changes to one node and fix any errors.</li>
+<li><a href="#rollout">Rollout</a>. Rollout changes to other nodes.</li>
 </ul>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link"> ¶</a></h2>
 <p>The key functionality for PingDirectory upgrades is the relationship between the image hooks and the <code>manage-profile</code> command in the product.</p>
@@ -2029,22 +2013,24 @@
 </li>
 <li>
 <p>When a node restarts (for whatever reason), it runs <code>manage-profile replace-profile</code>.</p>
-</li>
+<ul>
 <li>
 <p>This command compares the new profile to the old profile, and if there is a change, it tries standing up the server with the new profile.</p>
 </li>
 <li>
 <p>Errors will be thrown if there is a configuration in the new profile that prevents it from being applied.</p>
 </li>
+</ul>
+</li>
 <li>
 <p>If <code>manage-profile replace-profile</code> detects a product version difference, it takes the same approach as any other restart. It will attempt to migrate PingDirectory to the new version, and the command will fail if it cannot.</p>
-</li>
-</ol>
 <p>Because there is processing that happens automatically in the container during the upgrade, you want to roll the change out to a small partition first and test it thoroughly before rolling it out to all. This partition also gives us room to revert back without impacting traffic in case something is not as expected.</p>
 <p>This process in standard Kubernetes is called a Canary Rollout and is derived from <a href="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#update-strategies">Kubernetes documentation on StatefulSet update strategies</a>.</p>
 <blockquote>
 <p>"Canary Rollout" in this scenario focuses only on an incremental rollout of containers, not actually separating traffic. That could be done with additional tools like Istio, or standing up another service and pairing separate labels and selectors.</p>
 </blockquote>
+</li>
+</ol>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link"> ¶</a></h2>
 <p>The YAML configuration files for this use case are in your local</p>
 <ol>
@@ -2052,21 +2038,21 @@
 <p>Use the <code>1-initial.yaml</code> file in your local <code>pingidentity-devops-getting-started/20-kubernetes/12-pingdirectory-upgrade</code> directory to start with a PingDirectory StatefulSet using persistent volumes. Enter:</p>
 <div class="highlight"><pre><span></span><code>kubectl apply -f <span class="m">1</span>-initial.yaml
 </code></pre></div>
-</li>
-</ol>
 <blockquote>
 <p>All kubectl commands for this use case need to be run from the <code>pingidentity-devops-getting-started/20-kubernetes/12-pingdirectory-upgrade</code> directory.</p>
 </blockquote>
 <p>This will stand up a two directory topology, each with its own Persistent Volume Claim using the default storage class.</p>
-<ol>
-<li>Wait for both nodes to be healthy before continuing. Enter:</li>
-</ol>
+</li>
+<li>
+<p>Wait for both nodes to be healthy before continuing. Enter:</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
 <p><code>pingdirectory-0</code> and <code>pingdirectory-1</code> should show <code>1/1</code> in the <code>READY</code> column.</p>
+</li>
+</ol>
 <h2 id="partition">Partition<a class="headerlink" href="#partition" title="Permanent link"> ¶</a></h2>
 <p>Use the <code>2-partition.yaml</code> file in your local <code>pingidentity-devops-getting-started/20-kubernetes/12-pingdirectory-upgrade</code> directory to add a partition to <code>StatefulSet</code> for <code>updateStrategy</code>. Enter:</p>
-<div class="highlight"><pre><span></span><code>kubectl apply -f 2-partition.yaml
+<div class="highlight"><pre><span></span><code>kubectl apply -f <span class="m">2</span>-partition.yaml
 </code></pre></div>
 <p>This partition configuration signifies that any changes to <code>spec.template</code> will only be applied to nodes with a cardinal value higher than the partition definition.</p>
 <h2 id="stage">Stage<a class="headerlink" href="#stage" title="Permanent link"> ¶</a></h2>
@@ -2093,15 +2079,16 @@ pingdirectory-1 Running the update tool ..... Done
 pingdirectory-1 Cleaning up after replace ..... Done
 pingdirectory-1   manage-profile replace-profile returned 0
 </code></pre></div>
-</li>
-</ol>
 <blockquote>
 <p>This process requires having licenses for both server versions available and in the right location.</p>
 </blockquote>
 <p>If <code>manage-profile replace-profile</code> completes without error, you'll see the container continue the migration and eventually start up PingDirectory.</p>
 <p>If <code>manage-profile replace-profile</code> fails, an error is displayed and the container will exit. The errors will be due to some conflict in the server profile. The partition you set up previously provides an isolated environment for working out errors. Work through any errors until you can get <code>manage-profile replace-profile</code> to complete successfully before continuing.</p>
+</li>
+</ol>
 <h2 id="rollout">Rollout<a class="headerlink" href="#rollout" title="Permanent link"> ¶</a></h2>
-<p>When you're confident your upgrade will occur smoothly, use the <code>4-rollout.yaml</code> file in your local <code>pingidentity-devops-getting-started/20-kubernetes/12-pingdirectory-upgrade</code> directory to deploy the rollout to the remaining nodes. This will remove the partition. Enter:</p>
+<p>When you're confident your upgrade will occur smoothly, use the <code>4-rollout.yaml</code> file in your local <code>pingidentity-devops-getting-started/20-kubernetes/12-pingdirectory-upgrade</code> directory to deploy the rollout to the remaining nodes. This will remove the partition.</p>
+<p>Enter:</p>
 <div class="highlight"><pre><span></span><code>kubectl apply -f <span class="m">4</span>-rollout.yaml
 </code></pre></div>
                 

@@ -316,6 +316,10 @@
      <lastmod>2020-12-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://devops.pingidentity.com/release-notes/relnotes-2011/</loc>
+     <lastmod>2020-12-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://devops.pingidentity.com/release-notes/relnotes-2010/</loc>
      <lastmod>2020-12-11</lastmod>
      <changefreq>daily</changefreq>
@@ -356,7 +360,7 @@
      <lastmod>2020-12-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://devops.pingidentity.com/3rd_party_software/</loc>
+     <loc>https://devops.pingidentity.com/3rdPartySoftware/</loc>
      <lastmod>2020-12-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>

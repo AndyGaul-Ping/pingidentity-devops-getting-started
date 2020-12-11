@@ -234,7 +234,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../release-notes/relnotes-2010/" class="md-tabs__link">
+      <a href="../../release-notes/relnotes-2011/" class="md-tabs__link">
         Release Notes
       </a>
     </li>
@@ -1066,7 +1066,7 @@
       
         <li class="md-nav__item">
   <a href="#what-youll-do" class="md-nav__link">
-    What you'll do
+    What You'll Do
   </a>
   
 </li>
@@ -1095,7 +1095,7 @@
         
           <li class="md-nav__item">
   <a href="#secret-files" class="md-nav__link">
-    Secret - files
+    Secret - Files
   </a>
   
 </li>
@@ -1734,8 +1734,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+    <a href="../../release-notes/relnotes-2011/" class="md-nav__link">
       Current
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+      Version 2010
     </a>
   </li>
 
@@ -1859,7 +1871,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3rd_party_software/" class="md-nav__link">
+    <a href="../../3rdPartySoftware/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1902,7 +1914,7 @@
       
         <li class="md-nav__item">
   <a href="#what-youll-do" class="md-nav__link">
-    What you'll do
+    What You'll Do
   </a>
   
 </li>
@@ -1931,7 +1943,7 @@
         
           <li class="md-nav__item">
   <a href="#secret-files" class="md-nav__link">
-    Secret - files
+    Secret - Files
   </a>
   
 </li>
@@ -1977,13 +1989,15 @@
                 
                 <h1 id="using-hashicorp-vault">Using Hashicorp Vault<a class="headerlink" href="#using-hashicorp-vault" title="Permanent link"> ¶</a></h1>
 <p>This provides details for using Hashicorp Vault and secrets with Ping Identity DevOps Images.</p>
-<h2 id="what-youll-do">What you'll do<a class="headerlink" href="#what-youll-do" title="Permanent link"> ¶</a></h2>
-<p>The examples below will explain and show examples of:
-- Using HashiCorp Vault Secrets in native PingIdentity DevOps Images
-- Using HashiCorp Vault Injector in kubernetes deployments</p>
+<h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link"> ¶</a></h2>
+<p>The examples below will explain and show examples of:</p>
+<ul>
+<li>Using HashiCorp Vault Secrets in native PingIdentity DevOps Images</li>
+<li>Using HashiCorp Vault Injector in kubernetes deployments</li>
+</ul>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link"> ¶</a></h2>
 <ul>
-<li>You've already been through <a href="../../get-started/getStarted/">Get started</a> to set up your DevOps environment and run a test deployment of the products.</li>
+<li>You've already been through <a href="../../get-started/getStarted/">Get Started</a> to set up your DevOps environment and run a test deployment of the products.</li>
 <li>Have a running Hashicorp Vault instance.  Refer to <a href="../../deployment/deployVault/">Deploy Hashicorp Vault</a> for information on deploying a vault if you need one.</li>
 </ul>
 <h2 id="kubernetes-hashicorp-vault-injector">Kubernetes - HashiCorp Vault Injector<a class="headerlink" href="#kubernetes-hashicorp-vault-injector" title="Permanent link"> ¶</a></h2>
@@ -1992,10 +2006,9 @@ how to use secrets in a non-kubernetes deployment (i.e. docker-compose).</p>
 <p>If the HashiCorp Vault Injector Agent is installed, annotations can be added to the <code>.yaml</code> file of a
 Pod, Deployment, StatefulSet resource to pull in the secrets.  The snippet below provides an example set
 of annotations (placed in to the metadata of the container) to pull in a <code>pf.jwk</code> secret into a container.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is an StatefulSet example created using the <a href="https://helm.pingidentity.com">PingIdentity DevOps Helm Chart</a>.</p>
-</div>
+<div class="admonition example">
+<p class="admonition-title">Helm Chart Stateful Set</p>
+<p>This is an StatefulSet example created using the <a href="https://helm.pingidentity.com">PingIdentity DevOps Helm Chart</a>.
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -2019,7 +2032,8 @@ of annotations (placed in to the metadata of the container) to pull in a <code>p
         <span class="nt">vault.hashicorp.com/preserve-secret-case</span><span class="p">:</span> <span class="s">&quot;true&quot;</span>
         <span class="nt">vault.hashicorp.com/role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">k8s-default</span>
         <span class="nt">vault.hashicorp.com/secret-volume-path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/run/secrets</span>
-</code></pre></div>
+</code></pre></div></p>
+</div>
 <h3 id="secrets-variables">Secrets - Variables<a class="headerlink" href="#secrets-variables" title="Permanent link"> ¶</a></h3>
 <p>Using example above, the value for secret <code>secret/.../devops-secret.env</code> json will be pulled into the container
 as <code>/run/secrets/devops-secret.env.json</code>.  Because this secret ends in the value of <code>.env</code>, it will further be turned into a property file
@@ -2037,7 +2051,7 @@ Contents: PING_IDENTITY_DEVOPS_USER=&quot;jsmith@example.com&quot;
           PING_IDENTITY_DEVOPS_KEY=&quot;xxxxx-xxxx-xxxxx-xxxxx-xxxx&quot;
 </code></pre></div></p>
 </div>
-<h3 id="secret-files">Secret - files<a class="headerlink" href="#secret-files" title="Permanent link"> ¶</a></h3>
+<h3 id="secret-files">Secret - Files<a class="headerlink" href="#secret-files" title="Permanent link"> ¶</a></h3>
 <p>Using example above, the value for secret <code>secret/.../passwords</code> json will be pulled into the container as  <code>/run/secrets/passwords.json</code> and for every key/value
 in that secret a file will be created with the name of the <code>key</code> and contents of <code>value</code>.</p>
 <div class="admonition example">

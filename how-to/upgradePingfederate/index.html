@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#upgrading-pingfederate-in-a-devops-environment" class="md-skip">
+        <a href="#upgrading-pingfederate" class="md-skip">
           Skip to content
         </a>
       
@@ -234,7 +234,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../release-notes/relnotes-2010/" class="md-tabs__link">
+      <a href="../../release-notes/relnotes-2011/" class="md-tabs__link">
         Release Notes
       </a>
     </li>
@@ -1138,28 +1138,28 @@
       
         <li class="md-nav__item">
   <a href="#setup-and-preparation" class="md-nav__link">
-    Setup and preparation
+    Setup and Preparation
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#upgrade-using-a-local-profile" class="md-nav__link">
-    Upgrade using a local profile
+    Upgrade Using a Local Profile
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#blue-green-it" class="md-nav__link">
-    Blue-Green it
+  <a href="#blue-green-deployment" class="md-nav__link">
+    Blue-Green Deployment
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#some-final-considerations" class="md-nav__link">
-    Some final considerations
+    Some Final Considerations
   </a>
   
 </li>
@@ -1716,8 +1716,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+    <a href="../../release-notes/relnotes-2011/" class="md-nav__link">
       Current
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+      Version 2010
     </a>
   </li>
 
@@ -1841,7 +1853,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3rd_party_software/" class="md-nav__link">
+    <a href="../../3rdPartySoftware/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1898,28 +1910,28 @@
       
         <li class="md-nav__item">
   <a href="#setup-and-preparation" class="md-nav__link">
-    Setup and preparation
+    Setup and Preparation
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#upgrade-using-a-local-profile" class="md-nav__link">
-    Upgrade using a local profile
+    Upgrade Using a Local Profile
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#blue-green-it" class="md-nav__link">
-    Blue-Green it
+  <a href="#blue-green-deployment" class="md-nav__link">
+    Blue-Green Deployment
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#some-final-considerations" class="md-nav__link">
-    Some final considerations
+    Some Final Considerations
   </a>
   
 </li>
@@ -1937,7 +1949,7 @@
               
                 
                 
-                <h1 id="upgrading-pingfederate-in-a-devops-environment">Upgrading PingFederate in a DevOps environment<a class="headerlink" href="#upgrading-pingfederate-in-a-devops-environment" title="Permanent link"> ¶</a></h1>
+                <h1 id="upgrading-pingfederate">Upgrading PingFederate<a class="headerlink" href="#upgrading-pingfederate" title="Permanent link"> ¶</a></h1>
 <p>In a DevOps environment, upgrades are drastically simplified through automation, orchestration and separation of concerns. As a result, upgrading to a new version of PingFederate is much more like deploying any other configuration. <!-- (link here to doc explaining config deployments) --> The slight difference is that configuration updates can be achieved with zero downtime and no loss of state, whereas in version upgrades we consciously sacrifice state to maintain zero downtime overall.</p>
 <blockquote>
 <p>You can take a traditional upgrade approach to a containerized environment, but it provides no value above the process described here.</p>
@@ -1951,15 +1963,17 @@
 </ul>
 <h2 id="what-youll-do">What you'll do<a class="headerlink" href="#what-youll-do" title="Permanent link"> ¶</a></h2>
 <ul>
-<li><a href="#upgrading-pingfederate-in-a-devops-environment">Upgrading PingFederate in a DevOps environment</a></li>
+<li><a href="#upgrading-pingfederate-in-a-devops-environment">Upgrading PingFederate in a DevOps environment</a><ul>
 <li><a href="#prerequisites">Prerequisites</a></li>
 <li><a href="#what-youll-do">What you'll do</a></li>
 <li><a href="#setup-and-preparation">Setup and preparation</a></li>
 <li><a href="#upgrade-using-a-local-profile">Upgrade using a local profile</a></li>
-<li><a href="#blue-green-it">Blue-Green it</a></li>
+<li><a href="#blue-green-deployment">Blue-Green Deployment</a></li>
 <li><a href="#some-final-considerations">Some final considerations</a></li>
 </ul>
-<h2 id="setup-and-preparation">Setup and preparation<a class="headerlink" href="#setup-and-preparation" title="Permanent link"> ¶</a></h2>
+</li>
+</ul>
+<h2 id="setup-and-preparation">Setup and Preparation<a class="headerlink" href="#setup-and-preparation" title="Permanent link"> ¶</a></h2>
 <p>The most important factor to a successful version upgrade is preparing an environment for success. This means using the DevOps process, and a blue-green deployment. For a blue-green Kubernetes deployment, we simply update a selector on a service.</p>
 <p>The DevOps process:</p>
 <ul>
@@ -1984,7 +1998,7 @@
 <blockquote>
 <p>A deployment in Kubernetes manages containers in pods, defining things like which containers to run, how many containers, the metadata labels, and the update strategy.</p>
 </blockquote>
-<h2 id="upgrade-using-a-local-profile">Upgrade using a local profile<a class="headerlink" href="#upgrade-using-a-local-profile" title="Permanent link"> ¶</a></h2>
+<h2 id="upgrade-using-a-local-profile">Upgrade Using a Local Profile<a class="headerlink" href="#upgrade-using-a-local-profile" title="Permanent link"> ¶</a></h2>
 <p>With your environment set up properly, you can do the product upgrade offline. Offline here means we'll pull the profile into a Docker container on our local workstation to upgrade it.</p>
 <p>Before going into the actual steps for a profile upgrade. It's very worth noting that if your profile is well-constructed, using the minimum number of files that are specific to the PingFederate configuration, you may be able to avoid this entire section.</p>
 <p>For example, the upgrade for our baseline profile (https://github.com/pingidentity/pingidentity-server-profiles/tree/master/baseline) worked almost flawlessly from 9.3.3 to 10.0.0. In fact the only file that required an update was adding a "Pairwise definition" to <code>./instance/server/default/conf/hivemodule.xml</code>. This may very well be the case for you as well. If you want to try this, just use your PingFederate profile with the new version image tag, and watch the logs for errors.</p>
@@ -2003,40 +2017,38 @@
 </li>
 <li>
 <p>Go to the <code>~/tmp/pf93</code> directory, and run the PingFederate upgrade utility:</p>
-</li>
-</ol>
 <div class="highlight"><pre><span></span><code>./upgrade.sh &lt;pf_install_source&gt; <span class="o">[</span>-l &lt;newPingFederateLicense&gt;<span class="o">]</span> <span class="o">[</span>-c<span class="o">]</span>.
 </code></pre></div>
 <blockquote>
-<p>See <a href="https://docs.pingidentity.com/bundle/pingfederate-100/page/ukh1564003034797.html">Upgrading PingFederate on Linux systems</a> for more information.</p>
+<p>See <a href="https://docs.pingidentity.com/bundle/pingfederate-100/page/ukh1564003034797.html">Upgrading PingFederate on Linux Systems</a> for more information.</p>
 </blockquote>
+</li>
+<li>
+<p>The result is an upgraded PingFederate profile with a lot of bloat. Let's clean this up so that we're able to run <code>git diff</code> and see <em>only</em> upgraded files. A good text editor (such as, Microsoft Visual Studio Code) with Git extensions is invaluable for this process.</p>
 <ol>
-<li>The result is an upgraded PingFederate profile with a lot of bloat. Let's clean this up so that we're able to run <code>git diff</code> and see <em>only</em> upgraded files. A good text editor (such as, Microsoft Visual Studio Code) with Git extensions is invaluable for this process.</li>
+<li>Copy over files from your new profile <code>~/tmp/pf93/instance</code> on top of your current profile. Be careful not to directly copy over and replace <code>.subst</code> files. If you are using Visual Studio Code, you can <code>right-click</code> -&gt; Select for compare on the old file and <code>right-click</code>&gt;'Compare with selected' on the new file. This compares line-by-line diffs. If all you see is your variables, you can ignore the whole file.</li>
 </ol>
-<p>a. Copy over files from your new profile <code>~/tmp/pf93/instance</code> on top of your current profile. Be careful not to directly copy over and replace <code>.subst</code> files. If you are using Visual Studio Code, you can <code>right-click</code> -&gt; Select for compare on the old file and <code>right-click</code>&gt;'Compare with selected' on the new file. This compares line-by-line diffs. If all you see is your variables, you can ignore the whole file.</p>
-<ol>
-<li>After you test the upgrade, push your changes to Git.</li>
+</li>
+<li>
+<p>After you test the upgrade, push your changes to Git.</p>
+</li>
 </ol>
-<h2 id="blue-green-it">Blue-Green it<a class="headerlink" href="#blue-green-it" title="Permanent link"> ¶</a></h2>
+<h2 id="blue-green-deployment">Blue-Green Deployment<a class="headerlink" href="#blue-green-deployment" title="Permanent link"> ¶</a></h2>
 <p>Now that you have a new profile, you can stand up a new deployment that uses it and flip all of the traffic over to it.</p>
 <ol>
 <li>
 <p>Stand up a new deployment using:</p>
-</li>
-<li>
-<p>The correct product image version.</p>
-</li>
-<li>
-<p>The new profile.</p>
-</li>
-<li>
-<p>A label on the deployment that distinguishes it from the prior deployment (such as, <code>version: 10.0.0</code>).</p>
+<ul>
+<li>The correct product image version.</li>
+<li>The new profile.</li>
+<li>A label on the deployment that distinguishes it from the prior deployment (such as, <code>version: 10.0.0</code>).</li>
+</ul>
 </li>
 <li>
 <p>When the deployment is healthy and ready to accept traffic, update the selector on the Kubernetes service. This routes all traffic to the new PingFederate deployment without downtime occurring.</p>
 </li>
 </ol>
-<h2 id="some-final-considerations">Some final considerations<a class="headerlink" href="#some-final-considerations" title="Permanent link"> ¶</a></h2>
+<h2 id="some-final-considerations">Some Final Considerations<a class="headerlink" href="#some-final-considerations" title="Permanent link"> ¶</a></h2>
 <p>Using DevOps processes can mean that things like comfortable setup processes and admin UIs in production are sacrificed, but for most organizations, the resulting zero downtime for rollouts and rollbacks is easily worth it.</p>
 <p>Note that terms "zero downtime" and "loss-of-state" are significantly different. Zero downtime is what this upgrade process achieves: at no point in time will users experience a <code>500 bad gateway</code> error. However, we are sacrificing state to achieve this. Because we are moving from one entire deployment to another, the new deployment does <em>cannot</em> have access to runtime state in the previous deployment. For this reason, it's critical to externalize state as much as possible.</p>
                 

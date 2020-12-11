@@ -234,7 +234,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../release-notes/relnotes-2010/" class="md-tabs__link">
+      <a href="../../release-notes/relnotes-2011/" class="md-tabs__link">
         Release Notes
       </a>
     </li>
@@ -1010,36 +1010,36 @@
       
         <li class="md-nav__item">
   <a href="#what-youll-do" class="md-nav__link">
-    What you'll do
+    What You'll Do
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#add-or-change-environment-variables" class="md-nav__link">
-    Add or change environment variables
+    Add or Change Environment Variables
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#modify-a-server-profile" class="md-nav__link">
-    Modify a server profile
+    Modify a Server Profile
   </a>
   
-    <nav class="md-nav" aria-label="Modify a server profile">
+    <nav class="md-nav" aria-label="Modify a Server Profile">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#using-your-github-repository" class="md-nav__link">
-    Using your Github repository
+    Using Your Github Repository
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#using-local-directories" class="md-nav__link">
-    Using local directories
+    Using Local Directories
   </a>
   
 </li>
@@ -1722,8 +1722,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+    <a href="../../release-notes/relnotes-2011/" class="md-nav__link">
       Current
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+      Version 2010
     </a>
   </li>
 
@@ -1847,7 +1859,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3rd_party_software/" class="md-nav__link">
+    <a href="../../3rdPartySoftware/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1897,36 +1909,36 @@
       
         <li class="md-nav__item">
   <a href="#what-youll-do" class="md-nav__link">
-    What you'll do
+    What You'll Do
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#add-or-change-environment-variables" class="md-nav__link">
-    Add or change environment variables
+    Add or Change Environment Variables
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#modify-a-server-profile" class="md-nav__link">
-    Modify a server profile
+    Modify a Server Profile
   </a>
   
-    <nav class="md-nav" aria-label="Modify a server profile">
+    <nav class="md-nav" aria-label="Modify a Server Profile">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#using-your-github-repository" class="md-nav__link">
-    Using your Github repository
+    Using Your Github Repository
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#using-local-directories" class="md-nav__link">
-    Using local directories
+    Using Local Directories
   </a>
   
 </li>
@@ -1956,19 +1968,18 @@
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_PATH=baseline/pingaccess</span>
 </code></pre></div>
 <p>Our <a href="https://github.com/pingidentity/pingidentity-server-profiles">pingidentity-server-profiles</a> repository indicated by the <code>SERVER_PROFILE_URL</code> environment variable, contains the server profiles we use for our DevOps deployment examples. The <code>SERVER_PROFILE_PATH</code> environment variable indicates the location of the product profile data to use. In the example above, the PingAccess profile data is located in the <code>baseline/pingaccess</code> directory.</p>
-<p>We use environment variables for certain startup and runtime configuration settings of both standalone and orchestrated deployments. There are environment variables that are common to all product images. You'll find these in the <a href="../../docker-images/pingbase/">PingBase image directory</a>. There are also product-specific environment variables. You'll find these in the <a href="../../reference/dockerImagesRef/">Docker image reference</a> for each available product.</p>
+<p>We use environment variables for certain startup and runtime configuration settings of both standalone and orchestrated deployments. There are environment variables that are common to all product images. You'll find these in the <a href="../../docker-images/pingbase/">PingBase Image Directory</a>. There are also product-specific environment variables. You'll find these in the <a href="../../reference/dockerImagesRef/">Docker Image Reference</a> for each available product.</p>
 <h2 id="prerequisite">Prerequisite<a class="headerlink" href="#prerequisite" title="Permanent link"> ¶</a></h2>
 <ul>
 <li>You've already been through <a href="../../get-started/getStarted/">Get Started</a> to set up your DevOps environment and run a test deployment of the products.</li>
-<li>You understand the <a href="../containerAnatomy/">anatomy of of our product containers</a>.</li>
+<li>You understand the <a href="../containerAnatomy/">Anatomy of the Product Containers</a>.</li>
 </ul>
-<h2 id="what-youll-do">What you'll do<a class="headerlink" href="#what-youll-do" title="Permanent link"> ¶</a></h2>
+<h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link"> ¶</a></h2>
 <ul>
 <li>
 <p>Add or change the environment variables used for any of our server profiles to better fit your purposes.
-  These environment variables are located in the <a href="https://github.com/pingidentity/pingidentity-server-profiles">server profiles repository</a> for each product.
-  For example, the location for the env_vars file for PingAccess is located in the
-  <a href="https://github.com/pingidentity/pingidentity-server-profiles/tree/master/baseline/pingaccess">baseline/pingaccess server profile</a>.</p>
+  These environment variables are located in the <a href="https://github.com/pingidentity/pingidentity-server-profiles">Server Profiles Repository</a> for each product.</p>
+<p>For example, the location for the env_vars file for PingAccess is located in the <a href="https://github.com/pingidentity/pingidentity-server-profiles/tree/master/baseline/pingaccess">baseline/pingaccess server profile</a>.</p>
 </li>
 <li>
 <p>Modify one of our server profiles to reflect an existing Ping Identity product installation in your organization.
@@ -1976,29 +1987,29 @@
   Github repository, or by using local directories.</p>
 </li>
 </ul>
-<h2 id="add-or-change-environment-variables">Add or change environment variables<a class="headerlink" href="#add-or-change-environment-variables" title="Permanent link"> ¶</a></h2>
+<h2 id="add-or-change-environment-variables">Add or Change Environment Variables<a class="headerlink" href="#add-or-change-environment-variables" title="Permanent link"> ¶</a></h2>
 <ol>
 <li>
-<p>Select any environment variables to add from either the Docker images in the <a href="../../reference/dockerImagesRef/">Docker images reference</a>
-   for the product-specific environment variables, or the <a href="../../docker-images/pingbase/">PingBase image directory</a>
+<p>Select any environment variables to add from either the Docker Images in the <a href="../../reference/dockerImagesRef/">Docker Images Reference</a>
+   for the product-specific environment variables, or the <a href="../../docker-images/pingbase/">PingBase Image Directory</a>
    for the environment variables common to all of our products.</p>
 </li>
 <li>
 <p>Select the product whose profile you want to modify from the <code>baseline</code>, <code>getting-started</code>, or <code>simple-sync</code>
-   directories in the <a href="https://github.com/pingidentity/pingidentity-server-profiles">server profiles repository</a>.</p>
+   directories in the <a href="https://github.com/pingidentity/pingidentity-server-profiles">Server Profiles Repository</a>.</p>
 </li>
 <li>
 <p>Open the <code>env_vars</code> file associated with the product and add any of the environment variables you've selected,
    or change the existing environment variables to fit your purpose.</p>
 </li>
 </ol>
-<h2 id="modify-a-server-profile">Modify a server profile<a class="headerlink" href="#modify-a-server-profile" title="Permanent link"> ¶</a></h2>
+<h2 id="modify-a-server-profile">Modify a Server Profile<a class="headerlink" href="#modify-a-server-profile" title="Permanent link"> ¶</a></h2>
 <p>You can modify one of our server profiles based on data from your existing Ping Identity product installation. Modify a server profile in either of these ways:</p>
 <ul>
 <li>Using your Github repository</li>
 <li>Using local directories</li>
 </ul>
-<h3 id="using-your-github-repository">Using your Github repository<a class="headerlink" href="#using-your-github-repository" title="Permanent link"> ¶</a></h3>
+<h3 id="using-your-github-repository">Using Your Github Repository<a class="headerlink" href="#using-your-github-repository" title="Permanent link"> ¶</a></h3>
 <p>We'll use a PingFederate installation as an example. This method uses a server profile provided through a Github URL and assigned to the <code>SERVER_PROFILE_PATH</code> environment variable (such as, <code>--env SERVER_PROFILE_PATH=getting-started/pingfederate</code>).</p>
 <ol>
 <li>
@@ -2012,46 +2023,49 @@
 </li>
 <li>
 <p>Open a terminal, create a new directory, and clone your Github repository to a local directory. For example:</p>
-<div class="highlight"><pre><span></span><code>  mkdir /tmp/pf_to_docker
-  <span class="nb">cd</span> /tmp/pf_to_docker
-  git clone https://github.com/&lt;github-username&gt;/pingidentity-server-profiles.git
+<div class="highlight"><pre><span></span><code>mkdir /tmp/pf_to_docker
+<span class="nb">cd</span> /tmp/pf_to_docker
+git clone https://github.com/&lt;github-username&gt;/pingidentity-server-profiles.git
 </code></pre></div>
 <p>Where <code>&lt;github-username&gt;</code> is the name you used to log in to the Github account.</p>
 </li>
 <li>
 <p>Go to the location where you cloned your fork of our <code>pingidentity-server-profiles</code> repository, and replace the <code>/data</code> directory in <code>getting-started/pingfederate/instance/server/default</code> with the <code>data</code> directory you exported from your existing PingFederate installation. For example:</p>
-<div class="highlight"><pre><span></span><code>  <span class="nb">cd</span> pingidentity-server-profiles/getting-started/pingfederate/instance/server/default
-  rm -rf data
-  unzip -qd data &lt;path_to_your_configuration_archive&gt;/data.zip
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> pingidentity-server-profiles/getting-started/pingfederate/instance/server/default
+rm -rf data
+unzip -qd data &lt;path_to_your_configuration_archive&gt;/data.zip
 </code></pre></div>
 <p>Where <code>&lt;path_to_your_configuration_archive&gt;</code> is the location for your exported PingFederate configuration archive.</p>
 <p>You now have a local server profile based on your existing PingFederate installation.</p>
-<blockquote>
+<div class="admonition note">
+<p class="admonition-title">Pushing to Github</p>
 <p>We recommend you push to Github only what is necessary for your customizations. Our Docker images create the <code>/opt/out</code> directory using a product's base install and layering a profile (set of files) on top.</p>
-</blockquote>
+</div>
 </li>
 <li>
 <p>Push your changes (your local server profile) to the Github repository where you forked our server profile repository. You now have a server profile available through a Github URL.</p>
 </li>
 <li>
 <p>Deploy the PingFederate container. The environment variables <code>SERVER_PROFILE_URL</code> and <code>SERVER_PROFILE_PATH</code> direct Docker to use the server profile you've modified and pushed to Github.</p>
-<blockquote>
-<p>To save any changes you make after the container is running, add the entry <code>--volume &lt;local-path&gt;:/opt/out</code> to the <code>docker run</code> command, where <local-path> is a directory you've not already created. See <a href="../../saveConfigs/">Saving your changes</a> for more information.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Saving Changes</p>
+<p>To save any changes you make after the container is running, add the entry <code>--volume &lt;local-path&gt;:/opt/out</code> to the <code>docker run</code> command, where &lt;local-path&gt; is a directory you've not already created. See <a href="../../saveConfigs/">Saving Your Changes</a> for more information.</p>
+</div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>  docker run <span class="se">\</span>
-    --name pingfederate <span class="se">\</span>
-    --publish <span class="m">9999</span>:9999 <span class="se">\</span>
-    --publish <span class="m">9031</span>:9031 <span class="se">\</span>
-    --detach <span class="se">\</span>
-    --env <span class="nv">SERVER_PROFILE_URL</span><span class="o">=</span>https://github.com/&lt;your_username&gt;/pingidentity-server-profiles.git <span class="se">\</span>
-    --env <span class="nv">SERVER_PROFILE_PATH</span><span class="o">=</span>getting-started/pingfederate <span class="se">\</span>
-    --env-file ~/.pingidentity/devops <span class="se">\</span>
-    pingidentity/pingfederate:edge
+<div class="highlight"><pre><span></span><code>docker run <span class="se">\</span>
+  --name pingfederate <span class="se">\</span>
+  --publish <span class="m">9999</span>:9999 <span class="se">\</span>
+  --publish <span class="m">9031</span>:9031 <span class="se">\</span>
+  --detach <span class="se">\</span>
+  --env <span class="nv">SERVER_PROFILE_URL</span><span class="o">=</span>https://github.com/&lt;your_username&gt;/pingidentity-server-profiles.git <span class="se">\</span>
+  --env <span class="nv">SERVER_PROFILE_PATH</span><span class="o">=</span>getting-started/pingfederate <span class="se">\</span>
+  --env-file ~/.pingidentity/devops <span class="se">\</span>
+  pingidentity/pingfederate:edge
 </code></pre></div>
-<blockquote>
-<p>If your GitHub server-profile repo is private, use the <code>username:token</code> format so the container can access the repository. For example, <code>https://github.com/&lt;your_username&gt;:&lt;your_access_token&gt;/pingidentity-server-profiles.git</code>. See <a href="../privateRepos/">Using private Github repositories</a> for more information.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Private Repo</p>
+<p>If your GitHub server-profile repo is private, use the <code>username:token</code> format so the container can access the repository. For example, <code>https://github.com/&lt;your_username&gt;:&lt;your_access_token&gt;/pingidentity-server-profiles.git</code>. See <a href="../privateRepos/">Using Private Github Repositories</a> for more information.</p>
+</div>
 </li>
 <li>
 <p>To display the logs as the container starts up, enter:</p>
@@ -2059,14 +2073,15 @@
 </code></pre></div>
 </li>
 <li>
-<p>In a browser, go to <code>https://localhost:9999/pingfederate/app</code> to display the PingFederate console.</p>
+<p>In a browser, go to <a href="https://localhost:9999/pingfederate/app">https://localhost:9999/pingfederate/app</a> to display the PingFederate console.</p>
 </li>
 </ol>
-<h3 id="using-local-directories">Using local directories<a class="headerlink" href="#using-local-directories" title="Permanent link"> ¶</a></h3>
+<h3 id="using-local-directories">Using Local Directories<a class="headerlink" href="#using-local-directories" title="Permanent link"> ¶</a></h3>
 <p>This method is particularly helpful when developing locally and the configuration is not ready to be distributed (using Github, for example). We'll use PingFederate as an example. The local directories used by our containers to persist state and data, <code>/opt/in</code> and <code>/opt/out</code>, will be bound to another local directory and mounted as Docker volumes. This is our infrastructure for modifying the server profile.</p>
-<blockquote>
-<p>Docker recommends that you never use bind mounts in a production environment. This method is solely for developing server profiles. See the <a href="https://docs.docker.com/storage/volumes/">Docker documentation</a> for more information.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Bind Mounts in Production</p>
+<p>Docker recommends that you never use bind mounts in a production environment. This method is solely for developing server profiles. See the <a href="https://docs.docker.com/storage/volumes/">Docker Documentation</a> for more information.</p>
+</div>
 <ul>
 <li>
 <p>The <code>/opt/out</code> directory</p>
@@ -2097,7 +2112,7 @@
 <p>These directories are useful for building and working with local server-profiles. The <code>/opt/in</code> directory is particularly valuable if you do not want your containers to access Github for data (the default for our server profiles). Here's an example, again using PingFederate:</p>
 </li>
 <li>
-<p>Deploy PingFederate using our sample <a href="https://github.com/pingidentity/pingidentity-server-profiles/tree/master/getting-started/pingfederate">getting-started server profile</a>, and mount <code>/opt/out</code> to a local directory. For example:</p>
+<p>Deploy PingFederate using our sample <a href="https://github.com/pingidentity/pingidentity-server-profiles/tree/master/getting-started/pingfederate">getting-started Server Profile</a>, and mount <code>/opt/out</code> to a local directory. For example:</p>
 <div class="highlight"><pre><span></span><code>docker run <span class="se">\</span>
     --name pingfederate <span class="se">\</span>
     --publish <span class="m">9999</span>:9999 <span class="se">\</span>
@@ -2106,7 +2121,7 @@
     --env <span class="nv">SERVER_PROFILE_PATH</span><span class="o">=</span>getting-started/pingfederate <span class="se">\</span>
     --env-file ~/.pingidentity/devops <span class="se">\</span>
     --volume /tmp/docker/pf:/opt/out <span class="se">\</span>
-    pingidentity/pingfederate:edge
+pingidentity/pingfederate:edge
 </code></pre></div>
 <blockquote>
 <p>Make sure the local directory (in this case, <code>/tmp/docker/pf</code>) is not already created. Docker needs to create this directory for the mount to <code>/opt/out</code>.</p>
@@ -2125,10 +2140,10 @@ docker run <span class="se">\</span>
   --detach <span class="se">\</span>
   --volume /tmp/docker/pf:/opt/out <span class="se">\</span>
   --volume /tmp/docker/pf:/opt/in <span class="se">\</span>
-  pingidentity/pingfederate:edge
+pingidentity/pingfederate:edge
 </code></pre></div>
 <p>The new container will now use the changes you made using the PingFederate console. In the logs you can see where <code>/opt/in</code> is used:</p>
-<p><code>bash
+<p><code>sh
 docker logs pingfederate-local</code></p>
 </li>
 <li>

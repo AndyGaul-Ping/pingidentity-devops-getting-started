@@ -234,7 +234,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../release-notes/relnotes-2010/" class="md-tabs__link">
+      <a href="../../release-notes/relnotes-2011/" class="md-tabs__link">
         Release Notes
       </a>
     </li>
@@ -1049,28 +1049,28 @@
         
           <li class="md-nav__item">
   <a href="#create-the-base-directories" class="md-nav__link">
-    Create the base directories
+    Create the Base Directories
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#construct-the-license-layer" class="md-nav__link">
-    Construct the license layer
+    Construct the License Layer
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#build-the-extensions-layer" class="md-nav__link">
-    Build the extensions layer
+  <a href="#build-extensions-layer" class="md-nav__link">
+    Build Extensions Layer
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#build-the-oauth-layer" class="md-nav__link">
-    Build the OAuth layer
+  <a href="#build-oauth-layer" class="md-nav__link">
+    Build OAuth Layer
   </a>
   
 </li>
@@ -1081,15 +1081,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#assign-the-environment-variables-for-the-deployment" class="md-nav__link">
-    Assign the environment variables for the deployment
+  <a href="#assign-environment-variables" class="md-nav__link">
+    Assign Environment Variables
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-the-layered-server-profile" class="md-nav__link">
-    Deploy the layered server profile
+  <a href="#deploy-layered-profile" class="md-nav__link">
+    Deploy Layered Profile
   </a>
   
 </li>
@@ -1743,8 +1743,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+    <a href="../../release-notes/relnotes-2011/" class="md-nav__link">
       Current
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+      Version 2010
     </a>
   </li>
 
@@ -1868,7 +1880,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3rd_party_software/" class="md-nav__link">
+    <a href="../../3rdPartySoftware/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1933,28 +1945,28 @@
         
           <li class="md-nav__item">
   <a href="#create-the-base-directories" class="md-nav__link">
-    Create the base directories
+    Create the Base Directories
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#construct-the-license-layer" class="md-nav__link">
-    Construct the license layer
+    Construct the License Layer
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#build-the-extensions-layer" class="md-nav__link">
-    Build the extensions layer
+  <a href="#build-extensions-layer" class="md-nav__link">
+    Build Extensions Layer
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#build-the-oauth-layer" class="md-nav__link">
-    Build the OAuth layer
+  <a href="#build-oauth-layer" class="md-nav__link">
+    Build OAuth Layer
   </a>
   
 </li>
@@ -1965,15 +1977,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#assign-the-environment-variables-for-the-deployment" class="md-nav__link">
-    Assign the environment variables for the deployment
+  <a href="#assign-environment-variables" class="md-nav__link">
+    Assign Environment Variables
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-the-layered-server-profile" class="md-nav__link">
-    Deploy the layered server profile
+  <a href="#deploy-layered-profile" class="md-nav__link">
+    Deploy Layered Profile
   </a>
   
 </li>
@@ -1991,16 +2003,17 @@
               
                 
                 
-                <h1 id="layering-server-profiles">Layering server profiles<a class="headerlink" href="#layering-server-profiles" title="Permanent link"> ¶</a></h1>
+                <h1 id="layering-server-profiles">Layering Server Profiles<a class="headerlink" href="#layering-server-profiles" title="Permanent link"> ¶</a></h1>
 <p>One of the benefits of our Docker images is the ability to layer product configuration. By using small discrete portions of your configuration, you can build and assemble a server profile based on multiple installations of a product.</p>
 <p>A typical organization can have multiple installations of our products, each using different configurations. By layering the server profiles, you can reuse the configurations that are common across environments, leading to fewer configurations to manage.</p>
 <p>You can have as many layers as needed. Each layer of the configuration is <em>copied</em> on top of the container's filesystem (not merged).</p>
-<blockquote>
+<div class="admonition note">
+<p class="admonition-title">Layer Precedence</p>
 <p>The profile layers are applied starting at the top layer and ending at the base layer. This may not be apparent. In our examples, the base profile layer appears first in the <code>docker-compose.yaml</code> file. In these cases, it's a child-before-parent order of application.</p>
-</blockquote>
+</div>
 <h2 id="prerequisite">Prerequisite<a class="headerlink" href="#prerequisite" title="Permanent link"> ¶</a></h2>
 <ul>
-<li>You've already been through <a href="../../get-started/getStarted/">Get started</a> to set up your DevOps environment and run a test deployment of the products.</li>
+<li>You've already been through <a href="../../get-started/getStarted/">Get Started</a> to set up your DevOps environment and run a test deployment of the products.</li>
 </ul>
 <h2 id="what-youll-do">What you'll do<a class="headerlink" href="#what-youll-do" title="Permanent link"> ¶</a></h2>
 <ul>
@@ -2019,155 +2032,171 @@
 <p>For this example, these layers will be applied on top of the PingFederate server profile. However, you can span configurations across multiple repositories if you want.</p>
 <p>The complete working, layered server profile of the PingFederate example we're building here is in the <a href="https://github.com/pingidentity/pingidentity-server-profiles/tree/master/layered-profiles">pingidentity-server-profiles/layered-profiles</a> directory.</p>
 <p>Because PingFederate's configuration is file-based, the layering works by copying configurations on top of the PingFederate container’s file system.</p>
-<blockquote>
-<p>Files are copied, not merged, when layering, so it is best practice to only layer items that won't be impacted by other configuration files.</p>
-</blockquote>
-<h3 id="create-the-base-directories">Create the base directories<a class="headerlink" href="#create-the-base-directories" title="Permanent link"> ¶</a></h3>
-<ol>
-<li>Create a working directory named <code>layered_profiles</code> and within that directory create <code>license</code>, <code>extensions</code>, and <code>oauth</code> directories. When completed your directory structure should be:
-   <div class="highlight"><pre><span></span><code>└── layered_profiles
+<div class="admonition warning">
+<p class="admonition-title">Files Copied</p>
+<p>Files are copied, not merged. It's best practice to only layer items that won't be impacted by other configuration files.</p>
+</div>
+<h3 id="create-the-base-directories">Create the Base Directories<a class="headerlink" href="#create-the-base-directories" title="Permanent link"> ¶</a></h3>
+<p>Create a working directory named <code>layered_profiles</code> and within that directory create <code>license</code>, <code>extensions</code>, and <code>oauth</code> directories. When completed your directory structure should be:</p>
+<div class="highlight"><pre><span></span><code>└── layered_profiles
    ├── extensions
    ├── license
    └── oauth
-</code></pre></div></li>
-</ol>
-<h3 id="construct-the-license-layer">Construct the license layer<a class="headerlink" href="#construct-the-license-layer" title="Permanent link"> ¶</a></h3>
+</code></pre></div>
+<h3 id="construct-the-license-layer">Construct the License Layer<a class="headerlink" href="#construct-the-license-layer" title="Permanent link"> ¶</a></h3>
 <ol>
 <li>Go to the <code>license</code> directory and create a <code>pingfederate</code> subdirectory.</li>
-<li>The PingFederate license file resides in the <code>/instance/server/default/conf/</code> path. Create that directory path under the <code>pingfederate</code> directory. For example:
-   <div class="highlight"><pre><span></span><code>mkdir -p instance/server/default/conf/
-</code></pre></div></li>
-</ol>
+<li>
+<p>The PingFederate license file resides in the <code>/instance/server/default/conf/</code> path. Create that directory path under the <code>pingfederate</code> directory. For example:</p>
+<div class="highlight"><pre><span></span><code>mkdir -p instance/server/default/conf/
+</code></pre></div>
 <p>Your license profile path should look like this:</p>
 <div class="highlight"><pre><span></span><code>└── license
    └── pingfederate
-       └── instance
-           └── server
+      └── instance
+         └── server
                └── default
-                   └── conf
-                       └── pingfederate.lic
+                  └── conf
+                     └── pingfederate.lic
 </code></pre></div>
-<ol>
-<li>Copy your <code>pingfederate.lic</code> file to <code>license/pingfederate/instance/server/default/conf</code>. If you're using the DevOps evaluation license, when the PingFederate container is running, the license is located in the Docker file system's <code>/opt/in/instance/server/default/conf</code> directory. You can copy the <code>pingfederate.lic</code> file from the Docker file system using the syntax:
-   <code>docker cp &lt;container&gt; &lt;source-location&gt; &lt;target-location&gt;</code></li>
-</ol>
+</li>
+<li>
+<p>Copy your <code>pingfederate.lic</code> file to <code>license/pingfederate/instance/server/default/conf</code>. If you're using the DevOps evaluation license, when the PingFederate container is running, the license is located in the Docker file system's <code>/opt/out/instance/server/default/conf</code> directory. You can copy the <code>pingfederate.lic</code> file from the Docker file system using the syntax:
+   <code>docker cp &lt;container&gt; &lt;source-location&gt; &lt;target-location&gt;</code></p>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>docker cp pingfederate /opt/in/instance/server/default/conf/pingfederate.lic <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/projects/devops/layered_profiles/license/pingfederate/instance/server/default/conf
+<div class="highlight"><pre><span></span><code>docker cp <span class="se">\</span>
+   pingfederate <span class="se">\</span>
+   /opt/in/instance/server/default/conf/pingfederate.lic <span class="se">\</span>
+   <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/projects/devops/layered_profiles/license/pingfederate/instance/server/default/conf
 </code></pre></div>
-<h3 id="build-the-extensions-layer">Build the extensions layer<a class="headerlink" href="#build-the-extensions-layer" title="Permanent link"> ¶</a></h3>
+<p>Using the ping-devops tool</p>
+<div class="highlight"><pre><span></span><code>ping-devops generate license pingfederate &gt; <span class="se">\</span>
+   <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/projects/devops/layered_profiles/license/pingfederate/instance/server/default/conf
+</code></pre></div>
+</li>
+</ol>
+<h3 id="build-extensions-layer">Build Extensions Layer<a class="headerlink" href="#build-extensions-layer" title="Permanent link"> ¶</a></h3>
 <ol>
 <li>Go to the <code>layered-profiles/extensions</code> directory, and create a <code>pingfederate</code> subdirectory.</li>
 <li>
-<p>The PingFederate extensions reside in the <code>/instance/server/default/deploy</code> path. Create that directory path under the <code>pingfederate</code> directory. For example:
-   <div class="highlight"><pre><span></span><code>mkdir -p instance/server/default/deploy
-</code></pre></div></p>
+<p>The PingFederate extensions reside in the <code>/instance/server/default/deploy</code> path. Create that directory path under the <code>pingfederate</code> directory. For example:</p>
+<div class="highlight"><pre><span></span><code>mkdir -p instance/server/default/deploy
+</code></pre></div>
 </li>
 <li>
 <p>Copy to this directory (<code>layered-profiles/extensions/pingfederate/instance/server/default/deploy</code>) the extensions you want to be available to PingFederate.</p>
-</li>
-</ol>
 <p>The extensions profile path should look similar to this (extensions will vary based on your requirements):</p>
 <div class="highlight"><pre><span></span><code>└── extensions
-    └── pingfederate
-        └── instance
+   └── pingfederate
+      └── instance
             └── server
-                └── default
-                    └── deploy
+               └── default
+                  └── deploy
                         ├── pf-aws-quickconnection-2.0.jar
                         ├── pf-azure-ad-pcv-1.2.jar
                         └── pf-slack-quickconnection-3.0.jar
 </code></pre></div>
-<h3 id="build-the-oauth-layer">Build the OAuth layer<a class="headerlink" href="#build-the-oauth-layer" title="Permanent link"> ¶</a></h3>
-<ol>
-<li>Go to the <code>layered-profiles/oauth</code> directory, and create a <code>pingfederate</code> subdirectory.</li>
+</li>
 </ol>
+<h3 id="build-oauth-layer">Build OAuth Layer<a class="headerlink" href="#build-oauth-layer" title="Permanent link"> ¶</a></h3>
+<ol>
+<li>
+<p>Go to the <code>layered-profiles/oauth</code> directory, and create a <code>pingfederate</code> subdirectory.</p>
 <div class="highlight"><pre><span></span><code>mkdir -p instance/server/default/pingfederate
 </code></pre></div>
-<ol>
-<li>OAuth Playground for PingFederate is also located in the <code>/instance/server/default/deploy</code> directory, like other extensions. For this example, we're building OAuth Playground into its own layer to show that it's optional for PingFederate deployments.</li>
-<li>Copy the <code>OAuthPlayground.war</code> file to <code>layered-profiles/oauth/pingfederate/instance/server/default/deploy</code>.</li>
-</ol>
-<p>Your oauth profile layer should look like this:</p>
+</li>
+<li>
+<p>OAuth Playground for PingFederate is also located in the <code>/instance/server/default/deploy</code> directory, like other extensions. For this example, we're building OAuth Playground into its own layer to show that it's optional for PingFederate deployments.</p>
+</li>
+<li>
+<p>Copy the <code>OAuthPlayground.war</code> file to <code>layered-profiles/oauth/pingfederate/instance/server/default/deploy</code>.</p>
+<p>Your OAuth profile layer should look like this:</p>
 <div class="highlight"><pre><span></span><code>└── oauth
-    └── pingfederate
-        └── instance
+   └── pingfederate
+      └── instance
             └── server
-                └── default
-                    └── deploy
+               └── default
+                  └── deploy
                         └── OAuthPlayground.war
 </code></pre></div>
-<h2 id="assign-the-environment-variables-for-the-deployment">Assign the environment variables for the deployment<a class="headerlink" href="#assign-the-environment-variables-for-the-deployment" title="Permanent link"> ¶</a></h2>
+</li>
+</ol>
+<h2 id="assign-environment-variables">Assign Environment Variables<a class="headerlink" href="#assign-environment-variables" title="Permanent link"> ¶</a></h2>
 <p>We'll assign the environment variables for use in a Docker Compose YAML file. However, you can use this technique with any Docker or Kubernetes deployment.</p>
-<p>If you're intending on using your Github repository for the deployment, in the following examples, replace
-<code>SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</code></p>
+<p>If you're intending on using your Github repository for the deployment, in the following examples, replace</p>
+<div class="highlight"><pre><span></span><code><span class="nv">SERVER_PROFILE_URL</span><span class="o">=</span>https://github.com/pingidentity/pingidentity-server-profiles.git
+</code></pre></div>
 <p>with</p>
-<p><code>SERVER_PROFILE_URL=https://github.com/&lt;your-username&gt;/pingidentity-server-profiles.git</code></p>
-<blockquote>
-<p>If your GitHub server-profile repo is private, use the <code>username:token</code> format so the container can access the repository. For example, <code>https://github.com/&lt;your_username&gt;:&lt;your_access_token&gt;/pingidentity-server-profiles.git</code>. See <a href="../privateRepos/">Using private Github repositories</a> for more information.</p>
-</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nv">SERVER_PROFILE_URL</span><span class="o">=</span>https://github.com/&lt;your-username&gt;/pingidentity-server-profiles.git
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Private Github Repo</p>
+<p>If your GitHub server-profile repo is private, use the <code>username:token</code> format so the container can access the repository. For example, <code>https://github.com/&lt;your_username&gt;:&lt;your_access_token&gt;/pingidentity-server-profiles.git</code>. See <a href="../privateRepos/">Using Private Github Repositories</a> for more information.</p>
+</div>
 <ol>
 <li>Create a new <code>docker-compose.yaml</code> file.</li>
-<li>Add your license profile to the YAML file. For example:</li>
-</ol>
-<p><div class="highlight"><pre><span></span><code> <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_PATH=layered-profiles/license/pingfederate</span>
+<li>
+<p>Add your license profile to the YAML file. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_PATH=layered-profiles/license/pingfederate</span>
 </code></pre></div>
-    <code>SERVER_PROFILE</code> supports <code>URL</code>, <code>PATH</code>, <code>BRANCH</code> and <code>PARENT</code> variables.</p>
-<ol>
-<li>Using <code>SERVER_PROFILE_PARENT</code>, we can instruct the container to retrieve its parent configuration. We'll specify the <code>extensions</code> profile as the parent:</li>
-</ol>
-<p><div class="highlight"><pre><span></span><code> <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_PARENT=EXTENSIONS</span>
+<blockquote>
+<p><code>SERVER_PROFILE</code> supports <code>URL</code>, <code>PATH</code>, <code>BRANCH</code> and <code>PARENT</code> variables.</p>
+</blockquote>
+</li>
+<li>
+<p>Using <code>SERVER_PROFILE_PARENT</code>, we can instruct the container to retrieve its parent configuration. We'll specify the <code>extensions</code> profile as the parent:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_PARENT=EXTENSIONS</span>
 </code></pre></div>
-   <code>SERVER_PROFILE</code> can be extended to reference additional profiles. Since we specified the license profile's parent as <code>EXTENSIONS</code>, we can extend <code>SERVER_PROFILE</code> by referencing the <code>EXTENSIONS</code> profile (prior to the <code>URL</code> and <code>PATH</code> variables):
-    <div class="highlight"><pre><span></span><code> <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_PATH=layered-profiles/extensions/pingfederate</span>
-</code></pre></div></p>
-<ol>
-<li>Set the <code>EXTENSIONS</code> parent to <code>OAUTH</code>:</li>
-</ol>
-<div class="highlight"><pre><span></span><code> <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_PARENT=OAUTH</span>
+<p><code>SERVER_PROFILE</code> can be extended to reference additional profiles. Since we specified the license profile's parent as <code>EXTENSIONS</code>, we can extend <code>SERVER_PROFILE</code> by referencing the <code>EXTENSIONS</code> profile (prior to the <code>URL</code> and <code>PATH</code> variables):</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_PATH=layered-profiles/extensions/pingfederate</span>
+</code></pre></div>
+</li>
+<li>
+<p>Set the <code>EXTENSIONS</code> parent to <code>OAUTH</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_PARENT=OAUTH</span>
 </code></pre></div>
 <p>Then set the <code>URL</code> and <code>PATH</code> for the <code>OAUTH</code> profile:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">```yaml</span>
-<span class="err"> - SERVER_PROFILE_OAUTH_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
-<span class="err"> - SERVER_PROFILE_OAUTH_PATH=layered-profiles/oauth/pingfederate</span>
-<span class="err">```</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_OAUTH_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_OAUTH_PATH=layered-profiles/oauth/pingfederate</span>
 </code></pre></div>
-
-<ol>
-<li>Set <code>GETTING_STARTED</code> as the <code>OAUTH</code> parent and declare the <code>URL</code> and <code>PATH</code>:</li>
-</ol>
-<div class="highlight"><pre><span></span><code> <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_OAUTH_PARENT=GETTING_STARTED</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_GETTING_STARTED_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_GETTING_STARTED_PATH=getting-started/pingfederate</span>
+</li>
+<li>
+<p>Set <code>GETTING_STARTED</code> as the <code>OAUTH</code> parent and declare the <code>URL</code> and <code>PATH</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_OAUTH_PARENT=GETTING_STARTED</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_GETTING_STARTED_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_GETTING_STARTED_PATH=getting-started/pingfederate</span>
 </code></pre></div>
 <blockquote>
 <p>Because the <code>GETTING_STARTED</code> profile is the last profile to add, it won't have a parent.</p>
 </blockquote>
 <p>Your <code>environment</code> section of the <code>docker-compose.yaml</code> file should look similar to this:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">environment</span><span class="p">:</span>
- <span class="c1"># **** SERVER PROFILES BEGIN ****</span>
- <span class="c1"># Server Profile - Product License</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_PATH=layered-profiles/license/pingfederate</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_PARENT=EXTENSIONS</span>
+<span class="c1"># **** SERVER PROFILES BEGIN ****</span>
+<span class="c1"># Server Profile - Product License</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_PATH=layered-profiles/license/pingfederate</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_PARENT=EXTENSIONS</span>
 
- <span class="c1"># Server Profile - Extensions</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_PATH=layered-profiles/extensions/pingfederate</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_PARENT=OAUTH</span>
+<span class="c1"># Server Profile - Extensions</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_PATH=layered-profiles/extensions/pingfederate</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_EXTENSIONS_PARENT=OAUTH</span>
 
- <span class="c1"># Server Profile - OAUTH</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_OAUTH_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_OAUTH_PATH=layered-profiles/oauth/pingfederate</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_OAUTH_PARENT=GETTING_STARTED</span>
+<span class="c1"># Server Profile - OAUTH</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_OAUTH_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_OAUTH_PATH=layered-profiles/oauth/pingfederate</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_OAUTH_PARENT=GETTING_STARTED</span>
 
- <span class="c1"># Base Server Profile</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_GETTING_STARTED_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
- <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_GETTING_STARTED_PATH=getting-started/pingfederate</span>
- <span class="c1"># **** SERVER PROFILE END ****</span>
+<span class="c1"># Base Server Profile</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_GETTING_STARTED_URL=https://github.com/pingidentity/pingidentity-server-profiles.git</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_PROFILE_GETTING_STARTED_PATH=getting-started/pingfederate</span>
+<span class="c1"># **** SERVER PROFILE END ****</span>
 </code></pre></div>
-<h2 id="deploy-the-layered-server-profile">Deploy the layered server profile<a class="headerlink" href="#deploy-the-layered-server-profile" title="Permanent link"> ¶</a></h2>
+</li>
+</ol>
+<h2 id="deploy-layered-profile">Deploy Layered Profile<a class="headerlink" href="#deploy-layered-profile" title="Permanent link"> ¶</a></h2>
 <ol>
 <li>Push your profiles and updated <code>docker-compose.yaml</code> file to your GitHub repository.</li>
 <li>Deploy the stack with the layered profiles.</li>

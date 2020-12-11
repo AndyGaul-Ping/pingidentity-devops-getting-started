@@ -234,7 +234,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../release-notes/relnotes-2010/" class="md-tabs__link">
+      <a href="../../release-notes/relnotes-2011/" class="md-tabs__link">
         Release Notes
       </a>
     </li>
@@ -1727,8 +1727,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+    <a href="../../release-notes/relnotes-2011/" class="md-nav__link">
       Current
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+      Version 2010
     </a>
   </li>
 
@@ -1852,7 +1864,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3rd_party_software/" class="md-nav__link">
+    <a href="../../3rdPartySoftware/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -1998,58 +2010,48 @@ pingidentity/pingfederate:edge
 </code></pre></div>
 <p>Where &lt;path&gt; is the location of your existing PingFederate license file.</p>
 <p>When the container starts, this will mount <code>&lt;path&gt;/pingfederate.lic</code> to this location in the container<code>/opt/in/instance/server/default/conf/pingfederate.lic</code>.</p>
-<p>The mount paths must match the expected license path for the product. These mount paths are:</p>
-<ul>
-<li>
-<p><strong>PingFederate</strong></p>
-<ul>
-<li>Expected license file name: <code>pingfederate.lic</code></li>
-<li>Mount path: <code>/opt/in/instance/server/default/conf/pingfederate.lic</code></li>
-</ul>
-</li>
-<li>
-<p><strong>PingAccess</strong></p>
-<ul>
-<li>Expected license file name: <code>pingaccess.lic</code></li>
-<li>Mount path: <code>/opt/in/instance/conf/pingaccess.lic</code></li>
-</ul>
-</li>
-<li>
-<p><strong>PingDirectory</strong></p>
-<ul>
-<li>Expected License file name: <code>PingDirectory.lic</code></li>
-<li>Mount path: <code>/opt/in/instance/PingDirectory.lic</code></li>
-</ul>
-</li>
-<li>
-<p><strong>PingDataSync</strong></p>
-<ul>
-<li>Expected license file name: <code>PingDirectory.lic</code></li>
-<li>Mount path: <code>/opt/in/instance/PingDirectory.lic</code></li>
-</ul>
-</li>
-<li>
-<p><strong>PingDataGovernance</strong></p>
-<ul>
-<li>Expected license file name: <code>PingDataGovernance.lic</code></li>
-<li>Mount path: <code>/opt/in/instance/PingDataGovernance.lic</code></li>
-</ul>
-</li>
-<li>
-<p><strong>PingDataGovernance PAP</strong></p>
-<ul>
-<li>Expected license file name: <code>PingDataGovernance.lic</code></li>
-<li>Mount path: <code>/opt/in/instance/PingDataGovernance.lic</code></li>
-</ul>
-</li>
-<li>
-<p><strong>PingCentral</strong></p>
-<ul>
-<li>Expected license file name: <code>pingcentral.lic</code></li>
-<li>Mount path: <code>/opt/in/instance/conf/pingcentral.lic</code></li>
-</ul>
-</li>
-</ul>
+<p>The mount paths must match the expected license path for the product.</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>File Name</th>
+<th>Mount Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PingFederate</strong></td>
+<td>pingfederate.lic</td>
+<td>/opt/in/instance/server/default/conf/pingfederate.lic</td>
+</tr>
+<tr>
+<td><strong>PingAccess</strong></td>
+<td>pingaccess.lic</td>
+<td>/opt/in/instance/conf/pingaccess.lic</td>
+</tr>
+<tr>
+<td><strong>PingDirectory</strong></td>
+<td>PingDirectory.lic</td>
+<td>/opt/in/instance/PingDirectory.lic</td>
+</tr>
+<tr>
+<td><strong>PingDataSync</strong></td>
+<td>PingDirectory.lic</td>
+<td>/opt/in/instance/PingDirectory.lic</td>
+</tr>
+<tr>
+<td><strong>PingDataGovernance</strong></td>
+<td>PingDataGovernance.lic</td>
+<td>/opt/in/instance/PingDataGovernance.lic</td>
+</tr>
+<tr>
+<td><strong>PingCentral</strong></td>
+<td>pingcentral.lic</td>
+<td>/opt/in/instance/conf/pingcentral.lic</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>Repeat this process for the remaining container entries for which you have an existing license.</p>

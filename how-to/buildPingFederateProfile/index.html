@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#building-a-pingfederate-profile-from-your-current-deployment" class="md-skip">
+        <a href="#build-profile-from-current-deployment" class="md-skip">
           Skip to content
         </a>
       
@@ -234,7 +234,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../release-notes/relnotes-2010/" class="md-tabs__link">
+      <a href="../../release-notes/relnotes-2011/" class="md-tabs__link">
         Release Notes
       </a>
     </li>
@@ -1749,8 +1749,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+    <a href="../../release-notes/relnotes-2011/" class="md-nav__link">
       Current
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+      Version 2010
     </a>
   </li>
 
@@ -1874,7 +1886,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3rd_party_software/" class="md-nav__link">
+    <a href="../../3rdPartySoftware/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -2003,7 +2015,7 @@
               
                 
                 
-                <h1 id="building-a-pingfederate-profile-from-your-current-deployment">Building a PingFederate Profile From your Current Deployment.<a class="headerlink" href="#building-a-pingfederate-profile-from-your-current-deployment" title="Permanent link"> ¶</a></h1>
+                <h1 id="build-profile-from-current-deployment">Build Profile From Current Deployment<a class="headerlink" href="#build-profile-from-current-deployment" title="Permanent link"> ¶</a></h1>
 <p>The term "profile" can vary in many instances. Here we will focus on two types of profiles for PingFederate: configuration archive, and bulk export. We will discuss the similarities and differences between two as well as how to build either from a running PingFederate environment.</p>
 <h2 id="prerequisite">Prerequisite<a class="headerlink" href="#prerequisite" title="Permanent link"> ¶</a></h2>
 <ul>
@@ -2011,23 +2023,24 @@
 <p>You've already been through <a href="../../get-started/getStarted/">Get Started</a> to set up your DevOps environment and run a test deployment of the products.</p>
 </li>
 <li>
-<p>You understand our <a href="../containerAnatomy/">product container anatomy</a>.</p>
+<p>You understand our <a href="../containerAnatomy/">Product Container Anatomy</a>.</p>
 </li>
 <li>
 <p>Recommended: You've read through <a href="../profiles/">Customizing Server Profiles</a></p>
 </li>
 </ul>
 <h2 id="similarities">Similarities<a class="headerlink" href="#similarities" title="Permanent link"> ¶</a></h2>
-<p>The two profile methods we are covering are:
-- <strong>bulk api export</strong> - the resulting <code>.json</code> from the admin api at /bulk/export. typically saved as <code>data.json</code>
-- <strong>configuration archive</strong> Pulled either from the admin UI - Server &gt; Configuration Archive or from the admin API at <code>/configArchive</code>. We'll call the result of this output <code>data.zip</code> or the <code>/data</code> folder.</p>
-<!-- INSERT LINK ON NEXT LINE FOR PF CONFIG DEPLOYMENTS -->
-<blockquote>
-<p>Deciding which method you use should be based on how you plan to <a href="LINKNEEDED">deploy configurations updates</a></p>
-</blockquote>
-<p>Both of these methods are considered file-based profiles. This means a "complete profile" looks like a <strong>subset</strong> of files that you would typically find in a running pingfederate filesystem. Again, this is a <strong>subset</strong> of files. Specifically, the minimial number of files needed to achieve your PingFederate configuration. All additional files that are not specific to your configuration should be left out as they will be filled in by the PingFederate docker image. (Refer to <a href="../containerAnatomy/">container anatomy</a> for additional details).</p>
+<p>The two profile methods we are covering are:</p>
+<ul>
+<li><strong>Bulk API Export</strong> - the resulting <code>.json</code> from the admin api at /bulk/export. typically saved as <code>data.json</code></li>
+<li><strong>Configuration Archive</strong> Pulled either from the admin UI - Server &gt; Configuration Archive or from the admin API at <code>/configArchive</code>. We'll call the result of this output <code>data.zip</code> or the <code>/data</code> folder.</li>
+</ul>
+<!-- TODO INSERT LINK ON NEXT LINE FOR PF CONFIG DEPLOYMENTS -->
+<!-- Deciding which method you use should be based on how you plan to [deploy configurations updates](LINKNEEDED) -->
+
+<p>Both of these methods are considered file-based profiles. This means a "complete profile" looks like a <strong>subset</strong> of files that you would typically find in a running PingFederate filesystem. Again, this is a <strong>subset</strong> of files. Specifically, the minimal number of files needed to achieve your PingFederate configuration. All additional files that are not specific to your configuration should be left out as they will be filled in by the PingFederate docker image. (Refer to <a href="../containerAnatomy/">Container Anatomy</a> for additional details).</p>
 <p>Considering the above, familiarity with the PingFederate filesystem will help you achieve the optimal profile. Some key information can be found in <a href="../../reference/profileStructures/">profile structures</a>. But, to put it simply, you want to at least save every file outside of <code>pingfederate/server/default/data</code> that you've edited</p>
-<p>Additionally, all files that are included in the profile should also be environment agnostic. This typically means turning hostnames and secrets into <a href="../profilesSubstitution/">variables that can be delivered from the orchestration layer</a>.</p>
+<p>Additionally, all files that are included in the profile should also be environment agnostic. This typically means turning hostnames and secrets into variables that can be delivered from the <a href="../profilesSubstitution/">Orchestration Layer</a>.</p>
 <h2 id="bulk-api-export-profile-method">Bulk API Export Profile Method<a class="headerlink" href="#bulk-api-export-profile-method" title="Permanent link"> ¶</a></h2>
 <h3 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link"> ¶</a></h3>
 <p>A summary of the resulting process:</p>
@@ -2041,77 +2054,89 @@
 <blockquote>
 <p>Rather than just following the above steps, we will look at this comprehensively to understand purpose. Use the steps for reference as needed</p>
 </blockquote>
-<p>A PingFederate Admin/Console will import a <code>data.json</code> on startup if it finds it in <code>instance/bulk-config/data.json</code>.</p>
-<p>The PF admin api <code>/bulk/export</code> endpoint will output a large json blob that is representative of the entire <code>pingfederate/server/default/data</code> folder, pingfederate 'core config', or a representation of anything you would configure from the pingfederate UI. You could consider it "the configuration archive in json format".</p>
-<p>So, you could just:
-1. Go to a running pingfederate, run:
-  <div class="highlight"><pre><span></span><code>curl --location --request GET <span class="s1">&#39;https://pingfederate-admin.ping-devops.com/pf-admin-api/v1/bulk/export&#39;</span> <span class="se">\</span>
+<p>A PingFederate Admin Console will import a <code>data.json</code> on startup if it finds it in <code>instance/bulk-config/data.json</code>.</p>
+<p>The PF admin api <code>/bulk/export</code> endpoint will output a large json blob that is representative of the entire <code>pingfederate/server/default/data</code> folder, PingFederate 'core config', or a representation of anything you would configure from the PingFederate UI. You could consider it "the configuration archive in json format".</p>
+<p>So, you could just:</p>
+<ol>
+<li>
+<p>Go to a running PingFederate, run:</p>
+<div class="highlight"><pre><span></span><code>curl <span class="se">\</span>
+  --location <span class="se">\</span>
+  --request GET <span class="s1">&#39;https://pingfederate-admin.ping-devops.com/pf-admin-api/v1/bulk/export&#39;</span> <span class="se">\</span>
   --header <span class="s1">&#39;X-XSRF-Header: PingFederate&#39;</span> <span class="se">\</span>
   --user <span class="s2">&quot;administrator:</span><span class="si">${</span><span class="nv">passsword</span><span class="si">}</span><span class="s2">&quot;</span> &gt; data.json
 </code></pre></div>
-2. Save data.json into a profile at <code>instance/bulk-config/data.json</code>
-3. delete everything except <code>pf.jwk</code> in <code>instance/server/default/data</code></p>
+</li>
+<li>
+<p>Save data.json into a profile at <code>instance/bulk-config/data.json</code></p>
+</li>
+<li>Delete everything except <code>pf.jwk</code> in <code>instance/server/default/data</code></li>
+</ol>
 <p>And you will have a bulk api export "profile". This is handy because the entire config is on a single file and if you store it in source control you then only have to compare differences on one file. However, there's <em>much more</em> hidden value beyond being on one file.</p>
 <h3 id="make-the-bulk-api-export-profile-worthy">Make the Bulk API Export "Profile Worthy"<a class="headerlink" href="#make-the-bulk-api-export-profile-worthy" title="Permanent link"> ¶</a></h3>
-<p>By default, the resulting <code>data.json</code> from the export contains encrypted values, and to import this file, your pingfederate needs to have the corresponding master key (<code>pf.jwk</code>) in <code>pingfederate/server/default/data</code>. Note, in the devops world, we call this folder <code>instance/server/default/data</code>. However, each of the encrypted values also have the option to be replaced with an unencrypted form and, when required, a corresponding password.</p>
-<p>For example the ssl server cert from the <a href="https://github.com/pingidentity/pingidentity-server-profiles/tree/master/baseline/pingfederate">pingfederate baseline profile</a> when exported to data.json looks like:</p>
-<div class="highlight"><pre><span></span><code>      <span class="p">{</span>
-          <span class="nt">&quot;resourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;/keyPairs/sslServer&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="s2">&quot;SAVE&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;sslservercert&quot;</span><span class="p">,</span>
-                  <span class="nt">&quot;fileData&quot;</span><span class="p">:</span> <span class="s2">&quot;MIIRBwIBAzCCEMAGCSqGSIb3DQEHAaCCELEEghCtMIIQqTCCCeUGCSqGSIb3DQEHAaCCCdYEggnSMIIJzjCCCcoGCyqGSIb3DQEMCgECoIIJezCCCXcwKQYKKoZIhvcNAQwBAzAbBBQu6vDERQZX3uujWa7v_q3sYN4Q0gIDAMNQBIIJSFtdWbvLhzYrTqeKKiJqiqROgE0E4mkVvmEC6NwhhPbcH37IDNvVLu0umm--CDZnEmlyPpUucO345-U-6z-cskw4TbsjYIzM10MwS6JdsyYFTC3GwqioqndVgBUzDh8xGnfzx52zEehX8d-ig1F6xYsbEc01gTbh4lF5MA7E7VfoTa4hWqtceV8PQeqzJNarlZyDSaS5BLn1J6G9BYUze-M1xGhATz7F2l-aAt6foi0mwIBlc2fwsdEPuAALZgdG-q_V4gOJW2K0ONnmWhMgMLpCL42cmSb</span>
-<span class="s2">                  ... more encrypted text ...</span>
-<span class="s2">                  Yxpzp_srpy4LHNdgHqhVBhqtDrjeKJDRfc1yk21P5PpfEBxn5MD4wITAJBgUrDgMCGgUABBQLBpq8y79Pq1TzG1Xf6OAjZzBZaQQUC4kD4CkcrH-WTQhJHud850ddn08CAwGGoA==&quot;</span><span class="p">,</span>
-                  <span class="nt">&quot;encryptedPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiRW1JY1UxOVdueSIsInZlcnNpb24iOiIxMC4xLjEuMCJ9..l6PJ55nSSvKHl0vSWTpkOA.i7hpnnu2yIByhyq_aGBCdaqS3u050yG8eMRGnLRx2Yk.Mo4WSkbbJyLISHq6i4nlVA&quot;</span>
-              <span class="p">}</span>
-          <span class="p">]</span>
-      <span class="p">}</span>
+<p>By default, the resulting <code>data.json</code> from the export contains encrypted values, and to import this file, your PingFederate needs to have the corresponding master key (<code>pf.jwk</code>) in <code>pingfederate/server/default/data</code>. Note, in the devops world, we call this folder <code>instance/server/default/data</code>. However, each of the encrypted values also have the option to be replaced with an unencrypted form and, when required, a corresponding password.</p>
+<p>For example the SSL Server Certificate from the <a href="https://github.com/pingidentity/pingidentity-server-profiles/tree/master/baseline/pingfederate">PingFederate Baseline Profile</a> when exported to data.json looks like:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;resourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;/keyPairs/sslServer&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="s2">&quot;SAVE&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;sslservercert&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;fileData&quot;</span><span class="p">:</span> <span class="s2">&quot;MIIRBwIBAzCCEMAGCSqGSIb3DQEHAaCCELEEghCtMIIQqTCCCeUGCSqGSIb3DQEHAaCCCdYEggnSMIIJzjCCCcoGCyqGSIb3DQEMCgECoIIJezCCCXcwKQYKKoZIhvcNAQwBAzAbBBQu6vDERQZX3uujWa7v_q3sYN4Q0gIDAMNQBIIJSFtdWbvLhzYrTqeKKiJqiqROgE0E4mkVvmEC6NwhhPbcH37IDNvVLu0umm--CDZnEmlyPpUucO345-U-6z-cskw4TbsjYIzM10MwS6JdsyYFTC3GwqioqndVgBUzDh8xGnfzx52zEehX8d-ig1F6xYsbEc01gTbh4lF5MA7E7VfoTa4hWqtceV8PQeqzJNarlZyDSaS5BLn1J6G9BYUze-M1xGhATz7F2l-aAt6foi0mwIBlc2fwsdEPuAALZgdG-q_V4gOJW2K0ONnmWhMgMLpCL42cmSb</span>
+<span class="s2">            ... more encrypted text ...</span>
+<span class="s2">            Yxpzp_srpy4LHNdgHqhVBhqtDrjeKJDRfc1yk21P5PpfEBxn5MD4wITAJBgUrDgMCGgUABBQLBpq8y79Pq1TzG1Xf6OAjZzBZaQQUC4kD4CkcrH-WTQhJHud850ddn08CAwGGoA==&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;encryptedPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiRW1JY1UxOVdueSIsInZlcnNpb24iOiIxMC4xLjEuMCJ9..l6PJ55nSSvKHl0vSWTpkOA.i7hpnnu2yIByhyq_aGBCdaqS3u050yG8eMRGnLRx2Yk.Mo4WSkbbJyLISHq6i4nlVA&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>But this master key dependent form can be converted to:</p>
-<div class="highlight"><pre><span></span><code>      <span class="p">{</span>
-          <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="s2">&quot;SAVE&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[{</span>
-              <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;2FederateM0re&quot;</span><span class="p">,</span>
-              <span class="nt">&quot;fileData&quot;</span><span class="p">:</span> <span class="s2">&quot;MIIRCQIBAzCCEM8GCSqGSIb3DQEHAaCCEMAEghC8MIIQuDCCC28GCSqGSIb3DQEHBqCCC2AwggtcAgEAMIILVQYJKoZIhvcNAQcBMBwGCiqGSIb3DQEMAQYwDgQIjXWLRGuGNIQCAggAgIILKOgCQ9onDqBPQsshsaS50OjWtj\/7s47BUYal1YhO70fBup1a82WGHGhAvb\/SY1yOhqQR+TloEBOPI5cExoGN\/Gvw2Mw5\/wkQZZMSHqxjz68KhN4B0hrsOf4rqShB7jsz9ebSml3r2w0sUZWR73GBtBt1Y3wIlXLS2WtqdtHra9VnUqp1eOk+xenjuWM+u2ndDD43GgKB3n8mNBSSVBqx6ne7aSRJRuAUd+HAzLvSeXjTPMObI1Jod2F+7</span>
-<span class="s2">              ... more base64 encoded exported .p12 ...</span>
-<span class="s2">              5QJ15OJp2iEoVBWxogKf64s2F0iIYPoo6yjNvlidZCevP564FwknWrHoD7R8cIBrhlCJQbEOpOhPg66r4MK1CeJ2poaKRlMS8HGcMRaTpaqD+pIlgmUS6xFw49vr9Kwfb7KteRsTkNR+I8A7HjUpuCMSUwIwYJKoZIhvcNAQkVMRYEFOb7g1xwDka5fJ4sqngEvzTyuWnpMDEwITAJBgUrDgMCGgUABBRlJ+D+FR\/vQbaTGbKDFiBK\/xDbqQQIAjLc+GgRg44CAggA&quot;</span><span class="p">,</span>
-              <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;sslservercert&quot;</span>
-          <span class="p">}],</span>
-          <span class="nt">&quot;resourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;/keyPairs/sslServer&quot;</span>
-      <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="s2">&quot;SAVE&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;2FederateM0re&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fileData&quot;</span><span class="p">:</span> <span class="s2">&quot;MIIRCQIBAzCCEM8GCSqGSIb3DQEHAaCCEMAEghC8MIIQuDCCC28GCSqGSIb3DQEHBqCCC2AwggtcAgEAMIILVQYJKoZIhvcNAQcBMBwGCiqGSIb3DQEMAQYwDgQIjXWLRGuGNIQCAggAgIILKOgCQ9onDqBPQsshsaS50OjWtj\/7s47BUYal1YhO70fBup1a82WGHGhAvb\/SY1yOhqQR+TloEBOPI5cExoGN\/Gvw2Mw5\/wkQZZMSHqxjz68KhN4B0hrsOf4rqShB7jsz9ebSml3r2w0sUZWR73GBtBt1Y3wIlXLS2WtqdtHra9VnUqp1eOk+xenjuWM+u2ndDD43GgKB3n8mNBSSVBqx6ne7aSRJRuAUd+HAzLvSeXjTPMObI1Jod2F+7</span>
+<span class="s2">        ... more base64 encoded exported .p12 ...</span>
+<span class="s2">        5QJ15OJp2iEoVBWxogKf64s2F0iIYPoo6yjNvlidZCevP564FwknWrHoD7R8cIBrhlCJQbEOpOhPg66r4MK1CeJ2poaKRlMS8HGcMRaTpaqD+pIlgmUS6xFw49vr9Kwfb7KteRsTkNR+I8A7HjUpuCMSUwIwYJKoZIhvcNAQkVMRYEFOb7g1xwDka5fJ4sqngEvzTyuWnpMDEwITAJBgUrDgMCGgUABBRlJ+D+FR\/vQbaTGbKDFiBK\/xDbqQQIAjLc+GgRg44CAggA&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;sslservercert&quot;</span>
+    <span class="p">}],</span>
+    <span class="nt">&quot;resourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;/keyPairs/sslServer&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>What happened:
-1. Exported the private key+cert of the server cert with alias <code>sslservercert</code>. Upon export, a password is requested and <code>2FederateM0re</code> was used. This results in download of a pssword protected <code>.p12</code> file.
-2. on data.json key name <code>encryptedPassword</code> converted to just <code>password</code>
-3. the value for <code>fileData</code> is replaced with a base64 encoded version of the exported <code>.p12</code> file.</p>
-<p>This is a process that can be used for all encrypted items and environment specific items:
-- Key Pairs (.p12)
-- Trusted Certs (x509)
-- Admin Password
-- Data Store Passwords
-- Integration Kit Properties
-- Hostnames</p>
+<p>What happened:</p>
+<ol>
+<li>Exported the private key+cert of the server cert with alias <code>sslservercert</code>. Upon export, a password is requested and <code>2FederateM0re</code> was used. This results in download of a password protected <code>.p12</code> file.</li>
+<li>On data.json key name <code>encryptedPassword</code> converted to just <code>password</code></li>
+<li>The value for <code>fileData</code> is replaced with a base64 encoded version of the exported <code>.p12</code> file.</li>
+</ol>
+<p>This is a process that can be used for all encrypted items and environment specific items:</p>
+<ul>
+<li>Key Pairs (.p12)</li>
+<li>Trusted Certs (x509)</li>
+<li>Admin Password</li>
+<li>Data Store Passwords</li>
+<li>Integration Kit Properties</li>
+<li>Hostnames</li>
+</ul>
 <p>Now, if you follow this through the entire data.json, it would take a while, and you would be left with a file that is unacceptable for source control (since it's completely unencrypted). So, the next logical step is to abstract the unencrypted values and replace with variables. Then the values can be stored in a secrets management and the variablized file can be in source control.</p>
-<p>Doing all this would manually would take a long time, fortunately, there's a <a href="../99-helper-scripts/ping-bulkconfigtool">tool for this!</a>
+<p>Doing all this would manually would take a long time, fortunately, there's the <a href="../99-helper-scripts/ping-bulkconfigtool">ping-bulkconfig-tool</a>.
 Detailed steps for using the tool are documented next to where it is stored. The general concept is to point the tool at the <code>data.json</code> and a config file. After running you will be left with a <code>data.json.subst</code> and a list of environment variables waiting to be filled.</p>
 <p>The <code>data.json.subst</code> form of our example above will look like:
-<div class="highlight"><pre><span></span><code>      <span class="p">{</span>
-          <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="s2">&quot;SAVE&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[{</span>
-              <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;${keyPairs_sslServer_items_sslservercert_sslservercert_password}&quot;</span><span class="p">,</span>
-              <span class="nt">&quot;fileData&quot;</span><span class="p">:</span> <span class="s2">&quot;${keyPairs_sslServer_items_sslservercert_sslservercert_fileData}&quot;</span><span class="p">,</span>
-              <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;sslservercert&quot;</span>
-          <span class="p">}],</span>
-          <span class="nt">&quot;resourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;/keyPairs/sslServer&quot;</span>
-      <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="s2">&quot;SAVE&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;${keyPairs_sslServer_items_sslservercert_sslservercert_password}&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fileData&quot;</span><span class="p">:</span> <span class="s2">&quot;${keyPairs_sslServer_items_sslservercert_sslservercert_fileData}&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;sslservercert&quot;</span>
+    <span class="p">}],</span>
+    <span class="nt">&quot;resourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;/keyPairs/sslServer&quot;</span>
+<span class="p">}</span>
 </code></pre></div></p>
-<p>The variablized <code>data.json.subst</code> is now a good candidate to for commiting to source control. The resulting <code>env_vars</code> file can be used as a guideline for secrets that should be managed externally and only delivered to the container/image as needed for it's specific environment.</p>
+<p>The variablized <code>data.json.subst</code> is now a good candidate to for committing to source control. The resulting <code>env_vars</code> file can be used as a guideline for secrets that should be managed externally and only delivered to the container/image as needed for it's specific environment.</p>
 <h3 id="additional-notes">Additional Notes<a class="headerlink" href="#additional-notes" title="Permanent link"> ¶</a></h3>
 <ul>
 <li>The bulk api export is intended to be used as a <em>bulk</em> import. The <code>/bulk/import</code> endpoint is destructive and overwrites the entire current admin config.</li>
-<li>If you are in a clustered environment, the pingfederate image will import the <code>data.json</code> and also replicate the configuration to engines in the cluster.</li>
+<li>If you are in a clustered environment, the PingFederate image will import the <code>data.json</code> and also replicate the configuration to engines in the cluster.</li>
 </ul>
 <h2 id="config-archive-profiles">Config Archive Profiles<a class="headerlink" href="#config-archive-profiles" title="Permanent link"> ¶</a></h2>
 <h3 id="comparing-profile-methods">Comparing Profile Methods<a class="headerlink" href="#comparing-profile-methods" title="Permanent link"> ¶</a></h3>
@@ -2119,20 +2144,24 @@ Detailed steps for using the tool are documented next to where it is stored. The
 <p>Pros:</p>
 <ul>
 <li>The <code>/data</code> folder, opposed to a <code>data.json</code> file, is better for <a href="../profilesLayered/">profile layering</a></li>
-<li>Configuration is available on engines at startup. This:</li>
+<li>Configuration is available on engines at startup. This:<ul>
 <li>lowers dependency on the admin at initial cluster startup</li>
 <li>enables mixed configurations in a single cluster. Canary-like "roll-out" instead of config pushed to all engines at once.</li>
+</ul>
+</li>
 </ul>
 <p>Cons:</p>
 <ul>
 <li>The <code>/data</code> folder contains key pairs in a <code>.jks</code> so externally managing keys is very difficult.</li>
-<li>encrypted data is scattered throughout the folder creating dependency on the master encryption key.</li>
+<li>Encrypted data is scattered throughout the folder creating dependency on the master encryption key.</li>
 </ul>
 <h3 id="what-youll-do_1">What You'll Do<a class="headerlink" href="#what-youll-do_1" title="Permanent link"> ¶</a></h3>
-<p>A summary of the resulting process:
-1. Export a <code>data.zip</code>
-2. Optionally, variablize
-3. Replace data folder</p>
+<p>A summary of the resulting process:</p>
+<ol>
+<li>Export a <code>data.zip</code></li>
+<li>Optionally, variablize</li>
+<li>Replace data folder</li>
+</ol>
 <!-- 1. Export a configuration archive.
 This can be done through the UI `System > Server > Configuration Archive`
 Or via Admin API:

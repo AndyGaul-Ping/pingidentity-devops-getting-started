@@ -234,7 +234,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../release-notes/relnotes-2010/" class="md-tabs__link">
+      <a href="../../release-notes/relnotes-2011/" class="md-tabs__link">
         Release Notes
       </a>
     </li>
@@ -480,54 +480,6 @@
   <a href="#example-mounts" class="md-nav__link">
     Example Mounts
   </a>
-  
-    <nav class="md-nav" aria-label="Example Mounts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pingfederate" class="md-nav__link">
-    PingFederate
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pingaccess" class="md-nav__link">
-    PingAccess
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pingdirectory" class="md-nav__link">
-    PingDirectory
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pingdatasync" class="md-nav__link">
-    PingDataSync
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pingdatagovernance" class="md-nav__link">
-    PingDataGovernance
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pingcentral" class="md-nav__link">
-    PingCentral
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1815,8 +1767,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+    <a href="../../release-notes/relnotes-2011/" class="md-nav__link">
       Current
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/relnotes-2010/" class="md-nav__link">
+      Version 2010
     </a>
   </li>
 
@@ -1940,7 +1904,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3rd_party_software/" class="md-nav__link">
+    <a href="../../3rdPartySoftware/" class="md-nav__link">
       Third-Party Software
     </a>
   </li>
@@ -2041,54 +2005,6 @@
   <a href="#example-mounts" class="md-nav__link">
     Example Mounts
   </a>
-  
-    <nav class="md-nav" aria-label="Example Mounts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pingfederate" class="md-nav__link">
-    PingFederate
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pingaccess" class="md-nav__link">
-    PingAccess
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pingdirectory" class="md-nav__link">
-    PingDirectory
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pingdatasync" class="md-nav__link">
-    PingDataSync
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pingdatagovernance" class="md-nav__link">
-    PingDataGovernance
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pingcentral" class="md-nav__link">
-    PingCentral
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2199,36 +2115,47 @@
 <p>Note: You do not need to do this if you are using your DevOps User/Key. If you have provided license files via the volume mount and a DevOps User/Key, it will ignore the DevOps User/Key.</p>
 <p>The <code>/opt/in</code> directory overlays files onto the products runtime filesystem, the license needs to be named correctly and mounted in the exact location the product checks for valid licenses.</p>
 <h3 id="example-mounts">Example Mounts<a class="headerlink" href="#example-mounts" title="Permanent link"> ¶</a></h3>
-<h4 id="pingfederate">PingFederate<a class="headerlink" href="#pingfederate" title="Permanent link"> ¶</a></h4>
-<ul>
-<li>Expected license file name: <code>pingfederate.lic</code></li>
-<li>Mount Path: <code>/opt/in/instance/server/default/conf/pingfederate.lic</code></li>
-</ul>
-<h4 id="pingaccess">PingAccess<a class="headerlink" href="#pingaccess" title="Permanent link"> ¶</a></h4>
-<ul>
-<li>Expected license file name: <code>pingaccess.lic</code></li>
-<li>Mount Path: <code>opt/in/instance/conf/pingaccess.lic</code></li>
-</ul>
-<h4 id="pingdirectory">PingDirectory<a class="headerlink" href="#pingdirectory" title="Permanent link"> ¶</a></h4>
-<ul>
-<li>Expected License file name: <code>PingDirectory.lic</code></li>
-<li>Mount Path: <code>/opt/in/instance/PingDirectory.lic</code></li>
-</ul>
-<h4 id="pingdatasync">PingDataSync<a class="headerlink" href="#pingdatasync" title="Permanent link"> ¶</a></h4>
-<ul>
-<li>Expected license file name: <code>PingDirectory.lic</code></li>
-<li>Mount Path: <code>/opt/in/instance/PingDirectory.lic</code></li>
-</ul>
-<h4 id="pingdatagovernance">PingDataGovernance<a class="headerlink" href="#pingdatagovernance" title="Permanent link"> ¶</a></h4>
-<ul>
-<li>Expected license file name: <code>PingDataGovernance.lic</code></li>
-<li>Mount Path: <code>/opt/in/instance/PingDataGovernance.lic</code></li>
-</ul>
-<h4 id="pingcentral">PingCentral<a class="headerlink" href="#pingcentral" title="Permanent link"> ¶</a></h4>
-<ul>
-<li>Expected license file name: <code>pingcentral.lic</code></li>
-<li>Mount Path: <code>/opt/in/instance/conf/pingcentral.lic</code></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>File Name</th>
+<th>Mount Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PingFederate</strong></td>
+<td>pingfederate.lic</td>
+<td>/opt/in/instance/server/default/conf/pingfederate.lic</td>
+</tr>
+<tr>
+<td><strong>PingAccess</strong></td>
+<td>pingaccess.lic</td>
+<td>/opt/in/instance/conf/pingaccess.lic</td>
+</tr>
+<tr>
+<td><strong>PingDirectory</strong></td>
+<td>PingDirectory.lic</td>
+<td>/opt/in/instance/PingDirectory.lic</td>
+</tr>
+<tr>
+<td><strong>PingDataSync</strong></td>
+<td>PingDirectory.lic</td>
+<td>/opt/in/instance/PingDirectory.lic</td>
+</tr>
+<tr>
+<td><strong>PingDataGovernance</strong></td>
+<td>PingDataGovernance.lic</td>
+<td>/opt/in/instance/PingDataGovernance.lic</td>
+</tr>
+<tr>
+<td><strong>PingCentral</strong></td>
+<td>pingcentral.lic</td>
+<td>/opt/in/instance/conf/pingcentral.lic</td>
+</tr>
+</tbody>
+</table>
 <h3 id="volume-mount-syntax">Volume Mount Syntax<a class="headerlink" href="#volume-mount-syntax" title="Permanent link"> ¶</a></h3>
 <h4 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link"> ¶</a></h4>
 <p>Sample docker run command with mounted license:</p>
